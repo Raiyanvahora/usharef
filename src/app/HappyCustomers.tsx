@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+import Image from 'next/image';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -55,7 +56,7 @@ const HappyCustomers: React.FC = () => {
             setCustomers(filteredCustomers);
             setLoading(false);
           },
-          error: (error: any) => {
+          error: (error: Error) => {
             console.error("CSV Parse Error:", error);
             setError(`Failed to parse CSV: ${error.message}`);
             setLoading(false);
@@ -158,9 +159,11 @@ const HappyCustomers: React.FC = () => {
               return (
                 <SwiperSlide key={customer.filename + idx}>
                   <div className="aspect-square bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group">
-                    <img
+                    <Image
                       src={imagePath}
                       alt={`Happy Customer ${idx + 1}`}
+                      width={300}
+                      height={300}
                       className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
                       onLoad={() => console.log(`✓ Loaded: ${imagePath}`)}

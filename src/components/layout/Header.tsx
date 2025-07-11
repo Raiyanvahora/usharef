@@ -1,16 +1,19 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { MessageCircle } from 'lucide-react';
-import Image from 'next/image';
+import styles from './Header.module.css';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
     };
@@ -23,56 +26,64 @@ export default function Header() {
     { name: 'Refrigerators', href: '/products' },
     { name: 'About Us', href: '/about' },
     { name: 'Service', href: '/service' },
-    { name: 'Contact', href: '/contact' },
   ];
 
-  // WhatsApp number and message (encoded)
   const whatsappNumber = '9898649362';
   const prefilledMessage = encodeURIComponent("Hi, I want to know about your refrigerators!");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${prefilledMessage}`;
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-neutral-200 shadow-sm bg-white ${scrolled ? 'glass-effect' : ''}`}>
-      <nav className="container mx-auto flex items-center justify-between h-20 px-8">
-        {/* Brand Name Only */}
-        <Link href="/" className="flex items-center group select-none">
-          <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-primary-700 font-montserrat">USHA REFRIGERATION</span>
+    <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
+      <nav className="container mx-auto flex items-center justify-between h-full px-6">
+        {/* Brand Logo/Name */}
+        <Link 
+          href="/" 
+          className="flex items-center group select-none mr-6 pr-6 border-r border-[#E6E6E6]"
+        >
+          {mounted && (
+            <div className={styles.brand}>
+              <span>USHA</span> <span>REFRIGERATION</span>
+            </div>
+          )}
         </Link>
+
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-8 font-montserrat">
+        <div className="hidden lg:flex items-center space-x-6">
           {navigation.map((item) => (
             <Link
               key={item.name}
               href={item.href}
-              className="text-neutral-700 hover:text-primary-600 font-medium px-3 py-1 transition-colors hover:underline underline-offset-8"
+              className={styles.navLink}
             >
               {item.name}
             </Link>
           ))}
         </div>
+
         {/* CTA Buttons */}
         <div className="hidden lg:flex items-center space-x-4">
           <Link 
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center text-green-600 hover:text-green-700 font-medium transition-colors p-2 rounded-full hover:bg-green-50"
-            title="Chat on WhatsApp"
+            className={styles.chatButton}
+            title="Chat with Us"
           >
-            <MessageCircle className="w-6 h-6" />
+            <MessageCircle className="w-5 h-5 text-green-600" />
+            <span className={styles.chatTooltip}>Chat with Us</span>
           </Link>
           <Link 
             href="/products" 
-            className="bg-primary-600 text-white rounded-full px-6 py-3 text-sm font-bold shadow-md hover:bg-primary-700 transition-all duration-200 font-montserrat border-2 border-primary-600"
+            className="bg-primary-600 text-white rounded-full px-5 py-2 text-sm font-semibold shadow-md hover:bg-primary-700 transition-all duration-200 transform hover:-translate-y-0.5"
             style={{ 
-              color: 'white !important',
-              backgroundColor: '#1e40af',
-              borderColor: '#1e40af'
+              backgroundColor: '#1046D8',
+              borderColor: '#1046D8'
             }}
           >
             Explore Products
           </Link>
         </div>
+
         {/* Mobile menu button */}
         <div className="lg:hidden">
           <button
@@ -89,42 +100,46 @@ export default function Header() {
           </button>
         </div>
       </nav>
+
       {/* Mobile Navigation */}
-      <div className={`lg:hidden transition-all duration-300 ease-in-out ${
-        mobileMenuOpen 
-          ? 'max-h-screen opacity-100' 
-          : 'max-h-0 opacity-0 overflow-hidden'
-      }`}>
-        <div className="glass-effect border-t border-neutral-200">
-          <div className="container mx-auto py-6 space-y-4">
+      <div 
+        className={`lg:hidden transition-all duration-300 ease-in-out ${
+          mobileMenuOpen 
+            ? 'max-h-screen opacity-100' 
+            : 'max-h-0 opacity-0 overflow-hidden'
+        }`}
+      >
+        <div className="border-t border-neutral-200 bg-white">
+          <div className="container mx-auto py-4 px-6 space-y-3">
             {navigation.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block text-lg font-medium text-neutral-700 hover:text-primary-600 transition-colors duration-200 font-montserrat hover:underline underline-offset-8"
+                className="block text-base font-medium text-neutral-700 hover:text-primary-600 transition-colors duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.name}
               </Link>
             ))}
-            <div className="pt-4 border-t border-neutral-200 space-y-3">
+            <div className="pt-3 border-t border-neutral-200 space-y-3">
               <Link 
                 href={whatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-secondary w-full text-center flex items-center justify-center text-green-600 hover:text-green-700 border-green-600 hover:border-green-700 py-3"
-                title="Chat on WhatsApp"
+                className="flex items-center justify-center space-x-2 text-green-600 hover:text-green-700 py-2"
+                title="Chat with Us"
               >
-                <MessageCircle className="w-6 h-6" />
+                <MessageCircle className="w-5 h-5" />
+                <span>Chat with Us</span>
               </Link>
               <Link 
                 href="/products" 
-                className="bg-primary-600 text-white rounded-full px-6 py-3 text-sm font-bold shadow-md hover:bg-primary-700 transition-all duration-200 font-montserrat w-full text-center flex items-center justify-center border-2 border-primary-600"
+                className="block text-center bg-primary-600 text-white rounded-full px-5 py-2 text-sm font-semibold shadow-md hover:bg-primary-700 transition-all duration-200"
                 style={{ 
-                  color: 'white !important',
-                  backgroundColor: '#1e40af',
-                  borderColor: '#1e40af'
+                  backgroundColor: '#1046D8',
+                  borderColor: '#1046D8'
                 }}
+                onClick={() => setMobileMenuOpen(false)}
               >
                 Explore Products
               </Link>

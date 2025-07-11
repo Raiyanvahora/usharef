@@ -15,7 +15,7 @@ export default function Footer() {
                 <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-white">Usha Refrigerators</span>
               </div>
               <p className="text-[#c7d0e2] leading-relaxed max-w-md text-base">
-                Charotar's trusted refrigerator brand for over 10 years. Premium quality, energy-efficient refrigerators for every home.
+                Charotar&apos;s trusted refrigerator brand for over 10 years. Premium quality, energy-efficient refrigerators for every home.
               </p>
               <div className="flex space-x-4 mt-2">
                 <a href="#" aria-label="Facebook" className="hover:text-white transition-colors"><FaFacebookF size={18} /></a>

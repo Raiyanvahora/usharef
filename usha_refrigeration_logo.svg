@@ -1,0 +1,40 @@
+<svg width="800" height="200" viewBox="0 0 800 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Blue gradient for modern tech look -->
+    <linearGradient id="techBlueGradient" x1="0%" y1="0%" x2="100%" y2="0%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#1565C0"/>
+      <stop offset="100%" stop-color="#42A5F5"/>
+    </linearGradient>
+    
+    <!-- Subtle shadow filter -->
+    <filter id="subtleShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#1565C0" flood-opacity="0.12"/>
+    </filter>
+  </defs>
+  
+  <!-- Main logo text -->
+  <text x="400" y="100" 
+        text-anchor="middle" 
+        dominant-baseline="middle"
+        font-family="'Inter', 'Montserrat', 'Poppins', 'Arial Black', sans-serif"
+        font-size="64" 
+        font-weight="800" 
+        letter-spacing="0.06em"
+        fill="url(#techBlueGradient)"
+        filter="url(#subtleShadow)">
+    USHA REFRIGERATION
+  </text>
+  
+  <!-- Minimal cooling element - subtle line accent -->
+  <line x1="100" y1="140" x2="700" y2="140" 
+        stroke="url(#techBlueGradient)" 
+        stroke-width="2" 
+        opacity="0.3"/>
+        
+  <!-- Minimal geometric cooling icon -->
+  <g transform="translate(50, 100)" opacity="0.8">
+    <circle cx="0" cy="0" r="12" fill="none" stroke="url(#techBlueGradient)" stroke-width="2"/>
+    <circle cx="0" cy="0" r="6" fill="none" stroke="url(#techBlueGradient)" stroke-width="1.5"/>
+    <circle cx="0" cy="0" r="2" fill="url(#techBlueGradient)"/>
+  </g>
+</svg> 

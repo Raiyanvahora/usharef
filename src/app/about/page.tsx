@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import { FaAward, FaLeaf, FaLightbulb, FaBullseye } from 'react-icons/fa';
 
 export default function About() {

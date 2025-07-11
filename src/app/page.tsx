@@ -3,21 +3,13 @@
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { 
-  Snowflake, 
-  Zap, 
-  Shield, 
-  Star, 
   ChevronRight, 
   Phone, 
   Award,
-  Thermometer,
-  Leaf,
-  Users,
-  Clock,
   ShoppingCart
 } from 'lucide-react';
 import HappyCustomers from './HappyCustomers';
-import { productCategories } from '../../data/products';
+import { productCategories } from '@/data/products';
 import Image from 'next/image';
 
 export default function Home() {
@@ -45,56 +37,6 @@ export default function Home() {
     };
   }, []);
 
-  const refrigeratorTypes = [
-    {
-      name: 'Single Door',
-      description: 'Perfect for small families and apartments',
-      features: ['Compact Design', 'Energy Efficient', 'Affordable'],
-      capacity: '150-250L'
-    },
-    {
-      name: 'Double Door',
-      description: 'Ideal for medium-sized families',
-      features: ['Separate Freezer', 'More Storage', 'Advanced Cooling'],
-      capacity: '250-350L'
-    },
-    {
-      name: 'Side-by-Side',
-      description: 'Premium choice for large families',
-      features: ['Maximum Storage', 'Water Dispenser', 'Premium Design'],
-      capacity: '500-700L'
-    },
-    {
-      name: 'French Door',
-      description: 'Luxury refrigeration solution',
-      features: ['Premium Features', 'Smart Technology', 'Elegant Design'],
-      capacity: '600-800L'
-    }
-  ];
-
-  const features = [
-    {
-      icon: Thermometer,
-      title: 'Advanced Cooling Technology',
-      description: 'Precise temperature control keeps food fresh longer'
-    },
-    {
-      icon: Leaf,
-      title: 'Energy Efficient',
-      description: '5-star energy rating saves money on electricity bills'
-    },
-    {
-      icon: Shield,
-      title: '10-Year Warranty',
-      description: 'Comprehensive warranty coverage for peace of mind'
-    },
-    {
-      icon: Users,
-      title: 'Expert Service',
-      description: 'Professional installation and 24/7 customer support'
-    }
-  ];
-
   const stats = [
     { number: '10+', label: 'Years of Excellence' },
     { number: '5,000+', label: 'Happy Customers' },
@@ -104,35 +46,59 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="hero-section section-padding pt-32">
-        <div className="container relative z-10">
-          <div className="text-center max-w-4xl mx-auto">
-            <div className="animate-on-scroll">
-              <div className="inline-flex items-center space-x-2 bg-accent-50 px-4 py-2 rounded-full border border-accent-200 mb-6">
-                <Award className="w-4 h-4 text-accent-600" />
-                <span className="text-accent-700 font-medium text-sm">Charotar's Trusted Refrigerator Brand</span>
+      <section className="hero-section-dark min-h-screen flex items-center">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Side - Product Image */}
+            <div className="flex justify-center lg:justify-start">
+              <div className="relative">
+                <Image
+                  src="/banners/60435acb-98b7-412c-b983-42433e438f72.png"
+                  alt="Premium Refrigerator"
+                  width={600}
+                  height={700}
+                  className="object-contain max-w-full h-auto"
+                  priority
+                />
               </div>
-              
-              <h1 className="font-display text-display-xl font-bold text-neutral-900 mb-6 leading-tight">
-                Premium Refrigerators for 
-                <span className="brand-gradient"> Every Home</span>
+            </div>
+
+            {/* Right Side - Content */}
+            <div className="text-center lg:text-left">
+              {/* Brand Badge */}
+              <div className="inline-flex items-center space-x-2 bg-white bg-opacity-10 px-4 py-2 rounded-full border border-white border-opacity-20 mb-6">
+                <Award className="w-4 h-4 text-white" />
+                <span className="text-white font-medium text-sm">Charotar&apos;s Trusted Refrigerator Brand</span>
+              </div>
+
+              {/* Main Heading */}
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 leading-tight">
+                Your Trusted Cooling Partner
               </h1>
-              
-              <p className="text-xl text-neutral-600 mb-8 leading-relaxed max-w-3xl mx-auto">
-                Discover our complete range of energy-efficient refrigerators designed to keep your food fresh and your family happy. From compact single-door models to luxury French-door refrigerators.
+
+              {/* Subheading */}
+              <h2 className="text-2xl md:text-3xl text-blue-400 font-semibold mb-4">
+                Energy-Efficient. Reliable. Affordable.
+              </h2>
+
+              {/* Description */}
+              <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
+                Keep your food fresh and your family happy—every day.
               </p>
-              
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
+
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Link 
                   href="/products" 
-                  className="group inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-12 py-5 rounded-full font-semibold text-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-out transform hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700"
-                  style={{ 
-                    background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #4338ca 100%)',
-                    boxShadow: '0 10px 25px rgba(37, 99, 235, 0.3), 0 4px 10px rgba(0, 0, 0, 0.1)'
-                  }}
+                  className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-lg"
                 >
-                  <ShoppingCart className="w-6 h-6" />
-                  <span>Shop Refrigerators</span>
+                  <span>Shop Now</span>
+                </Link>
+                <Link 
+                  href="/products" 
+                  className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors flex items-center justify-center space-x-2 text-lg"
+                >
+                  <span>Explore More</span>
                 </Link>
               </div>
             </div>
@@ -166,7 +132,7 @@ export default function Home() {
               Complete Range of Products
             </h2>
             <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
-              Choose from our extensive collection of products designed for every need. Each category offers a range of models with advanced features and elegant design.
+              Explore our energy-efficient refrigeration solutions made for homes, shops, and businesses. Built for performance, backed by trust.
             </p>
           </div>
 
@@ -177,13 +143,13 @@ export default function Home() {
                 href={`/products/${category.id}`}
                 className="appliance-card p-6 animate-on-scroll group block bg-white rounded-2xl shadow-md border border-blue-100 hover:border-yellow-400 hover:shadow-xl transition-all duration-200 cursor-pointer relative overflow-hidden"
               >
-                <div className="bg-neutral-100 rounded-lg h-40 mb-4 flex items-center justify-center">
+                <div className="bg-neutral-100 rounded-lg h-56 mb-4 flex items-center justify-center p-2">
                   <Image
                     src={category.image}
                     alt={category.name}
-                    width={120}
-                    height={120}
-                    className="object-contain h-24 w-24"
+                    width={600}
+                    height={600}
+                    className="object-contain h-48 w-48"
                   />
                 </div>
                 <h3 className="font-bold text-neutral-900 mb-2 text-lg text-center">{category.name}</h3>
