@@ -114,4 +114,24 @@
   .header {
     height: 56px;
   }
+}
+
+@media (max-width: 640px) {
+  .brand {
+    font-size: 1.1rem;
+  }
+  
+  .brand span:first-child {
+    margin-right: 0.25rem;
+  }
+  
+  .header {
+    height: 52px;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand {
+    font-size: 1rem;
+  }
 } 

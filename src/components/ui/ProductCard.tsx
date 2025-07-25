@@ -18,7 +18,6 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({
-  id,
   title,
   subtitle,
   description,
@@ -77,7 +76,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-2xl transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1">
+    <div className="group relative flex flex-col bg-white rounded-2xl transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1 w-full max-w-sm mx-auto sm:max-w-none">
       {/* Badge (New or Bestseller) */}
       {(isNew || isBestseller) && (
         <div className="absolute top-4 left-4 z-10">
@@ -92,7 +91,7 @@ export default function ProductCard({
       )}
 
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-2xl p-8 bg-gradient-to-b from-gray-50 to-gray-100">
+      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-2xl p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-gray-50 to-gray-100">
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-100 via-gray-50 to-gray-100 opacity-50"></div>
         <Image
           src={imageUrl}
@@ -104,10 +103,10 @@ export default function ProductCard({
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-6 pt-8">
+      <div className="flex flex-1 flex-col p-4 sm:p-6 pt-6 sm:pt-8">
         {/* Title & Rating */}
-        <div className="mb-6">
-          <h3 className="text-xl font-bold text-gray-900 mb-2 min-h-[56px] line-clamp-2">
+        <div className="mb-4 sm:mb-6">
+          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 min-h-[48px] sm:min-h-[56px] line-clamp-2">
             <Link href={href} className="hover:text-blue-600 transition-colors">
               {title}
             </Link>
@@ -126,14 +125,14 @@ export default function ProductCard({
         </div>
 
         {/* Description */}
-        <p className="text-sm text-gray-600 mb-6 line-clamp-2 flex-grow">
+        <p className="text-sm text-gray-600 mb-4 sm:mb-6 line-clamp-2 flex-grow">
           {description}
         </p>
 
         {/* Price */}
-        <div className="mb-6">
+        <div className="mb-4 sm:mb-6">
           <div className="flex items-baseline gap-2 flex-wrap">
-            <span className="text-2xl font-bold text-gray-900">{price}</span>
+            <span className="text-xl sm:text-2xl font-bold text-gray-900">{price}</span>
             {originalPrice && (
               <>
                 <span className="text-sm text-gray-500 line-through">
@@ -150,7 +149,7 @@ export default function ProductCard({
         {/* CTA Button */}
         <Link
           href={href}
-          className="inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-4 rounded-xl font-semibold shadow-sm hover:shadow-md transition-all duration-200 group/btn"
+          className="inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold shadow-sm hover:shadow-md transition-all duration-200 group/btn text-sm sm:text-base"
         >
           View Details
           <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-200 group-hover/btn:translate-x-1" />

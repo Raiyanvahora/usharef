@@ -1,7 +1,6 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
 import { useState, useEffect } from 'react';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { MessageCircle } from 'lucide-react';
@@ -34,11 +33,11 @@ export default function Header() {
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
-      <nav className="container mx-auto flex items-center justify-between h-full px-6">
+      <nav className="container mx-auto flex items-center justify-between h-full px-4 sm:px-6">
         {/* Brand Logo/Name */}
         <Link 
           href="/" 
-          className="flex items-center group select-none mr-6 pr-6 border-r border-[#E6E6E6]"
+          className="flex items-center group select-none mr-3 sm:mr-6 pr-3 sm:pr-6 border-r border-[#E6E6E6]"
         >
           {mounted && (
             <div className={styles.brand}>
@@ -48,7 +47,7 @@ export default function Header() {
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-6">
+        <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
           {navigation.map((item) => (
             <Link
               key={item.name}
@@ -61,7 +60,7 @@ export default function Header() {
         </div>
 
         {/* CTA Buttons */}
-        <div className="hidden lg:flex items-center space-x-4">
+        <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
           <Link 
             href={whatsappLink}
             target="_blank"
@@ -74,13 +73,14 @@ export default function Header() {
           </Link>
           <Link 
             href="/products" 
-            className="bg-primary-600 text-white rounded-full px-5 py-2 text-sm font-semibold shadow-md hover:bg-primary-700 transition-all duration-200 transform hover:-translate-y-0.5"
+            className="bg-primary-600 text-white rounded-full px-3 xl:px-5 py-2 text-xs xl:text-sm font-semibold shadow-md hover:bg-primary-700 transition-all duration-200 transform hover:-translate-y-0.5"
             style={{ 
               backgroundColor: '#1046D8',
               borderColor: '#1046D8'
             }}
           >
-            Explore Products
+            <span className="hidden xl:inline">Explore Products</span>
+            <span className="xl:hidden">Products</span>
           </Link>
         </div>
 
@@ -110,7 +110,7 @@ export default function Header() {
         }`}
       >
         <div className="border-t border-neutral-200 bg-white">
-          <div className="container mx-auto py-4 px-6 space-y-3">
+          <div className="container mx-auto py-4 px-4 sm:px-6 space-y-3">
             {navigation.map((item) => (
               <Link
                 key={item.name}

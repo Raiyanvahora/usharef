@@ -8,7 +8,7 @@ import Footer from '../components/layout/Footer';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Usha Refrigerator - Premium Home Appliances',
+  title: 'Usha Refrigeration-Anand',
   description: 'Experience the perfect blend of style, functionality, and innovation with Usha Refrigerator. Premium quality appliances for modern homes.',
   icons: {
     icon: [
