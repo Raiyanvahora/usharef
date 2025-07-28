@@ -2,14 +2,16 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
-import { MessageCircle } from 'lucide-react';
+import { MessageCircle, MapPin } from 'lucide-react';
 import styles from './Header.module.css';
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
@@ -21,10 +23,11 @@ export default function Header() {
   }, []);
 
   const navigation = [
-    { name: 'Home', href: '/' },
-    { name: 'Refrigerators', href: '/products' },
-    { name: 'About Us', href: '/about' },
-    { name: 'Service', href: '/service' },
+    { name: 'Home', href: '/', icon: null },
+    { name: 'Refrigerators', href: '/products', icon: null },
+    { name: 'About Us', href: '/about', icon: null },
+    { name: 'Service', href: '/service', icon: null },
+    { name: 'Location', href: 'https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001', icon: MapPin, external: true },
   ];
 
   const whatsappNumber = '9898649362';
@@ -33,7 +36,7 @@ export default function Header() {
 
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
-      <nav className="container mx-auto flex items-center justify-between h-full px-4 sm:px-6">
+      <nav className="max-w-7xl mx-auto flex items-center justify-between h-full px-4 sm:px-6 lg:px-8">
         {/* Brand Logo/Name */}
         <Link 
           href="/" 
@@ -41,26 +44,44 @@ export default function Header() {
         >
           {mounted && (
             <div className={styles.brand}>
-              <span>USHA</span> <span>REFRIGERATION</span>
+              <span className={styles.brandPrimary}>USHA</span>
             </div>
           )}
         </Link>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center space-x-4 xl:space-x-6">
-          {navigation.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className={styles.navLink}
-            >
-              {item.name}
-            </Link>
-          ))}
+        <div className="hidden lg:flex items-center space-x-2">
+          {navigation.map((item) => {
+            const isActive = pathname === item.href || (item.href === '/products' && pathname.startsWith('/products'));
+            if (item.external) {
+              return (
+                <a
+                  key={item.name}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.navLink}
+                >
+                  {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                  {item.name}
+                </a>
+              );
+            }
+            return (
+              <Link
+                key={item.name}
+                href={item.href}
+                className={`${styles.navLink} ${isActive ? styles.navLinkActive : ''}`}
+              >
+                {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                {item.name}
+              </Link>
+            );
+          })}
         </div>
 
         {/* CTA Buttons */}
-        <div className="hidden lg:flex items-center space-x-2 xl:space-x-4">
+        <div className="hidden lg:flex items-center space-x-3">
           <Link 
             href={whatsappLink}
             target="_blank"
@@ -73,14 +94,9 @@ export default function Header() {
           </Link>
           <Link 
             href="/products" 
-            className="bg-primary-600 text-white rounded-full px-3 xl:px-5 py-2 text-xs xl:text-sm font-semibold shadow-md hover:bg-primary-700 transition-all duration-200 transform hover:-translate-y-0.5"
-            style={{ 
-              backgroundColor: '#1046D8',
-              borderColor: '#1046D8'
-            }}
+            className={styles.ctaButton}
           >
-            <span className="hidden xl:inline">Explore Products</span>
-            <span className="xl:hidden">Products</span>
+            Explore Products
           </Link>
         </div>
 
@@ -88,7 +104,7 @@ export default function Header() {
         <div className="lg:hidden">
           <button
             type="button"
-            className="w-10 h-10 flex items-center justify-center text-neutral-700 hover:text-primary-600 transition-colors duration-200"
+            className="w-10 h-10 flex items-center justify-center text-gray-700 hover:text-primary-600 transition-colors duration-200"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
           >
             <span className="sr-only">Open main menu</span>
@@ -109,19 +125,42 @@ export default function Header() {
             : 'max-h-0 opacity-0 overflow-hidden'
         }`}
       >
-        <div className="border-t border-neutral-200 bg-white">
-          <div className="container mx-auto py-4 px-4 sm:px-6 space-y-3">
-            {navigation.map((item) => (
-              <Link
-                key={item.name}
-                href={item.href}
-                className="block text-base font-medium text-neutral-700 hover:text-primary-600 transition-colors duration-200"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
-            <div className="pt-3 border-t border-neutral-200 space-y-3">
+        <div className="border-t border-gray-200 bg-white">
+          <div className="max-w-7xl mx-auto py-4 px-4 sm:px-6 lg:px-8 space-y-3">
+            {navigation.map((item) => {
+              const isActive = pathname === item.href || (item.href === '/products' && pathname.startsWith('/products'));
+              if (item.external) {
+                return (
+                  <a
+                    key={item.name}
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center text-base font-medium py-3 px-4 rounded-lg transition-all duration-200 text-gray-700 hover:text-blue-600 hover:bg-gray-50"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                    {item.name}
+                  </a>
+                );
+              }
+              return (
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className={`flex items-center text-base font-medium py-3 px-4 rounded-lg transition-all duration-200 ${
+                    isActive 
+                      ? 'text-blue-600 bg-blue-50 font-semibold' 
+                      : 'text-gray-700 hover:text-blue-600 hover:bg-gray-50'
+                  }`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.icon && <item.icon className="w-4 h-4 mr-2" />}
+                  {item.name}
+                </Link>
+              );
+            })}
+            <div className="pt-3 border-t border-gray-200 space-y-3">
               <Link 
                 href={whatsappLink}
                 target="_blank"
@@ -134,11 +173,7 @@ export default function Header() {
               </Link>
               <Link 
                 href="/products" 
-                className="block text-center bg-primary-600 text-white rounded-full px-5 py-2 text-sm font-semibold shadow-md hover:bg-primary-700 transition-all duration-200"
-                style={{ 
-                  backgroundColor: '#1046D8',
-                  borderColor: '#1046D8'
-                }}
+                className="block text-center bg-blue-600 text-white rounded-lg px-5 py-3 text-sm font-semibold hover:bg-blue-700 transition-all duration-200"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Explore Products

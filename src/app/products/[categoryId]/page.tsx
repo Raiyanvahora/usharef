@@ -1,7 +1,6 @@
 'use client';
 
 import { productCategories } from '@/data/products';
-import ProductListing from '@/components/ProductListing';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -86,59 +85,48 @@ export default function CategoryPage({ params }: CategoryPageProps) {
       </div>
 
       {/* Products Section */}
-      {categoryId === 'visi-cooler' ? (
-        // Show CSV data for VISI Cooler
-        <div>
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 sm:py-4">
-            <h2 className="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">Available VISI Cooler Models</h2>
-          </div>
-          <ProductListing />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
+          {category.models.map((model) => (
+            <ProductCard
+              key={model.name}
+              id={model.name.toLowerCase().replace(/\s+/g, '-')}
+              title={model.name}
+              subtitle={`${category.name} Series`}
+              description="High-performance refrigeration designed for freshness and efficiency."
+              imageUrl={model.image}
+              price={model.price}
+              originalPrice={model.originalPrice}
+              rating={4.5}
+              reviewCount={24}
+              isNew={model.isNew}
+              href={`/products/${categoryId}/${model.name.toLowerCase().replace(/\s+/g, '-')}`}
+            />
+          ))}
         </div>
-      ) : (
-        // Show regular data for other categories
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 sm:py-6">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6">
-            {category.models.map((model) => (
-              <ProductCard
-                key={model.name}
-                id={model.name.toLowerCase().replace(/\s+/g, '-')}
-                title={model.name}
-                subtitle={`${category.name} Series`}
-                description="High-performance refrigeration designed for freshness and efficiency."
-                imageUrl={model.image}
-                price={model.price}
-                originalPrice={model.originalPrice}
-                rating={4.5}
-                reviewCount={24}
-                isNew={model.isNew}
-                href={`/products/${categoryId}/${model.name.toLowerCase().replace(/\s+/g, '-')}`}
-              />
-            ))}
-          </div>
 
-          {/* Empty State */}
-          {category.models.length === 0 && (
-            <div className="text-center py-16">
-              <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-md mx-auto">
-                <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-gray-400"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0-3 3V6a3 3 0 1 0 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 mb-2">No Models Available</h3>
-                <p className="text-gray-600 mb-6">
-                  We&apos;re currently updating our {category.name.toLowerCase()} collection. 
-                  Please check back soon for new models.
-                </p>
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center justify-center bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
-                >
-                  Contact Us
-                </Link>
+        {/* Empty State */}
+        {category.models.length === 0 && (
+          <div className="text-center py-16">
+            <div className="bg-white rounded-2xl shadow-lg p-8 md:p-12 max-w-md mx-auto">
+              <div className="w-16 h-16 bg-gray-100 rounded-full mx-auto mb-4 flex items-center justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="w-8 h-8 text-gray-400"><path d="M15 6v12a3 3 0 1 0 3-3H6a3 3 0 1 0-3 3V6a3 3 0 1 0 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
               </div>
+              <h3 className="text-xl font-bold text-gray-900 mb-2">No Models Available</h3>
+              <p className="text-gray-600 mb-6">
+                We&apos;re currently updating our {category.name.toLowerCase()} collection. 
+                Please check back soon for new models.
+              </p>
+              <Link 
+                href="/contact"
+                className="inline-flex items-center justify-center bg-primary-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-primary-700 transition-colors"
+              >
+                Contact Us
+              </Link>
             </div>
-          )}
-        </div>
-      )}
+          </div>
+        )}
+      </div>
 
       {/* Call to Action Section */}
       <div className="bg-white border-t border-gray-200 mt-4">

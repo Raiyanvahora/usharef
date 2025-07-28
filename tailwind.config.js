@@ -9,7 +9,17 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: '#1428A0', // Samsung Blue
+          DEFAULT: '#1428A0',
+          50: '#f0f4ff',
+          100: '#e0e7ff',
+          200: '#c7d2fe',
+          300: '#a5b4fc',
+          400: '#818cf8',
+          500: '#6366f1',
+          600: '#1428A0',
+          700: '#1046D8',
+          800: '#1e40af',
+          900: '#1e3a8a',
         },
         background: {
           light: '#F5F7FA',

@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run dev:*)",
+      "Bash(rm:*)",
+      "WebFetch(domain:westernequipments.com)",
+      "Bash(npm run build:*)"
+    ],
+    "deny": []
+  }
+}

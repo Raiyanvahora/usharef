@@ -18,9 +18,6 @@ export default function ProductsPage() {
             </h1>
           </div>
         </div>
-        
-        {/* Visual Separator */}
-        <div className="h-1 bg-gradient-to-r from-primary-600 via-blue-500 to-primary-600"></div>
       </div>
 
       {/* Products Grid Section */}
@@ -30,7 +27,7 @@ export default function ProductsPage() {
             <Link 
               key={category.id} 
               href={`/products/${category.id}`}
-              className="product-card group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-primary-200 transform hover:-translate-y-1 p-4 flex flex-col items-center"
+              className="product-card group bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-gray-200 transform hover:-translate-y-1 p-4 flex flex-col items-center"
             >
               {/* Category Image */}
               <div className="relative w-full flex justify-center items-center bg-gray-50 overflow-hidden">
@@ -42,9 +39,6 @@ export default function ProductsPage() {
                   className="product-card-img object-cover w-full max-w-[320px] h-auto transition-transform duration-300 group-hover:scale-105 rounded-lg"
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 320px"
                 />
-                
-                {/* Gradient Overlay remains */}
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-primary-600 to-blue-500"></div>
               </div>
 
               {/* Category Details */}
