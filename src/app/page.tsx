@@ -3,7 +3,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { 
-  ChevronRight, 
   Award,
   Wrench
 } from 'lucide-react';
@@ -11,6 +10,7 @@ import HappyCustomers from './HappyCustomers';
 import Image from 'next/image';
 import ServiceBookingModal from '@/components/ServiceBookingModal';
 import ProductSkeleton from '@/components/ProductSkeleton';
+import ProductCategorySection from '@/components/ProductCategorySection';
 
 // Hardcode the product data directly to ensure it works
 const hardcodedCategories = [
@@ -19,6 +19,7 @@ const hardcodedCategories = [
     name: 'Visi Cooler',
     description: 'Energy-efficient coolers for beverages and perishables.',
     image: '/PRD/VISI COOLER/mainimagesvisi/0709091_SRC380HC-GL_Left-Angle-300x300.png',
+    backgroundImage: '/PRD/VISI COOLER/assets_task_01jz928z7tf5kbvrem9tr2bn43_1751577397_img_1.webp',
     models: []
   },
   {
@@ -26,6 +27,7 @@ const hardcodedCategories = [
     name: 'Deep Freezer',
     description: 'Reliable deep freezers for commercial and home use.',
     image: '/PRD/DEEP FREEZER/main images/D300-Double-dOOR-1-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
     models: []
   },
   {
@@ -33,6 +35,7 @@ const hardcodedCategories = [
     name: 'Water Dispenser',
     description: 'Convenient water dispensers for home and office.',
     image: '/PRD/WATER DISPENSER/mainimagesdis/bwd3fmcga-bwd-mi-01-resized.jpg',
+    backgroundImage: '/PRD/WATER DISPENSER/assets_task_01jz916vvkfmsvh028fg2d0yz3_1751576312_img_1.webp',
     models: []
   },
   {
@@ -40,6 +43,7 @@ const hardcodedCategories = [
     name: 'Water Cooler',
     description: 'High-capacity water coolers for every need.',
     image: '/PRD/WATER COOLER/mainimageswater/PWC-40806080-1-300x300.png',
+    backgroundImage: '/PRD/WATER COOLER/assets_task_01jz91f8s2e6a9vbs40kxg5asy_1751576549_img_0.webp',
     models: []
   },
   {
@@ -47,6 +51,7 @@ const hardcodedCategories = [
     name: 'Pastry Counter',
     description: 'Elegant pastry counters for bakeries and cafes.',
     image: '/PRD/PASTRY COUNTER/mainimages/Right-Angle-With-Stock-1-300x300.png',
+    backgroundImage: '/PRD/PASTRY COUNTER/assets_task_01jz931a3zefas9y7hmkgr1ze3_1751578188_img_0.webp',
     models: []
   }
 ];
@@ -191,114 +196,11 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Refrigerator Types Section */}
-      <section className="py-16 lg:py-20" style={{ minHeight: '500px', opacity: 1, display: 'block' }}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 lg:mb-16 animate-on-scroll">
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4">
-              Complete Range of Products
-            </h2>
-            <p className="text-lg lg:text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our energy-efficient refrigeration solutions made for homes, shops, and businesses. Built for performance, backed by trust.
-            </p>
-          </div>
-
-
-          {/* Product Cards Grid */}
-          <div 
-            className="mt-8"
-            style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))',
-              gap: '24px',
-              marginTop: '32px'
-            }}
-          >
-            {categoriesLoading ? (
-              // Show loading skeletons
-              Array(5).fill(0).map((_, index) => (
-                <div 
-                  key={`skeleton-${index}`} 
-                  className="bg-white rounded-lg p-4"
-                  style={{
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-                    borderRadius: '8px',
-                    padding: '16px'
-                  }}
-                >
-                  <ProductSkeleton />
-                </div>
-              ))
-            ) : categories && categories.length > 0 ? (
-              // Show product cards
-              categories.map((category, index) => (
-                <Link
-                  key={category.id}
-                  href={`/products/${category.id}`}
-                  className="group block bg-white transition-all duration-300 hover:shadow-lg"
-                  style={{
-                    boxShadow: '0 2px 6px rgba(0,0,0,0.1)',
-                    borderRadius: '8px',
-                    padding: '16px',
-                    textDecoration: 'none'
-                  }}
-                >
-                  {/* Product Image */}
-                  <div className="flex justify-center mb-4">
-                    <img
-                      src={category.image}
-                      alt={category.name}
-                      className="object-contain transition-transform duration-300 group-hover:scale-105"
-                      style={{
-                        width: '100%',
-                        height: '160px',
-                        maxWidth: '200px'
-                      }}
-                      loading={index < 3 ? "eager" : "lazy"}
-                    />
-                  </div>
-                  
-                  {/* Product Name */}
-                  <h3 
-                    className="text-center mb-3 group-hover:text-primary-600 transition-colors"
-                    style={{
-                      fontWeight: 'bold',
-                      fontSize: '18px',
-                      color: '#1f2937'
-                    }}
-                  >
-                    {category.name}
-                  </h3>
-                  
-                  {/* Shop Now Button */}
-                  <div className="text-center">
-                    <button 
-                      className="group-hover:bg-primary-700 transition-colors"
-                      style={{
-                        backgroundColor: '#2563eb',
-                        color: 'white',
-                        padding: '8px 16px',
-                        borderRadius: '6px',
-                        border: 'none',
-                        fontSize: '14px',
-                        fontWeight: '500',
-                        cursor: 'pointer'
-                      }}
-                    >
-                      Shop Now
-                    </button>
-                  </div>
-                </Link>
-              ))
-            ) : (
-              // Show fallback message
-              <div className="col-span-full text-center py-12">
-                <p className="text-gray-500 text-lg">No products available at the moment.</p>
-              </div>
-            )}
-          </div>
-        </div>
-      </section>
+      {/* Product Category Section */}
+      <ProductCategorySection 
+        categories={categories}
+        title="Complete Range of Products"
+      />
 
       {/* Our Happy Customers Section */}
       <HappyCustomers />
