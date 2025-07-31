@@ -56,12 +56,22 @@ const hardcodedCategories = [
   }
 ];
 
+// Define the Category type to match what ProductCategorySection expects
+interface Category {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  backgroundImage?: string;
+  models: any[];
+}
+
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   // const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [categoriesLoading, setCategoriesLoading] = useState(true);
-  const [categories, setCategories] = useState(hardcodedCategories);
+  const [categories, setCategories] = useState<Category[]>(hardcodedCategories);
 
   useEffect(() => {
     // Try to import product data dynamically
@@ -72,7 +82,7 @@ export default function Home() {
         console.log('productCategories length:', module.productCategories?.length);
         console.log('First category:', module.productCategories?.[0]);
         if (module.productCategories && module.productCategories.length > 0) {
-          setCategories(module.productCategories);
+          setCategories(module.productCategories as Category[]);
           console.log('Using imported categories:', module.productCategories.length, 'categories');
           console.log('Categories set in state');
         } else {
