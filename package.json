@@ -6,6 +6,7 @@
     "dev": "next dev",
     "prebuild": "rimraf .next && node scripts/update-version.js",
     "build": "next build",
+    "build:netlify": "NETLIFY=true next build",
     "start": "next start",
     "lint": "next lint",
     "clean": "node scripts/clear-all-cache.js",

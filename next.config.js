@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: process.env.NETLIFY ? 'export' : undefined,
+  trailingSlash: true,
   images: {
+    unoptimized: process.env.NETLIFY ? true : false,
     remotePatterns: [
       {
         protocol: 'https',

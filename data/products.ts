@@ -18,6 +18,7 @@ interface ProductCategory {
   name: string;
   description: string;
   image: string;
+  backgroundImage?: string;
   models: ProductModel[];
 }
 
@@ -27,6 +28,7 @@ export const productCategories: ProductCategory[] = [
     name: 'Visi Cooler',
     description: 'Energy-efficient coolers for beverages and perishables.',
     image: '/PRD/VISI COOLER/mainimagesvisi/0709091_SRC380HC-GL_Left-Angle-300x300.png',
+    backgroundImage: '/PRD/VISI COOLER/assets_task_01jz928z7tf5kbvrem9tr2bn43_1751577397_img_1.webp',
     models: [
       { 
         name: 'SRC380HC-GL', 
@@ -156,6 +158,7 @@ export const productCategories: ProductCategory[] = [
     name: 'Deep Freezer',
     description: 'Reliable deep freezers for commercial and home use.',
     image: '/PRD/DEEP FREEZER/main images/D300-Double-dOOR-1-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
     models: [
       { name: 'B325', image: '/PRD/DEEP FREEZER/main images/B325-300x300.png', price: '₹32,999', originalPrice: '₹36,999' },
       { name: 'B425', image: '/PRD/DEEP FREEZER/main images/B425-300x300.png', price: '₹42,999', originalPrice: '₹46,999' },
@@ -867,6 +870,7 @@ export const productCategories: ProductCategory[] = [
     name: 'Water Dispenser',
     description: 'Convenient water dispensers for home and office.',
     image: '/PRD/WATER DISPENSER/mainimagesdis/bwd3fmcga-bwd-mi-01-resized.jpg',
+    backgroundImage: '/PRD/WATER DISPENSER/assets_task_01jz916vvkfmsvh028fg2d0yz3_1751576312_img_1.webp',
     models: [
       { 
         name: 'BWD3FMCGA', 
@@ -975,6 +979,7 @@ export const productCategories: ProductCategory[] = [
     name: 'Water Cooler',
     description: 'High-capacity water coolers for every need.',
     image: '/PRD/WATER COOLER/mainimageswater/PWC-40806080-1-300x300.png',
+    backgroundImage: '/PRD/WATER COOLER/assets_task_01jz91f8s2e6a9vbs40kxg5asy_1751576549_img_0.webp',
     models: [
       { 
         name: 'PWC6080', 
@@ -1108,6 +1113,7 @@ export const productCategories: ProductCategory[] = [
     name: 'Pastry Counter',
     description: 'Elegant pastry counters for bakeries and cafes.',
     image: '/PRD/PASTRY COUNTER/mainimages/Right-Angle-With-Stock-1-300x300.png',
+    backgroundImage: '/PRD/PASTRY COUNTER/assets_task_01jz931a3zefas9y7hmkgr1ze3_1751578188_img_0.webp',
     models: [
       { 
         name: 'PTW15PHC-SBX', 

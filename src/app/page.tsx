@@ -9,7 +9,6 @@ import {
 import HappyCustomers from './HappyCustomers';
 import Image from 'next/image';
 import ServiceBookingModal from '@/components/ServiceBookingModal';
-import ProductSkeleton from '@/components/ProductSkeleton';
 import ProductCategorySection from '@/components/ProductCategorySection';
 
 // Hardcode the product data directly to ensure it works
@@ -63,14 +62,14 @@ interface Category {
   description: string;
   image: string;
   backgroundImage?: string;
-  models: any[];
+  models: Array<{ id: string; name: string; price?: number; }>;
 }
 
 export default function Home() {
   const observerRef = useRef<IntersectionObserver | null>(null);
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   // const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
-  const [categoriesLoading, setCategoriesLoading] = useState(true);
+  const [, setCategoriesLoading] = useState(true);
   const [categories, setCategories] = useState<Category[]>(hardcodedCategories);
 
   useEffect(() => {
