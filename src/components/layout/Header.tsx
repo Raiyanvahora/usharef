@@ -5,6 +5,7 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { MessageCircle, MapPin } from 'lucide-react';
+import Image from 'next/image';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -43,8 +44,15 @@ export default function Header() {
           className="flex items-center group select-none mr-3 sm:mr-6 pr-3 sm:pr-6 border-r border-[#E6E6E6]"
         >
           {mounted && (
-            <div className={styles.brand}>
-              <span className={styles.brandPrimary}>USHA</span>
+            <div className="flex items-center gap-2">
+              <Image
+                src="/assets/logo-hr.png"
+                alt="Usha Refrigeration"
+                width={140}
+                height={40}
+                className="h-8 sm:h-10 w-auto"
+                priority
+              />
             </div>
           )}
         </Link>
