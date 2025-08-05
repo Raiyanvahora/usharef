@@ -32,8 +32,8 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
           </Link>
         </div>
 
-        {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-10">
+        {/* Desktop Grid - 3 per row on desktop, 2 on tablet, 1 on mobile */}
+        <div className="hidden sm:grid sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {categories.map((category, index) => (
             <Link
               key={category.id}
@@ -74,46 +74,46 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
           ))}
         </div>
 
-        {/* Mobile Carousel */}
-        <div className="md:hidden relative">
-          <div className="flex overflow-x-auto gap-6 pb-6 scrollbar-hide snap-x snap-mandatory">
-            {/* Duplicate categories for infinite scroll effect */}
-            {[...categories, ...categories].map((category, index) => (
-              <Link
-                key={`${category.id}-${index}`}
-                href={`/products/${category.id}`}
-                className="flex-shrink-0 w-80 snap-center group"
-              >
-                <div className="relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 active:scale-95 border border-gray-100">
-                  {/* Faded background image */}
-                  <div 
-                    className="absolute inset-0 opacity-20 bg-cover bg-center"
-                    style={{
-                      backgroundImage: `url(${category.backgroundImage || category.image})`,
-                      filter: 'blur(2px)'
-                    }}
-                  />
-                  
-                  {/* Card content */}
-                  <div className="relative p-10">
-                    {/* Product image with shadow */}
-                    <div className="mb-8 h-64 flex items-center justify-center">
-                      <img
-                        src={category.image}
-                        alt={category.name}
-                        className="max-w-full max-h-full object-contain drop-shadow-2xl"
-                      />
-                    </div>
-                    
-                    {/* Category name */}
-                    <h3 className="text-center font-bold text-green-600 text-2xl border-b-2 border-green-600 pb-3 inline-block w-full">
-                      {category.name}
-                    </h3>
+        {/* Mobile Grid - 1 per row */}
+        <div className="sm:hidden grid grid-cols-1 gap-6">
+          {categories.map((category, index) => (
+            <Link
+              key={category.id}
+              href={`/products/${category.id}`}
+              className="group animate-float"
+              style={{
+                animationDelay: `${index * 0.1}s`
+              }}
+            >
+              <div className="relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 transform border border-gray-100">
+                {/* Faded background image */}
+                <div 
+                  className="absolute inset-0 opacity-20 bg-cover bg-center transition-all duration-700 group-hover:scale-125 group-hover:opacity-30"
+                  style={{
+                    backgroundImage: `url(${category.backgroundImage || category.image})`,
+                    filter: 'blur(2px)'
+                  }}
+                />
+                
+                {/* Card content */}
+                <div className="relative p-8">
+                  {/* Product image with shadow */}
+                  <div className="mb-6 h-48 flex items-center justify-center">
+                    <img
+                      src={category.image}
+                      alt={category.name}
+                      className="max-w-full max-h-full object-contain drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
+                    />
                   </div>
+                  
+                  {/* Category name */}
+                  <h3 className="text-center font-bold text-green-600 text-xl border-b-2 border-green-600 pb-3 inline-block w-full transition-all duration-300 group-hover:text-green-700">
+                    {category.name}
+                  </h3>
                 </div>
-              </Link>
-            ))}
-          </div>
+              </div>
+            </Link>
+          ))}
         </div>
       </div>
 

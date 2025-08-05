@@ -24,9 +24,65 @@ interface ProductCategory {
 
 export const productCategories: ProductCategory[] = [
   {
-    id: 'visi-cooler',
-    name: 'Visi Cooler',
-    description: 'Energy-efficient coolers for beverages and perishables.',
+    id: 'convertible-freezers-coolers',
+    name: 'Convertible Freezers & Coolers',
+    description: 'Versatile units that can function as both freezers and coolers with temperature control.',
+    image: '/PRD/DEEP FREEZER/main images/D300-Double-dOOR-1-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'combi-freezer-cooler-hard-top',
+    name: 'Combi Freezer-Cooler (Hard Top)',
+    description: 'Combination units with separate freezer and cooler compartments with solid tops.',
+    image: '/PRD/DEEP FREEZER/main images/D325-H223-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'vertical-freezers',
+    name: 'Vertical Freezers',
+    description: 'Space-efficient upright freezers perfect for commercial and home use.',
+    image: '/PRD/DEEP FREEZER/main images/D475-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'sliding-glass-top-deep-freezers',
+    name: 'Sliding Glass Top Deep Freezers',
+    description: 'Deep freezers with sliding glass tops for easy access and product visibility.',
+    image: '/PRD/DEEP FREEZER/main images/D525-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'eutectic-freezers',
+    name: 'Eutectic Freezers',
+    description: 'Energy-efficient freezers using eutectic technology for consistent temperature control.',
+    image: '/PRD/DEEP FREEZER/main images/E325-LT-SIDE-ISO-VIEW-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'scooping-parlour-freezers',
+    name: 'Scooping Parlour Freezers',
+    description: 'Specialized freezers designed for ice cream parlours and scooping stations.',
+    image: '/PRD/DEEP FREEZER/main images/F250GL-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'freezer-on-wheels',
+    name: 'Freezer on Wheels (FOW)',
+    description: 'Mobile freezers with wheels for easy transportation and flexible placement.',
+    image: '/PRD/DEEP FREEZER/main images/F325GC24-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'visi-coolers',
+    name: 'Visi Coolers',
+    description: 'Glass door coolers for beverage display and easy product visibility.',
     image: '/PRD/VISI COOLER/mainimagesvisi/0709091_SRC380HC-GL_Left-Angle-300x300.png',
     backgroundImage: '/PRD/VISI COOLER/assets_task_01jz928z7tf5kbvrem9tr2bn43_1751577397_img_1.webp',
     models: [
@@ -1242,4 +1298,44 @@ export const productCategories: ProductCategory[] = [
       },
     ],
   },
+  {
+    id: 'supermarket-coolers-freezers',
+    name: 'Supermarket Coolers & Freezers',
+    description: 'Large-scale refrigeration solutions for supermarkets and retail stores.',
+    image: '/PRD/VISI COOLER/mainimagesvisi/SRC572HC-Front-Angle-With-Stock-300x300.png',
+    backgroundImage: '/PRD/VISI COOLER/assets_task_01jz928z7tf5kbvrem9tr2bn43_1751577397_img_1.webp',
+    models: []
+  },
+  {
+    id: 'pastry-counters',
+    name: 'Pastry Counters',
+    description: 'Elegant display counters for bakeries, cafes, and pastry shops.',
+    image: '/PRD/PASTRY COUNTER/mainimages/Right-Angle-With-Stock-1-300x300.png',
+    backgroundImage: '/PRD/PASTRY COUNTER/assets_task_01jz931a3zefas9y7hmkgr1ze3_1751578188_img_0.webp',
+    models: []
+  },
+  {
+    id: 'counter-top-back-bar-coolers',
+    name: 'Counter Top & Back Bar Coolers',
+    description: 'Compact cooling solutions for bars, restaurants, and commercial kitchens.',
+    image: '/PRD/VISI COOLER/mainimagesvisi/SRC-60-Front-Angle-300x300.png',
+    backgroundImage: '/PRD/VISI COOLER/assets_task_01jz928z7tf5kbvrem9tr2bn43_1751577397_img_1.webp',
+    models: []
+  },
+  {
+    id: 'commercial-chillers-freezers',
+    name: 'Commercial Chillers & Freezers',
+    description: 'Heavy-duty refrigeration equipment for industrial and commercial applications.',
+    image: '/PRD/DEEP FREEZER/main images/G200H120ECINGMXWHX_left-Angle-300x300.png',
+    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    models: []
+  },
+  {
+    id: 'ice-makers-water-coolers',
+    name: 'Ice Makers & Water Coolers',
+    description: 'Complete water cooling and ice making solutions for all commercial needs.',
+    image: '/PRD/WATER COOLER/mainimageswater/PWC-40806080-1-300x300.png',
+    backgroundImage: '/PRD/WATER COOLER/assets_task_01jz91f8s2e6a9vbs40kxg5asy_1751576549_img_0.webp',
+    models: []
+  }
 ]; 
