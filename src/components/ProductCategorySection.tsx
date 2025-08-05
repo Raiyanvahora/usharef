@@ -33,7 +33,7 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
         </div>
 
         {/* Desktop Grid */}
-        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 lg:gap-8">
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 lg:gap-10">
           {categories.map((category, index) => (
             <Link
               key={category.id}
@@ -54,9 +54,9 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
                 />
                 
                 {/* Card content */}
-                <div className="relative p-6 lg:p-8">
+                <div className="relative p-8 lg:p-10">
                   {/* Product image with shadow */}
-                  <div className="mb-6 h-48 lg:h-56 flex items-center justify-center">
+                  <div className="mb-8 h-64 lg:h-72 flex items-center justify-center">
                     <img
                       src={category.image}
                       alt={category.name}
@@ -65,7 +65,7 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
                   </div>
                   
                   {/* Category name */}
-                  <h3 className="text-center font-bold text-green-600 text-lg lg:text-xl border-b-2 border-green-600 pb-2 inline-block w-full transition-all duration-300 group-hover:text-green-700">
+                  <h3 className="text-center font-bold text-green-600 text-xl lg:text-2xl border-b-2 border-green-600 pb-3 inline-block w-full transition-all duration-300 group-hover:text-green-700">
                     {category.name}
                   </h3>
                 </div>
@@ -82,7 +82,7 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
               <Link
                 key={`${category.id}-${index}`}
                 href={`/products/${category.id}`}
-                className="flex-shrink-0 w-72 snap-center group"
+                className="flex-shrink-0 w-80 snap-center group"
               >
                 <div className="relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 active:scale-95 border border-gray-100">
                   {/* Faded background image */}
@@ -95,9 +95,9 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
                   />
                   
                   {/* Card content */}
-                  <div className="relative p-8">
+                  <div className="relative p-10">
                     {/* Product image with shadow */}
-                    <div className="mb-6 h-56 flex items-center justify-center">
+                    <div className="mb-8 h-64 flex items-center justify-center">
                       <img
                         src={category.image}
                         alt={category.name}
@@ -106,7 +106,7 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
                     </div>
                     
                     {/* Category name */}
-                    <h3 className="text-center font-bold text-green-600 text-xl border-b-2 border-green-600 pb-2 inline-block w-full">
+                    <h3 className="text-center font-bold text-green-600 text-2xl border-b-2 border-green-600 pb-3 inline-block w-full">
                       {category.name}
                     </h3>
                   </div>
