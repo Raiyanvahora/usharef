@@ -81,7 +81,15 @@ export default function Home() {
         console.log('productCategories length:', module.productCategories?.length);
         console.log('First category:', module.productCategories?.[0]);
         if (module.productCategories && module.productCategories.length > 0) {
-          setCategories(module.productCategories as Category[]);
+          // Convert ProductCategory[] to Category[] format
+          const convertedCategories: Category[] = module.productCategories.map((cat: unknown) => {
+            const category = cat as { id: string; name: string; description: string; image: string; backgroundImage?: string; models?: { id: string; name: string; price?: number }[] };
+            return {
+              ...category,
+              models: category.models || []
+            };
+          });
+          setCategories(convertedCategories);
           console.log('Using imported categories:', module.productCategories.length, 'categories');
           console.log('Categories set in state');
         } else {

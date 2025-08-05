@@ -7,7 +7,11 @@ import Footer from '../components/layout/Footer';
 import VersionCheck from '../components/VersionCheck';
 import ServiceWorkerUnregister from '../components/ServiceWorkerUnregister';
 
-const inter = Inter({ subsets: ['latin'] });
+const inter = Inter({ 
+  subsets: ['latin'],
+  display: 'swap',
+  fallback: ['system-ui', 'arial']
+});
 
 export const metadata: Metadata = {
   title: 'Usha Refrigeration-Anand',
@@ -46,7 +50,7 @@ export default function RootLayout({
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
       </head>
-      <body className={`${inter.className} antialiased`}>
+      <body className={`${inter.className || 'font-sans'} antialiased`}>
         <ServiceWorkerUnregister />
         <VersionCheck />
         <Header />
