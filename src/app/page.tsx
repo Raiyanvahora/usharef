@@ -4,7 +4,8 @@ import React, { useEffect, useRef, useState } from 'react';
 import Link from 'next/link';
 import { 
   Award,
-  Wrench
+  Wrench,
+  MapPin
 } from 'lucide-react';
 import HappyCustomers from './HappyCustomers';
 import Image from 'next/image';
@@ -134,7 +135,35 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
-      <section className="hero-section-dark min-h-screen flex items-center">
+      <section className="hero-section-dark min-h-screen flex items-center relative">
+        {/* Location Info Card - Top Right Corner */}
+        <div className="absolute top-6 right-6 z-20 space-y-2">
+          {/* Location Card */}
+          <div className="bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg px-4 py-3 shadow-xl">
+            <div className="text-center">
+              <div className="flex items-center justify-center gap-2 text-blue-600 font-bold text-sm mb-2">
+                <MapPin className="w-4 h-4" />
+                <span>Visit Our Store</span>
+              </div>
+              <div className="text-gray-800 font-medium text-xs mb-2">
+                Enter City Arcades, Bhalej Road
+              </div>
+              <div className="text-gray-600 text-xs mb-2">
+                Near Abdullah Masjid, Anand
+              </div>
+              <a 
+                href="https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1 bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors"
+              >
+                Get Directions
+              </a>
+            </div>
+          </div>
+          
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Side - Product Image */}
@@ -160,24 +189,19 @@ export default function Home() {
               </div>
 
               {/* Main Business Name */}
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-2 leading-tight">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight">
                 <span className="text-blue-400">Usha</span> Refrigeration
               </h1>
               
               {/* Main Heading */}
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-200 mb-4 leading-tight">
+              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-200 mb-4 leading-tight">
                 Your Trusted Cooling Partner
               </h2>
 
               {/* Subheading */}
-              <h3 className="text-2xl md:text-3xl text-blue-400 font-semibold mb-4">
-                Energy-Efficient. Reliable. Affordable.
+              <h3 className="text-lg md:text-xl text-blue-400 font-semibold mb-6">
+                Efficient. Reliable. Affordable.
               </h3>
-
-              {/* Description */}
-              <p className="text-lg md:text-xl text-gray-300 mb-8 leading-relaxed max-w-2xl">
-                Keep your food fresh and your family happy—every day.
-              </p>
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
@@ -232,7 +256,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-on-scroll">
             <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-8 text-gray-900">
-              Ready to Upgrade Your Refrigerator?
+              Is Your Refrigerator Not Cooling Right?
             </h2>
             <div className="flex justify-center">
               <button
@@ -244,7 +268,7 @@ export default function Home() {
                 }}
               >
                 <Wrench className="w-6 h-6" />
-                <span>Book a Service</span>
+                <span>Schedule a Repair</span>
               </button>
             </div>
           </div>

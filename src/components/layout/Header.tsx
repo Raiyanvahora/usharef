@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 import { MessageCircle, MapPin } from 'lucide-react';
-import Image from 'next/image';
 import styles from './Header.module.css';
 
 export default function Header() {
@@ -43,18 +42,11 @@ export default function Header() {
           href="/" 
           className="flex items-center group select-none mr-3 sm:mr-6 pr-3 sm:pr-6 border-r border-[#E6E6E6]"
         >
-          {mounted && (
-            <div className="flex items-center gap-2">
-              <Image
-                src="/assets/logo-hr.png"
-                alt="Usha Refrigeration"
-                width={140}
-                height={40}
-                className="h-8 sm:h-10 w-auto"
-                priority
-              />
-            </div>
-          )}
+          <div className="flex items-center">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 whitespace-nowrap">
+              Usha Refrigeration
+            </h1>
+          </div>
         </Link>
 
         {/* Desktop Navigation */}
