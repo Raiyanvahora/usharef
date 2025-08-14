@@ -1,0 +1,67 @@
+[
+  {
+    "productId": "d070h161",
+    "model": "D070H161",
+    "newImagePath": "/images/products/D070H161.jpg"
+  },
+  {
+    "productId": "d150h-hc",
+    "model": "D150H-HC",
+    "newImagePath": "/images/products/D150H-HC.jpg"
+  },
+  {
+    "productId": "d300h124",
+    "model": "D300H124",
+    "newImagePath": "/images/products/D300H124.jpg"
+  },
+  {
+    "productId": "b325h220",
+    "model": "B325H220",
+    "newImagePath": "/images/products/B325H220.jpg"
+  },
+  {
+    "productId": "b425h220",
+    "model": "B425H220",
+    "newImagePath": "/images/products/B425H220.jpg"
+  },
+  {
+    "productId": "b525h220",
+    "model": "B525H220",
+    "newImagePath": "/images/products/B525H220.jpg"
+  },
+  {
+    "productId": "e325h220",
+    "model": "E325H220",
+    "newImagePath": "/images/products/E325H220.jpg"
+  },
+  {
+    "productId": "e425h220",
+    "model": "E425H220",
+    "newImagePath": "/images/products/E425H220.jpg"
+  },
+  {
+    "productId": "f450gl25",
+    "model": "F450GL25",
+    "newImagePath": "/images/products/F450GL25.jpg"
+  },
+  {
+    "productId": "g200h120",
+    "model": "G200H120",
+    "newImagePath": "/images/products/G200H120.jpg"
+  },
+  {
+    "productId": "g300h120",
+    "model": "G300H120",
+    "newImagePath": "/images/products/G300H120.jpg"
+  },
+  {
+    "productId": "srf206hc-ergl",
+    "model": "SRF206HC-ERGL",
+    "newImagePath": "/images/products/SRF206HC-ERGL.jpg"
+  },
+  {
+    "productId": "srf900-hc-gl",
+    "model": "SRF900-HC-GL",
+    "newImagePath": "/images/products/SRF900HC-GL.jpg"
+  }
+]

@@ -1,14 +1,19 @@
-import { productCategories } from '../../../../../data/products';
+import { categories } from '../../../../../data/products';
 import ProductPageClient from './page-client';
 
 export async function generateStaticParams() {
   const params: { categoryId: string; productId: string }[] = [];
   
-  productCategories.forEach((category) => {
+  // Helper function to generate slug from product name
+  const generateSlug = (name: string) => {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  };
+  
+  categories.forEach((category) => {
     category.models.forEach((product) => {
       params.push({
         categoryId: category.id,
-        productId: product.name.toLowerCase().replace(/\s+/g, '-'),
+        productId: generateSlug(product.name),
       });
     });
   });

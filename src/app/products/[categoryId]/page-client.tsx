@@ -1,17 +1,17 @@
 'use client';
 
-import { productCategories } from '@/data/products';
+import { getCategoryBySlug } from '@/data/products';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import ProductCard from '@/components/ui/ProductCard';
+import ProductGrid from '@/components/ProductGrid';
 
 interface CategoryPageClientProps {
   categoryId: string;
 }
 
 export default function CategoryPageClient({ categoryId }: CategoryPageClientProps) {
-  const category = productCategories.find(cat => cat.id === categoryId);
+  const category = getCategoryBySlug(categoryId);
 
   if (!category) return notFound();
 
@@ -68,7 +68,7 @@ export default function CategoryPageClient({ categoryId }: CategoryPageClientPro
             <div className="lg:flex-shrink-0">
               <div className="relative w-full lg:w-80 xl:w-96 h-64 lg:h-80 xl:h-96 bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl overflow-hidden shadow-lg">
                 <Image
-                  src={category.image}
+                  src={category.image || '/images/placeholder.jpg'}
                   alt={category.name}
                   fill
                   className="object-contain p-4 transition-transform duration-300 hover:scale-105"
@@ -82,50 +82,32 @@ export default function CategoryPageClient({ categoryId }: CategoryPageClientPro
       </div>
 
       {/* Products Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-        <div className="flex items-center justify-between mb-6 sm:mb-8">
-          <div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900">All Models</h2>
-            <p className="text-sm sm:text-base text-gray-600 mt-1">Choose from our wide range of {category.name.toLowerCase()} models</p>
-          </div>
-          <div className="text-xs sm:text-sm text-gray-500">
-            {category.models?.length || 0} products
-          </div>
-        </div>
-
-        {category.models && category.models.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-6 lg:gap-8">
-            {category.models.map((product, index) => (
-              <ProductCard
-                key={index}
-                id={product.name.toLowerCase().replace(/\s+/g, '-')}
-                title={product.name}
-                description={`${category.name} - Premium quality cooling solution`}
-                imageUrl={product.image}
-                price={product.price || '₹25,999'}
-                originalPrice={product.originalPrice}
-                href={`/products/${category.id}/${product.name.toLowerCase().replace(/\s+/g, '-')}`}
-              />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-12 sm:py-16">
-            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
-              <svg className="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2 2v-5m16 0h-2M4 13h2m13-8V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v1m6 0h-2" />
-              </svg>
-            </div>
-            <h3 className="text-lg font-semibold text-gray-900 mb-2">No Products Available</h3>
-            <p className="text-gray-600 mb-6">We&apos;re working on adding products to this category. Check back soon!</p>
-            <Link
-              href="/products"
-              className="inline-flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
-            >
-              Browse Other Categories
-            </Link>
-          </div>
-        )}
-      </div>
+      <ProductGrid 
+        categories={[{
+          id: category.id,
+          name: category.name,
+          slug: category.id,
+          description: category.description,
+          products: category.models.map(model => ({
+            id: model.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+            model: model.name,
+            name: model.name,
+            slug: model.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+            images: [model.image],
+            imageUrl: model.image,
+            imageAlt: model.image,
+            capacity: model.capacity,
+            price: model.price && model.originalPrice ? {
+              selling: parseFloat(model.price.replace(/[₹,]/g, '')),
+              mrp: parseFloat(model.originalPrice.replace(/[₹,]/g, ''))
+            } : undefined,
+            features: model.features,
+            specifications: model.specifications,
+            brand: 'Western'
+          }))
+        }]} 
+        selectedCategory={categoryId} 
+      />
     </div>
   );
 }

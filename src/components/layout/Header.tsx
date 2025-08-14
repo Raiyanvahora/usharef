@@ -22,7 +22,7 @@ export default function Header() {
 
   const navigation = [
     { name: 'Home', href: '/', icon: null },
-    { name: 'Refrigerators', href: '/products', icon: null },
+    { name: 'Products', href: '/products', icon: null },
     { name: 'About Us', href: '/about', icon: null },
     { name: 'Service', href: '/service', icon: null },
     { name: 'Location', href: 'https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001', icon: MapPin, external: true },
@@ -42,7 +42,7 @@ export default function Header() {
         >
           <div className="flex items-center">
             <h1 className="text-xl sm:text-2xl font-bold text-gray-900 whitespace-nowrap">
-              Usha Refrigeration
+              USHA REFRIGERATION
             </h1>
           </div>
         </Link>

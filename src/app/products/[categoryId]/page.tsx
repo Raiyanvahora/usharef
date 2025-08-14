@@ -1,8 +1,8 @@
-import { productCategories } from '@/data/products';
+import { categories } from '@/data/products';
 import CategoryPageClient from './page-client';
 
 export async function generateStaticParams() {
-  return productCategories.map((category) => ({
+  return categories.map((category) => ({
     categoryId: category.id,
   }));
 }

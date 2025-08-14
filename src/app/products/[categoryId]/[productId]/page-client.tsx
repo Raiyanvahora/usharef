@@ -1,10 +1,11 @@
 'use client';
 
-import { productCategories } from '../../../../../data/products';
+import { getCategoryBySlug, getProductBySlug } from '../../../../../data/products';
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { Phone, MessageCircle, Star, Shield, Truck, Award, CheckCircle, Heart, Share2 } from 'lucide-react';
 import { useState } from 'react';
+import ProductImage from '../../../../components/ui/ProductImage';
 
 interface ProductPageClientProps {
   categoryId: string;
@@ -15,13 +16,16 @@ export default function ProductPageClient({ categoryId, productId }: ProductPage
   const [activeImageIndex, setActiveImageIndex] = useState(0);
   const [isWishlisted, setIsWishlisted] = useState(false);
   
-  const category = productCategories.find(cat => cat.id === categoryId);
+  const category = getCategoryBySlug(categoryId);
   if (!category) return notFound();
   
-  const product = category.models.find(model => 
-    model.name.toLowerCase().replace(/\s+/g, '-') === productId
-  );
+  const product = getProductBySlug(categoryId, productId);
   if (!product) return notFound();
+
+  // Helper function to generate slug from product name
+  const generateSlug = (name: string) => {
+    return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '');
+  };
 
   // WhatsApp contact details
   const whatsappNumber = '9898649362';
@@ -31,45 +35,47 @@ export default function ProductPageClient({ categoryId, productId }: ProductPage
   // Calculate discount if prices are available
   const calculateDiscount = () => {
     if (product.price && product.originalPrice) {
-      const price = parseInt(product.price.replace(/[^0-9]/g, ''));
-      const originalPrice = parseInt(product.originalPrice.replace(/[^0-9]/g, ''));
-      const discountPercent = Math.round(((originalPrice - price) / originalPrice) * 100);
-      return `${discountPercent}% OFF`;
+      const currentPrice = parseFloat(product.price.replace(/[₹,]/g, ''));
+      const originalPrice = parseFloat(product.originalPrice.replace(/[₹,]/g, ''));
+      if (originalPrice > currentPrice) {
+        const discountPercent = Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
+        return `${discountPercent}% OFF`;
+      }
     }
     return null;
   };
 
-  // Use actual product data with fallbacks
+  // Use actual product data from CSV
   const productDetails = {
-    price: product.price || '₹25,999',
-    originalPrice: product.originalPrice || '₹29,999',
+    price: product.price || 'Price on Request',
+    originalPrice: product.originalPrice,
     discount: calculateDiscount(),
     rating: 4.5,
     reviews: Math.floor(Math.random() * 200) + 50,
     availability: 'In Stock',
     warranty: '2 Years Comprehensive Warranty',
-    features: [
-      'Energy Efficient Compressor',
-      'Digital Temperature Display',
-      'Auto Defrost Function',
-      'Sturdy Wire Shelving',
-      'LED Interior Lighting',
-      'Lock & Key Security'
+    features: product.features?.length ? product.features : [
+      `High-quality ${category.name.toLowerCase()}`,
+      'Energy efficient operation',
+      'Durable construction',
+      'Commercial grade performance',
+      'Professional installation support',
+      'Comprehensive warranty coverage'
     ],
     specifications: {
-      'Capacity': '300 Liters',
-      'Energy Rating': '4 Star',
-      'Defrosting Type': 'Auto Defrost',
-      'Compressor Type': 'Reciprocating',
-      'Refrigerant': 'R134a',
-      'Dimensions': '60 x 55 x 85 cm'
+      'Brand': 'Western',
+      'Model': product.name,
+      ...(product.capacity && { 'Capacity': product.capacity }),
+      ...(product.type && { 'Type': product.type }),
+      ...(product.doorType && { 'Door Type': product.doorType }),
+      ...(product.size && { 'Size': product.size }),
+      ...(product.starRating && { 'Star Rating': product.starRating }),
+      'Manufacturer': 'Western Refrigeration Pvt. Ltd.',
+      ...(product.specifications || {})
     }
   };
 
-  const productImages = [
-    product.image,
-    // Add more images if available
-  ];
+  const productImages = [product.image || '/images/placeholder.jpg'];
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -94,11 +100,15 @@ export default function ProductPageClient({ categoryId, productId }: ProductPage
           
           {/* Product Images */}
           <div className="space-y-4">
-            <div className="aspect-square bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm">
-              <img
+            <div className="aspect-square bg-white rounded-2xl border border-gray-200 overflow-hidden shadow-sm relative">
+              <ProductImage
                 src={productImages[activeImageIndex]}
                 alt={product.name}
-                className="w-full h-full object-contain p-8"
+                fallbackSrc="/images/placeholder.jpg"
+                fill
+                className="object-contain p-8"
+                sizes="(max-width: 768px) 100vw, 50vw"
+                priority
               />
             </div>
             
@@ -114,11 +124,16 @@ export default function ProductPageClient({ categoryId, productId }: ProductPage
                         : 'border-gray-200 hover:border-gray-300'
                     }`}
                   >
-                    <img
-                      src={image}
-                      alt={`${product.name} view ${index + 1}`}
-                      className="w-full h-full object-contain p-2"
-                    />
+                    <div className="relative w-full h-full">
+                      <ProductImage
+                        src={image}
+                        alt={`${product.name} view ${index + 1}`}
+                        fallbackSrc="/images/placeholder.jpg"
+                        fill
+                        className="object-contain p-2"
+                        sizes="80px"
+                      />
+                    </div>
                   </button>
                 ))}
               </div>
@@ -148,6 +163,7 @@ export default function ProductPageClient({ categoryId, productId }: ProductPage
               <h1 className="text-3xl font-bold text-gray-900 mb-2">
                 {product.name}
               </h1>
+              <p className="text-lg text-gray-600 mb-2">{category.name} - {product.type || 'Standard'}</p>
               
               <div className="flex items-center space-x-4 mb-4">
                 <div className="flex items-center space-x-1">
@@ -274,22 +290,32 @@ export default function ProductPageClient({ categoryId, productId }: ProductPage
               .map((relatedProduct, index) => (
                 <Link 
                   key={index}
-                  href={`/products/${categoryId}/${relatedProduct.name.toLowerCase().replace(/\s+/g, '-')}`}
+                  href={`/products/${categoryId}/${generateSlug(relatedProduct.name)}`}
                   className="bg-white rounded-lg border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow"
                 >
-                  <div className="aspect-square bg-gray-50">
-                    <img 
+                  <div className="aspect-square bg-gray-50 relative">
+                    <ProductImage 
                       src={relatedProduct.image} 
                       alt={relatedProduct.name}
-                      className="w-full h-full object-contain p-4"
+                      fallbackSrc="/images/placeholder.jpg"
+                      fill
+                      className="object-contain p-4"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      loading="lazy"
                     />
                   </div>
                   <div className="p-4">
                     <h3 className="font-semibold text-gray-900 mb-2 truncate">{relatedProduct.name}</h3>
                     <div className="flex items-center space-x-2">
-                      <span className="font-bold text-blue-600">{relatedProduct.price || '₹25,999'}</span>
-                      {relatedProduct.originalPrice && (
-                        <span className="text-sm text-gray-500 line-through">{relatedProduct.originalPrice}</span>
+                      {relatedProduct.price ? (
+                        <>
+                          <span className="font-bold text-blue-600">{relatedProduct.price}</span>
+                          {relatedProduct.originalPrice && (
+                            <span className="text-sm text-gray-500 line-through">{relatedProduct.originalPrice}</span>
+                          )}
+                        </>
+                      ) : (
+                        <span className="text-sm text-gray-600">Price on request</span>
                       )}
                     </div>
                   </div>

@@ -1,57 +1,79 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
-import Link from 'next/link';
 import { 
   Award,
   Wrench,
   MapPin
 } from 'lucide-react';
-import HappyCustomers from './HappyCustomers';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
-import ServiceBookingModal from '@/components/ServiceBookingModal';
-import ProductCategorySection from '@/components/ProductCategorySection';
 
-// Hardcode the product data directly to ensure it works
+// Lazy load heavy components
+const HappyCustomers = dynamic(() => import('./HappyCustomers'), {
+  loading: () => <div className="py-16 text-center">Loading testimonials...</div>
+});
+const ServiceBookingModal = dynamic(() => import('@/components/ServiceBookingModal'), {
+  ssr: false
+});
+const ProductCategorySection = dynamic(() => import('@/components/ProductCategorySection'));
+
+// Updated fallback categories with correct PRD-NEW paths
 const hardcodedCategories = [
   {
-    id: 'visi-cooler',
-    name: 'Visi Cooler',
-    description: 'Energy-efficient coolers for beverages and perishables.',
-    image: '/PRD/VISI COOLER/mainimagesvisi/0709091_SRC380HC-GL_Left-Angle-300x300.png',
-    backgroundImage: '/PRD/VISI COOLER/assets_task_01jz928z7tf5kbvrem9tr2bn43_1751577397_img_1.webp',
+    id: 'freezers',
+    name: 'Freezers',
+    description: 'Premium commercial freezers including convertible, combi, glass top, eutectic, scooping, vertical, and freezer on wheels.',
+    image: '/PRD-NEW/DEEP%20FREEZERS/images/D150-300x300.png',
+    backgroundImage: '/PRD-NEW/DEEP%20FREEZERS/images/D150-300x300.png',
     models: []
   },
   {
-    id: 'deep-freezer',
-    name: 'Deep Freezer',
-    description: 'Reliable deep freezers for commercial and home use.',
-    image: '/PRD/DEEP FREEZER/main images/D300-Double-dOOR-1-300x300.png',
-    backgroundImage: '/PRD/DEEP FREEZER/assets_task_01jz91qtt4ec78qfrj1b2e738q_1751576837_img_0.webp',
+    id: 'coolers',
+    name: 'Coolers',
+    description: 'Visi coolers and vertical/supermarket coolers with single, double, and triple door options.',
+    image: '/PRD-NEW/VISI%20COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png',
+    backgroundImage: '/PRD-NEW/VISI%20COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png',
     models: []
   },
   {
-    id: 'water-dispenser',
-    name: 'Water Dispenser',
-    description: 'Convenient water dispensers for home and office.',
-    image: '/PRD/WATER DISPENSER/mainimagesdis/bwd3fmcga-bwd-mi-01-resized.jpg',
-    backgroundImage: '/PRD/WATER DISPENSER/assets_task_01jz916vvkfmsvh028fg2d0yz3_1751576312_img_1.webp',
+    id: 'pastry-display-counters',
+    name: 'Pastry & Display Counters',
+    description: 'Elegant display counters for bakeries, cafes, and pastry shops.',
+    image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-1-300x300.png',
+    backgroundImage: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-1-300x300.png',
     models: []
   },
   {
-    id: 'water-cooler',
-    name: 'Water Cooler',
-    description: 'High-capacity water coolers for every need.',
-    image: '/PRD/WATER COOLER/mainimageswater/PWC-40806080-1-300x300.png',
-    backgroundImage: '/PRD/WATER COOLER/assets_task_01jz91f8s2e6a9vbs40kxg5asy_1751576549_img_0.webp',
+    id: 'back-bar-units',
+    name: 'Back Bar Units',
+    description: 'Compact cooling solutions for bars, restaurants, and commercial kitchens.',
+    image: '/PRD-NEW/ICE-BACK-BAR/images/BB-120L-300x300.png',
+    backgroundImage: '/PRD-NEW/ICE-BACK-BAR/images/BB-120L-300x300.png',
     models: []
   },
   {
-    id: 'pastry-counter',
-    name: 'Pastry Counter',
-    description: 'Elegant pastry counters for bakeries and cafes.',
-    image: '/PRD/PASTRY COUNTER/mainimages/Right-Angle-With-Stock-1-300x300.png',
-    backgroundImage: '/PRD/PASTRY COUNTER/assets_task_01jz931a3zefas9y7hmkgr1ze3_1751578188_img_0.webp',
+    id: 'ice-machines',
+    name: 'Ice Machines',
+    description: 'Commercial ice makers for restaurants, hotels, and bars.',
+    image: '/PRD-NEW/ICE-BACK-BAR/images/ICE-150-300x300.png',
+    backgroundImage: '/PRD-NEW/ICE-BACK-BAR/images/ICE-150-300x300.png',
+    models: []
+  },
+  {
+    id: 'water-coolers',
+    name: 'Water Coolers',
+    description: 'Commercial water coolers for offices, schools, and public spaces.',
+    image: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png',
+    backgroundImage: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png',
+    models: []
+  },
+  {
+    id: 'water-dispensers',
+    name: 'Water Dispensers',
+    description: 'Premium water dispensers with hot, cold, and normal water options for offices and homes.',
+    image: '/PRD-NEW/Water%20Dispenser/bwd3fmcga-bwd-mi-01-resized.jpg',
+    backgroundImage: '/PRD-NEW/Water%20Dispenser/bwd3fmcga-bwd-mi-01-resized.jpg',
     models: []
   }
 ];
@@ -74,27 +96,34 @@ export default function Home() {
   const [categories, setCategories] = useState<Category[]>(hardcodedCategories);
 
   useEffect(() => {
-    // Try to import product data dynamically
+    // Import product data dynamically
     import('../../data/products')
       .then((module) => {
         console.log('Products module loaded:', module);
-        console.log('productCategories exists:', !!module.productCategories);
-        console.log('productCategories length:', module.productCategories?.length);
-        console.log('First category:', module.productCategories?.[0]);
-        if (module.productCategories && module.productCategories.length > 0) {
-          // Convert ProductCategory[] to Category[] format
-          const convertedCategories: Category[] = module.productCategories.map((cat: unknown) => {
-            const category = cat as { id: string; name: string; description: string; image: string; backgroundImage?: string; models?: { id: string; name: string; price?: number }[] };
-            return {
-              ...category,
-              models: category.models || []
-            };
-          });
+        if (module.categories && module.categories.length > 0) {
+          // Convert to Category[] format for compatibility
+          interface ImportedCategory {
+            id: string;
+            name: string;
+            description: string;
+            image: string;
+            backgroundImage?: string;
+            models?: Array<{ name: string; price?: string; }>;
+          }
+          const convertedCategories: Category[] = module.categories.map((cat: ImportedCategory) => ({
+            id: cat.id,
+            name: cat.name,
+            description: cat.description,
+            image: cat.image || '/images/placeholder.jpg',
+            backgroundImage: cat.backgroundImage,
+            models: cat.models?.map((p: { name: string; price?: string; }) => ({
+              id: p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+              name: p.name,
+              price: p.price ? parseInt(p.price.replace(/[₹,]/g, '')) : undefined
+            })) || []
+          }));
           setCategories(convertedCategories);
-          console.log('Using imported categories:', module.productCategories.length, 'categories');
-          console.log('Categories set in state');
-        } else {
-          console.log('No products in module, using hardcoded data');
+          console.log('Using imported categories:', module.categories.length, 'categories');
         }
       })
       .catch((error) => {
@@ -136,34 +165,6 @@ export default function Home() {
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
       <section className="hero-section-dark min-h-screen flex items-center relative">
-        {/* Location Info Card - Top Right Corner */}
-        <div className="absolute top-6 right-6 z-20 space-y-2">
-          {/* Location Card */}
-          <div className="bg-white/95 backdrop-blur-sm border border-gray-200 rounded-lg px-4 py-3 shadow-xl">
-            <div className="text-center">
-              <div className="flex items-center justify-center gap-2 text-blue-600 font-bold text-sm mb-2">
-                <MapPin className="w-4 h-4" />
-                <span>Visit Our Store</span>
-              </div>
-              <div className="text-gray-800 font-medium text-xs mb-2">
-                Enter City Arcades, Bhalej Road
-              </div>
-              <div className="text-gray-600 text-xs mb-2">
-                Near Abdullah Masjid, Anand
-              </div>
-              <a 
-                href="https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1 bg-blue-600 text-white px-3 py-1 rounded text-xs font-medium hover:bg-blue-700 transition-colors"
-              >
-                Get Directions
-              </a>
-            </div>
-          </div>
-          
-        </div>
-
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
             {/* Left Side - Product Image */}
@@ -205,15 +206,18 @@ export default function Home() {
 
               {/* CTA Buttons */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <Link 
-                  href="/products" 
-                  className="bg-white text-black px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-lg"
+                <a 
+                  href="https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-base sm:text-lg"
                 >
-                  <span>Shop Now</span>
-                </Link>
+                  <MapPin className="w-5 h-5" />
+                  <span>Get Direction</span>
+                </a>
                 <button 
                   onClick={() => setIsServiceModalOpen(true)}
-                  className="border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors flex items-center justify-center space-x-2 text-lg"
+                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors flex items-center justify-center space-x-2 text-base sm:text-lg"
                 >
                   <Wrench className="w-5 h-5" />
                   <span>Book a Service</span>

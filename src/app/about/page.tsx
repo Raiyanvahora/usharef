@@ -2,6 +2,7 @@
 
 import React, { useEffect, useRef } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { 
   Award, 
   Users, 
@@ -160,25 +161,37 @@ export default function About() {
             </div>
             <div className="relative animate-on-scroll">
               <div className="grid grid-cols-2 gap-4">
-                <img 
+                <Image 
                   src="/customerimages/IMG-20250701-WA0045.jpg" 
                   alt="Our facility" 
-                  className="rounded-lg shadow-lg"
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-lg w-full h-auto"
+                  loading="lazy"
                 />
-                <img 
+                <Image 
                   src="/customerimages/IMG-20250701-WA0050.jpg" 
                   alt="Our team" 
-                  className="rounded-lg shadow-lg mt-8"
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-lg mt-8 w-full h-auto"
+                  loading="lazy"
                 />
-                <img 
+                <Image 
                   src="/customerimages/IMG-20250701-WA0055.jpg" 
                   alt="Manufacturing" 
-                  className="rounded-lg shadow-lg -mt-4"
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-lg -mt-4 w-full h-auto"
+                  loading="lazy"
                 />
-                <img 
+                <Image 
                   src="/customerimages/IMG-20250701-WA0060.jpg" 
                   alt="Quality testing" 
-                  className="rounded-lg shadow-lg mt-4"
+                  width={400}
+                  height={300}
+                  className="rounded-lg shadow-lg mt-4 w-full h-auto"
+                  loading="lazy"
                 />
               </div>
             </div>

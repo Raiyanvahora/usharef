@@ -8,7 +8,15 @@
       "Bash(git add:*)",
       "Bash(ls:*)",
       "Bash(git push:*)",
-      "Bash(npm install:*)"
+      "Bash(npm install:*)",
+      "Bash(npm run lint)",
+      "Bash(copy:*)",
+      "Bash(cp:*)",
+      "Bash(mkdir:*)",
+      "Bash(node:*)",
+      "Bash(taskkill:*)",
+      "Bash(curl:*)",
+      "Bash(git checkout:*)"
     ],
     "deny": []
   }
