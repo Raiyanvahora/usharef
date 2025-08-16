@@ -1,10 +1,10 @@
 import { NextResponse } from 'next/server';
-import { categories } from '../../../../data/products';
+import { productCategories } from '../../../../data/products';
 
 export async function GET() {
   try {
     // Transform categories data into product list
-    const products = categories.flatMap(category => 
+    const products = productCategories.flatMap(category => 
       category.models.map(model => ({
         id: model.id || model.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
         title: model.name,
