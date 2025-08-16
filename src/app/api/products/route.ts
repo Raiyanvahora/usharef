@@ -1,6 +1,12 @@
 import { NextResponse } from 'next/server';
 import { productCategories } from '@/data/products';
 
+// Export dynamic configuration for proper static generation
+export const dynamic = 'force-static';
+
+// Export revalidate configuration
+export const revalidate = 3600; // Revalidate every hour
+
 export async function GET() {
   try {
     // Transform categories data into product list
