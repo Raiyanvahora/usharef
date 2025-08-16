@@ -3,17 +3,17 @@ const nextConfig = {
   output: process.env.NETLIFY ? 'export' : undefined,
   trailingSlash: true,
   images: {
-    unoptimized: process.env.NETLIFY ? true : false,
+    unoptimized: true, // Completely disable Next.js image optimization for static serving
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
     remotePatterns: [
       {
         protocol: 'https',
         hostname: '**',
       },
     ],
-    formats: ['image/avif', 'image/webp'],
-    deviceSizes: [640, 750, 828, 1080, 1200],
-    imageSizes: [16, 32, 48, 64, 96, 128, 256],
-    minimumCacheTTL: 60,
+    loader: 'custom',
+    loaderFile: './src/lib/imageLoader.js',
   },
   reactStrictMode: true,
   compiler: {

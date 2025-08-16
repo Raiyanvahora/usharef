@@ -26,6 +26,7 @@ const ProductListing: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('featured');
   const [priceRange, setPriceRange] = useState({ min: 0, max: 2000 });
@@ -39,8 +40,8 @@ const ProductListing: React.FC = () => {
         const data = await response.json();
         setProducts(data);
         setFilteredProducts(data);
-      } catch (error) {
-        console.error('Error fetching products:', error);
+      } catch {
+        setError('Failed to load products');
       } finally {
         setLoading(false);
       }
@@ -134,6 +135,21 @@ const ProductListing: React.FC = () => {
             <div className="text-center">
               <h3 className="text-lg font-semibold text-gray-900 mb-2">Loading Products</h3>
               <p className="text-gray-600">Please wait while we fetch the latest products...</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col items-center justify-center min-h-[400px] gap-6">
+            <div className="text-center">
+              <h3 className="text-lg font-semibold text-red-600 mb-2">Error Loading Products</h3>
+              <p className="text-gray-600">{error}</p>
             </div>
           </div>
         </div>

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import { X } from 'lucide-react';
+import { X, MessageCircle } from 'lucide-react';
 
 interface ServiceBookingModalProps {
   isOpen: boolean;
@@ -16,7 +16,6 @@ export default function ServiceBookingModal({ isOpen, onClose }: ServiceBookingM
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
 
   const productTypes = [
     'Visi Cooler',
@@ -34,19 +33,16 @@ export default function ServiceBookingModal({ isOpen, onClose }: ServiceBookingM
     }));
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleWhatsAppSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     
-    // Log form data to console (for development)
-    console.log('Service Request Submitted:', formData);
-    
-    // Option 1: Send to WhatsApp (Immediate solution)
-    // const whatsappNumber = '9898649362'; // Your WhatsApp number
-    // const message = `New Service Request:\nName: ${formData.name}\nMobile: ${formData.mobile}\nProduct: ${formData.productType}\nIssue: ${formData.message || 'Not specified'}`;
-    // const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    
-    // Option 2: Store in localStorage (for later retrieval)
+    // Validate required fields
+    if (!formData.name || !formData.mobile || !formData.productType) {
+      alert('Please fill in all required fields (Name, Mobile, Product Type)');
+      return;
+    }
+
+    // Store in localStorage for record keeping
     const existingRequests = JSON.parse(localStorage.getItem('serviceRequests') || '[]');
     const newRequest = {
       ...formData,
@@ -55,34 +51,30 @@ export default function ServiceBookingModal({ isOpen, onClose }: ServiceBookingM
     };
     localStorage.setItem('serviceRequests', JSON.stringify([...existingRequests, newRequest]));
     
-    // Option 3: Send to an email service (requires backend setup)
-    // Example with EmailJS or Formspree
-    // await fetch('https://formspree.io/f/YOUR_FORM_ID', {
-    //   method: 'POST',
-    //   headers: { 'Content-Type': 'application/json' },
-    //   body: JSON.stringify(formData)
-    // });
+    // Create WhatsApp message
+    const whatsappNumber = '9898649362'; // Your WhatsApp number
+    const message = `New Service Request:
     
-    // Simulate processing
-    await new Promise(resolve => setTimeout(resolve, 1000));
+Name: ${formData.name}
+Mobile: ${formData.mobile}
+Product: ${formData.productType}
+Issue: ${formData.message || 'Not specified'}
     
-    setIsSubmitting(false);
-    setShowSuccess(true);
+Please assist me with this service request.`;
     
-    // Open WhatsApp with the service request (optional)
-    // window.open(whatsappLink, '_blank');
+    const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
     
-    // Reset form after 2 seconds
-    setTimeout(() => {
-      setFormData({
-        name: '',
-        mobile: '',
-        productType: '',
-        message: ''
-      });
-      setShowSuccess(false);
-      onClose();
-    }, 2000);
+    // Open WhatsApp
+    window.open(whatsappLink, '_blank');
+    
+    // Reset and close modal
+    setFormData({
+      name: '',
+      mobile: '',
+      productType: '',
+      message: ''
+    });
+    onClose();
   };
 
   if (!isOpen) return null;
@@ -109,18 +101,7 @@ export default function ServiceBookingModal({ isOpen, onClose }: ServiceBookingM
             </button>
           </div>
 
-          {showSuccess ? (
-            <div className="text-center py-8">
-              <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg className="w-8 h-8 text-green-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <h4 className="text-xl font-semibold text-gray-900 mb-2">Service Request Submitted!</h4>
-              <p className="text-gray-600">We&apos;ll contact you shortly.</p>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleWhatsAppSubmit} className="space-y-4">
               {/* Name */}
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
@@ -192,16 +173,15 @@ export default function ServiceBookingModal({ isOpen, onClose }: ServiceBookingM
                 />
               </div>
 
-              {/* Submit Button */}
+              {/* WhatsApp Submit Button */}
               <button
                 type="submit"
-                disabled={isSubmitting}
-                className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors disabled:bg-blue-400 disabled:cursor-not-allowed"
+                className="w-full bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors flex items-center justify-center space-x-2"
               >
-                {isSubmitting ? 'Submitting...' : 'Submit Service Request'}
+                <MessageCircle className="w-5 h-5" />
+                <span>Send via WhatsApp</span>
               </button>
             </form>
-          )}
         </div>
       </div>
     </div>

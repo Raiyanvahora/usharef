@@ -65,7 +65,7 @@ export default function ProductsPage() {
               return (
                 <Link 
                   key={category.id} 
-                  href={`/products/${category.id}`}
+                  href={`/products/category/${category.id}`}
                   className="block group"
                 >
                   <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
@@ -122,7 +122,7 @@ export default function ProductsPage() {
             slug: model.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
             images: [model.image],
             imageUrl: model.image,
-            imageAlt: model.image,
+            imageAlt: model.name,
             capacity: model.capacity,
             price: model.price && model.originalPrice ? {
               selling: parseFloat(model.price.replace(/[₹,]/g, '')),

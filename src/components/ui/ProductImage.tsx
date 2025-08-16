@@ -1,7 +1,6 @@
 'use client';
 
 import { useState } from 'react';
-import Image from 'next/image';
 import { Package } from 'lucide-react';
 
 interface ProductImageProps {
@@ -10,9 +9,7 @@ interface ProductImageProps {
   fallbackSrc?: string;
   width?: number;
   height?: number;
-  fill?: boolean;
   className?: string;
-  sizes?: string;
   priority?: boolean;
   loading?: 'lazy' | 'eager';
   objectFit?: 'contain' | 'cover' | 'fill' | 'none' | 'scale-down';
@@ -24,19 +21,19 @@ export default function ProductImage({
   fallbackSrc = '/images/placeholder.jpg',
   width,
   height,
-  fill,
   className = '',
-  sizes,
   priority,
   loading,
-  objectFit = 'cover'
+  objectFit = 'contain'
 }: ProductImageProps) {
-  const [currentSrc, setCurrentSrc] = useState(src || fallbackSrc);
+  // Keep the path as-is since Next.js will handle URL encoding
+  const normalizedSrc = src || fallbackSrc;
+  const [currentSrc, setCurrentSrc] = useState(normalizedSrc);
   const [imageError, setImageError] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   const handleImageError = () => {
-    if (currentSrc === src && fallbackSrc && fallbackSrc !== src) {
+    if (currentSrc === normalizedSrc && fallbackSrc && fallbackSrc !== normalizedSrc) {
       setCurrentSrc(fallbackSrc);
     } else if (currentSrc === fallbackSrc && fallbackSrc !== '/images/placeholder.jpg') {
       setCurrentSrc('/images/placeholder.jpg');
@@ -56,25 +53,23 @@ export default function ProductImage({
     );
   }
 
+  // Always use regular img tag for static serving - no Next.js Image optimization
   return (
     <div className="relative">
       {isLoading && (
         <div className={`absolute inset-0 bg-gray-100 animate-pulse ${className}`} />
       )}
-      <Image
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={currentSrc}
         alt={alt}
         width={width}
         height={height}
-        fill={fill}
         className={className}
         style={{ objectFit }}
-        sizes={sizes}
-        priority={priority}
-        loading={loading || 'lazy'}
+        loading={priority ? 'eager' : (loading || 'lazy')}
         onError={handleImageError}
         onLoad={() => setIsLoading(false)}
-        unoptimized={currentSrc.startsWith('http')}
       />
     </div>
   );

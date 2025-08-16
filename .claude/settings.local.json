@@ -16,7 +16,9 @@
       "Bash(node:*)",
       "Bash(taskkill:*)",
       "Bash(curl:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(dir:*)",
+      "Bash(npx tsc:*)"
     ],
     "deny": []
   }

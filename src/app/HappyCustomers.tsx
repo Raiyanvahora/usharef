@@ -21,8 +21,6 @@ const HappyCustomers: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    console.log("Starting CSV fetch...");
-    
     fetch("/happy_customers.csv", {
       headers: {
         'Accept': 'text/csv',
@@ -30,41 +28,28 @@ const HappyCustomers: React.FC = () => {
       }
     })
       .then((res) => {
-        console.log("CSV Response Status:", res.status);
-        console.log("CSV Response OK:", res.ok);
         if (!res.ok) throw new Error(`Failed to fetch CSV: ${res.status}`);
         return res.text();
       })
       .then((csvText) => {
-        console.log("CSV Content Length:", csvText.length);
-        console.log("First 100 chars:", csvText.substring(0, 100));
         
         Papa.parse<Customer>(csvText, {
           header: true,
           skipEmptyLines: true,
           complete: (results) => {
-            console.log("Parse Results:", {
-              rows: results.data.length,
-              fields: results.meta.fields,
-              errors: results.errors
-            });
-            
             const filteredCustomers = results.data
               .filter((row) => row.filename && row.filename.trim() !== "");
             
-            console.log("Filtered Customers:", filteredCustomers.length);
             setCustomers(filteredCustomers);
             setLoading(false);
           },
           error: (error: Error) => {
-            console.error("CSV Parse Error:", error);
             setError(`Failed to parse CSV: ${error.message}`);
             setLoading(false);
           }
         });
       })
       .catch((error) => {
-        console.error("CSV Fetch Error:", error);
         setError(`Failed to load CSV: ${error.message}`);
         setLoading(false);
       });
@@ -166,9 +151,8 @@ const HappyCustomers: React.FC = () => {
                       height={300}
                       className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
-                      onLoad={() => console.log(`✓ Loaded: ${imagePath}`)}
+                      onLoad={() => {}}
                       onError={(e) => {
-                        console.error(`✗ Failed to load: ${imagePath}`);
                         const target = e.target as HTMLImageElement;
                         target.style.display = 'none';
                         const parent = target.parentElement;

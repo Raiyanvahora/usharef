@@ -205,7 +205,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
       }>
         {filteredProducts.map((product, index) => {
           const discount = product.price ? calculateDiscount(product.price.mrp, product.price.selling) : 0;
-          const productUrl = `/products/${product.categoryId}/${product.slug}`;
+          const productUrl = `/products/${product.id}`;
 
           if (viewMode === 'list') {
             return (
@@ -216,10 +216,11 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                     <ProductImage
                       src={product.imageUrl}
                       alt={product.name}
-                      fallbackSrc={product.imageAlt}
+                      fallbackSrc="/images/placeholder.jpg"
                       width={192}
                       height={192}
                       className="w-full h-full object-contain rounded-lg bg-gray-50"
+                      objectFit="contain"
                       loading="lazy"
                     />
                   </div>
@@ -291,10 +292,11 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                 <ProductImage
                   src={product.imageUrl}
                   alt={product.name}
-                  fallbackSrc={product.imageAlt}
+                  fallbackSrc="/images/placeholder.jpg"
                   width={300}
                   height={300}
                   className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                  objectFit="contain"
                   loading={index < 12 ? "eager" : "lazy"}
                   priority={index < 12}
                 />

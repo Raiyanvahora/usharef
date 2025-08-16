@@ -8,6 +8,7 @@ import {
 } from 'lucide-react';
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
+import { categories } from '../../data/products';
 
 // Lazy load heavy components
 const HappyCustomers = dynamic(() => import('./HappyCustomers'), {
@@ -18,65 +19,6 @@ const ServiceBookingModal = dynamic(() => import('@/components/ServiceBookingMod
 });
 const ProductCategorySection = dynamic(() => import('@/components/ProductCategorySection'));
 
-// Updated fallback categories with correct PRD-NEW paths
-const hardcodedCategories = [
-  {
-    id: 'freezers',
-    name: 'Freezers',
-    description: 'Premium commercial freezers including convertible, combi, glass top, eutectic, scooping, vertical, and freezer on wheels.',
-    image: '/PRD-NEW/DEEP%20FREEZERS/images/D150-300x300.png',
-    backgroundImage: '/PRD-NEW/DEEP%20FREEZERS/images/D150-300x300.png',
-    models: []
-  },
-  {
-    id: 'coolers',
-    name: 'Coolers',
-    description: 'Visi coolers and vertical/supermarket coolers with single, double, and triple door options.',
-    image: '/PRD-NEW/VISI%20COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png',
-    backgroundImage: '/PRD-NEW/VISI%20COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png',
-    models: []
-  },
-  {
-    id: 'pastry-display-counters',
-    name: 'Pastry & Display Counters',
-    description: 'Elegant display counters for bakeries, cafes, and pastry shops.',
-    image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-1-300x300.png',
-    backgroundImage: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-1-300x300.png',
-    models: []
-  },
-  {
-    id: 'back-bar-units',
-    name: 'Back Bar Units',
-    description: 'Compact cooling solutions for bars, restaurants, and commercial kitchens.',
-    image: '/PRD-NEW/ICE-BACK-BAR/images/BB-120L-300x300.png',
-    backgroundImage: '/PRD-NEW/ICE-BACK-BAR/images/BB-120L-300x300.png',
-    models: []
-  },
-  {
-    id: 'ice-machines',
-    name: 'Ice Machines',
-    description: 'Commercial ice makers for restaurants, hotels, and bars.',
-    image: '/PRD-NEW/ICE-BACK-BAR/images/ICE-150-300x300.png',
-    backgroundImage: '/PRD-NEW/ICE-BACK-BAR/images/ICE-150-300x300.png',
-    models: []
-  },
-  {
-    id: 'water-coolers',
-    name: 'Water Coolers',
-    description: 'Commercial water coolers for offices, schools, and public spaces.',
-    image: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png',
-    backgroundImage: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png',
-    models: []
-  },
-  {
-    id: 'water-dispensers',
-    name: 'Water Dispensers',
-    description: 'Premium water dispensers with hot, cold, and normal water options for offices and homes.',
-    image: '/PRD-NEW/Water%20Dispenser/bwd3fmcga-bwd-mi-01-resized.jpg',
-    backgroundImage: '/PRD-NEW/Water%20Dispenser/bwd3fmcga-bwd-mi-01-resized.jpg',
-    models: []
-  }
-];
 
 // Define the Category type to match what ProductCategorySection expects
 interface Category {
@@ -93,46 +35,22 @@ export default function Home() {
   const [isServiceModalOpen, setIsServiceModalOpen] = useState(false);
   // const [loadedImages, setLoadedImages] = useState<Set<string>>(new Set());
   const [, setCategoriesLoading] = useState(true);
-  const [categories, setCategories] = useState<Category[]>(hardcodedCategories);
+  const [productCategories] = useState<Category[]>(categories.slice(0, 6).map(cat => ({
+    id: cat.id,
+    name: cat.name,
+    description: cat.description,
+    image: cat.image,
+    backgroundImage: cat.image,
+    models: cat.models.slice(0, 3).map(model => ({
+      id: model.id || model.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
+      name: model.name,
+      price: model.price ? parseFloat(model.price.replace(/[₹,]/g, '')) : undefined
+    }))
+  })));
 
   useEffect(() => {
-    // Import product data dynamically
-    import('../../data/products')
-      .then((module) => {
-        console.log('Products module loaded:', module);
-        if (module.categories && module.categories.length > 0) {
-          // Convert to Category[] format for compatibility
-          interface ImportedCategory {
-            id: string;
-            name: string;
-            description: string;
-            image: string;
-            backgroundImage?: string;
-            models?: Array<{ name: string; price?: string; }>;
-          }
-          const convertedCategories: Category[] = module.categories.map((cat: ImportedCategory) => ({
-            id: cat.id,
-            name: cat.name,
-            description: cat.description,
-            image: cat.image || '/images/placeholder.jpg',
-            backgroundImage: cat.backgroundImage,
-            models: cat.models?.map((p: { name: string; price?: string; }) => ({
-              id: p.name.toLowerCase().replace(/[^a-z0-9]+/g, '-'),
-              name: p.name,
-              price: p.price ? parseInt(p.price.replace(/[₹,]/g, '')) : undefined
-            })) || []
-          }));
-          setCategories(convertedCategories);
-          console.log('Using imported categories:', module.categories.length, 'categories');
-        }
-      })
-      .catch((error) => {
-        console.error('Failed to load products:', error);
-        console.log('Using hardcoded categories as fallback');
-      })
-      .finally(() => {
-        setCategoriesLoading(false);
-      });
+    // Use hardcoded categories for fast loading
+    setCategoriesLoading(false);
 
     observerRef.current = new IntersectionObserver(
       (entries) => {
@@ -246,9 +164,78 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Our Brands Section */}
+      <section className="bg-white py-12 sm:py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Brands We Have</h2>
+            <p className="text-gray-600 max-w-2xl mx-auto">We partner with leading refrigeration brands to bring you the best in cooling technology</p>
+          </div>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16 mb-12 justify-items-center">
+            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
+              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+                <Image
+                  src="/logo/western-head-logo-2025.png"
+                  alt="Western Refrigeration"
+                  width={120}
+                  height={120}
+                  className="object-contain max-w-full max-h-full"
+                />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-1">Western</h3>
+              <p className="text-sm text-gray-600">Premium Refrigeration</p>
+            </div>
+            
+            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
+              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+                <Image
+                  src="/logo/logo-1.png"
+                  alt="Icemake"
+                  width={120}
+                  height={120}
+                  className="object-contain max-w-full max-h-full"
+                />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-1">Icemake</h3>
+              <p className="text-sm text-gray-600">Ice Solutions</p>
+            </div>
+            
+            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
+              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+                <Image
+                  src="/logo/download.png"
+                  alt="Frigoglass"
+                  width={120}
+                  height={120}
+                  className="object-contain max-w-full max-h-full"
+                />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-1">Frigoglass</h3>
+              <p className="text-sm text-gray-600">European Technology</p>
+            </div>
+            
+            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
+              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+                <Image
+                  src="/logo/images.png"
+                  alt="Blue Star"
+                  width={120}
+                  height={120}
+                  className="object-contain max-w-full max-h-full"
+                />
+              </div>
+              <h3 className="font-semibold text-gray-900 mb-1">Blue Star</h3>
+              <p className="text-sm text-gray-600">Cooling Excellence</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
       {/* Product Category Section */}
       <ProductCategorySection 
-        categories={categories}
+        categories={productCategories}
         title="Complete Range of Products"
       />
 

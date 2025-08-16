@@ -2,13 +2,13 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { ChevronRight } from 'lucide-react';
 
 interface Category {
   id: string;
   name: string;
   image: string;
-  backgroundImage?: string;
 }
 
 interface ProductCategorySectionProps {
@@ -37,29 +37,22 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
           {categories.map((category, index) => (
             <Link
               key={category.id}
-              href={`/products/${category.id}`}
+              href={`/products/category/${category.id}`}
               className="group animate-float"
               style={{
                 animationDelay: `${index * 0.2}s`
               }}
             >
               <div className="relative overflow-hidden rounded-xl bg-white transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 transform border border-gray-100">
-                {/* Faded background image */}
-                <div 
-                  className="absolute inset-0 opacity-20 bg-cover bg-center transition-all duration-700 group-hover:scale-125 group-hover:opacity-30"
-                  style={{
-                    backgroundImage: `url(${category.backgroundImage || category.image})`,
-                    filter: 'blur(2px)'
-                  }}
-                />
-                
                 {/* Card content */}
                 <div className="relative p-8 lg:p-10">
                   {/* Product image with shadow */}
                   <div className="mb-8 h-64 lg:h-72 flex items-center justify-center">
-                    <img
+                    <Image
                       src={category.image}
                       alt={category.name}
+                      width={300}
+                      height={300}
                       className="max-w-full max-h-full object-contain drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
                     />
                   </div>
@@ -79,29 +72,22 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
           {categories.map((category, index) => (
             <Link
               key={category.id}
-              href={`/products/${category.id}`}
+              href={`/products/category/${category.id}`}
               className="group animate-float"
               style={{
                 animationDelay: `${index * 0.1}s`
               }}
             >
               <div className="relative overflow-hidden rounded-xl bg-white shadow-lg transition-all duration-500 hover:shadow-2xl hover:-translate-y-3 transform border border-gray-100">
-                {/* Faded background image */}
-                <div 
-                  className="absolute inset-0 opacity-20 bg-cover bg-center transition-all duration-700 group-hover:scale-125 group-hover:opacity-30"
-                  style={{
-                    backgroundImage: `url(${category.backgroundImage || category.image})`,
-                    filter: 'blur(2px)'
-                  }}
-                />
-                
                 {/* Card content */}
                 <div className="relative p-8">
                   {/* Product image with shadow */}
                   <div className="mb-6 h-48 flex items-center justify-center">
-                    <img
+                    <Image
                       src={category.image}
                       alt={category.name}
+                      width={200}
+                      height={200}
                       className="max-w-full max-h-full object-contain drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
                     />
                   </div>
