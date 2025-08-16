@@ -15,7 +15,6 @@ export default function ServiceBookingModal({ isOpen, onClose }: ServiceBookingM
     productType: '',
     message: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const productTypes = [
     'Visi Cooler',
