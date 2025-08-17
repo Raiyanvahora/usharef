@@ -80,64 +80,64 @@ export default function Home() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-[70svh] md:min-h-[85vh] bg-white">
       {/* Hero Section */}
-      <section className="hero-section-dark min-h-screen flex items-center relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+      <section className="hero-section-dark relative">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 items-center gap-6 min-h-[70svh] md:min-h-[85vh] py-8 sm:py-10 md:py-16">
             {/* Left Side - Product Image */}
-            <div className="flex justify-center lg:justify-start">
-              <div className="relative">
+            <div className="order-first md:order-none">
+              <div className="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-2xl">
                 <Image
                   src="/banners/60435acb-98b7-412c-b983-42433e438f72.png"
                   alt="Premium Refrigerator"
-                  width={600}
-                  height={700}
-                  className="object-contain max-w-full h-auto"
+                  fill
+                  className="object-cover"
                   priority
+                  sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>
             </div>
 
             {/* Right Side - Content */}
-            <div className="text-center lg:text-left">
+            <div className="space-y-4 sm:space-y-6">
               {/* Brand Badge */}
-              <div className="inline-flex items-center space-x-2 bg-white bg-opacity-10 px-4 py-2 rounded-full border border-white border-opacity-20 mb-6">
+              <div className="inline-flex items-center space-x-2 bg-white bg-opacity-10 px-4 py-2 rounded-full border border-white border-opacity-20">
                 <Award className="w-4 h-4 text-white" />
                 <span className="text-white font-medium text-sm">Charotar&apos;s Trusted Refrigerator Brand</span>
               </div>
 
               {/* Main Business Name */}
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-3 leading-tight">
+              <h1 className="font-bold text-white leading-tight [font-size:clamp(24px,8vw,48px)]">
                 <span className="text-blue-400">Usha</span> Refrigeration
               </h1>
               
               {/* Main Heading */}
-              <h2 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-200 mb-4 leading-tight">
+              <h2 className="font-bold text-gray-200 leading-tight [font-size:clamp(18px,5vw,32px)]">
                 Your Trusted Cooling Partner
               </h2>
 
               {/* Subheading */}
-              <h3 className="text-lg md:text-xl text-blue-400 font-semibold mb-6">
+              <p className="text-blue-400 font-semibold leading-snug [font-size:clamp(14px,3.8vw,20px)] line-clamp-4 sm:line-clamp-none">
                 Efficient. Reliable. Affordable.
-              </h3>
+              </p>
 
               {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <div className="flex flex-wrap gap-3">
                 <a 
                   href="https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-white text-black px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-gray-100 transition-colors flex items-center justify-center space-x-2 text-base sm:text-lg"
+                  className="inline-flex items-center rounded-xl px-4 py-2 bg-white text-black font-semibold hover:bg-gray-100 transition-colors"
                 >
-                  <MapPin className="w-5 h-5" />
+                  <MapPin className="w-4 h-4 mr-2" />
                   <span>Get Direction</span>
                 </a>
                 <button 
                   onClick={() => setIsServiceModalOpen(true)}
-                  className="border-2 border-white text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-semibold hover:bg-white hover:text-black transition-colors flex items-center justify-center space-x-2 text-base sm:text-lg"
+                  className="inline-flex items-center rounded-xl px-4 py-2 border-2 border-white text-white font-semibold hover:bg-white hover:text-black transition-colors"
                 >
-                  <Wrench className="w-5 h-5" />
+                  <Wrench className="w-4 h-4 mr-2" />
                   <span>Book a Service</span>
                 </button>
               </div>
@@ -147,15 +147,15 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-gray-50 py-12 sm:py-16">
+      <section className="bg-gray-50 py-8 sm:py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-12 md:gap-16">
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 lg:gap-12">
             {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center justify-center text-center animate-on-scroll px-4 py-4 w-full sm:w-auto">
-                <div className="text-3xl md:text-4xl font-bold text-primary-600 mb-2">
+              <div key={index} className="flex flex-col items-center justify-center text-center animate-on-scroll px-3 py-3 w-full sm:w-auto">
+                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-600 mb-1 sm:mb-2">
                   {stat.number}
                 </div>
-                <div className="text-gray-600 font-medium">
+                <div className="text-sm sm:text-base text-gray-600 font-medium">
                   {stat.label}
                 </div>
               </div>
@@ -165,68 +165,80 @@ export default function Home() {
       </section>
 
       {/* Our Brands Section */}
-      <section className="bg-white py-12 sm:py-16">
+      <section className="bg-white py-8 sm:py-12 lg:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-4">Brands We Have</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">We partner with leading refrigeration brands to bring you the best in cooling technology</p>
+          <div className="text-center mb-8 sm:mb-12">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-900 mb-3 sm:mb-4">Brands We Have</h2>
+            <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">We partner with leading refrigeration brands to bring you the best in cooling technology</p>
           </div>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12 md:gap-16 mb-12 justify-items-center">
+          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 justify-items-center">
             <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
                 <Image
                   src="/logo/western-head-logo-2025.png"
                   alt="Western Refrigeration"
-                  width={120}
+                  width={240}
                   height={120}
-                  className="object-contain max-w-full max-h-full"
+                  className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 120px"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Western</h3>
-              <p className="text-sm text-gray-600">Premium Refrigeration</p>
+              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Western</h3>
+              <p className="text-xs sm:text-sm text-gray-600">Premium Refrigeration</p>
             </div>
             
             <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
                 <Image
                   src="/logo/logo-1.png"
                   alt="Icemake"
-                  width={120}
+                  width={240}
                   height={120}
-                  className="object-contain max-w-full max-h-full"
+                  className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 120px"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Icemake</h3>
-              <p className="text-sm text-gray-600">Ice Solutions</p>
+              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Icemake</h3>
+              <p className="text-xs sm:text-sm text-gray-600">Ice Solutions</p>
             </div>
             
             <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
                 <Image
                   src="/logo/download.png"
                   alt="Frigoglass"
-                  width={120}
+                  width={240}
                   height={120}
-                  className="object-contain max-w-full max-h-full"
+                  className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 120px"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Frigoglass</h3>
-              <p className="text-sm text-gray-600">European Technology</p>
+              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Frigoglass</h3>
+              <p className="text-xs sm:text-sm text-gray-600">European Technology</p>
             </div>
             
             <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="w-32 h-32 bg-white rounded-2xl flex items-center justify-center mb-4 shadow-lg border border-gray-200 p-4">
+              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
                 <Image
                   src="/logo/images.png"
                   alt="Blue Star"
-                  width={120}
+                  width={240}
                   height={120}
-                  className="object-contain max-w-full max-h-full"
+                  className="h-12 sm:h-14 md:h-16 w-auto object-contain"
+                  loading="lazy"
+                  decoding="async"
+                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 120px"
                 />
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">Blue Star</h3>
-              <p className="text-sm text-gray-600">Cooling Excellence</p>
+              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Blue Star</h3>
+              <p className="text-xs sm:text-sm text-gray-600">Cooling Excellence</p>
             </div>
           </div>
 
@@ -243,22 +255,22 @@ export default function Home() {
       <HappyCustomers />
 
       {/* CTA Section */}
-      <section className="py-16 lg:py-20">
+      <section className="py-12 sm:py-16 lg:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <div className="animate-on-scroll">
-            <h2 className="text-3xl lg:text-4xl xl:text-5xl font-bold mb-8 text-gray-900">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-6 sm:mb-8 text-gray-900 leading-tight">
               Is Your Refrigerator Not Cooling Right?
             </h2>
             <div className="flex justify-center">
               <button
                 onClick={() => setIsServiceModalOpen(true)}
-                className="group inline-flex items-center justify-center space-x-3 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-12 py-5 rounded-full font-semibold text-xl shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-out transform hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700"
+                className="group inline-flex items-center justify-center space-x-2 sm:space-x-3 bg-gradient-to-r from-blue-600 via-blue-700 to-indigo-700 text-white px-6 sm:px-8 lg:px-12 py-3 sm:py-4 lg:py-5 rounded-full font-semibold text-base sm:text-lg lg:text-xl shadow-lg sm:shadow-xl hover:shadow-2xl hover:scale-105 transition-all duration-300 ease-out transform hover:from-blue-700 hover:via-indigo-700 hover:to-purple-700"
                 style={{ 
                   background: 'linear-gradient(135deg, #2563eb 0%, #1d4ed8 50%, #4338ca 100%)',
                   boxShadow: '0 10px 25px rgba(37, 99, 235, 0.3), 0 4px 10px rgba(0, 0, 0, 0.1)'
                 }}
               >
-                <Wrench className="w-6 h-6" />
+                <Wrench className="w-5 h-5 sm:w-6 sm:h-6" />
                 <span>Schedule a Repair</span>
               </button>
             </div>

@@ -20,7 +20,6 @@ interface ProductCardProps {
 export default function ProductCard({
   title,
   subtitle,
-  description,
   imageUrl,
   price,
   originalPrice,
@@ -76,7 +75,7 @@ export default function ProductCard({
   };
 
   return (
-    <div className="group relative flex flex-col bg-white rounded-2xl transition-all duration-300 hover:shadow-[0_20px_40px_-15px_rgba(0,0,0,0.1)] hover:-translate-y-1 w-full max-w-sm mx-auto sm:max-w-none">
+    <article className="group relative h-full flex flex-col bg-white rounded-xl border transition-all duration-300 hover:shadow-lg hover:-translate-y-1 w-full">
       {/* Badge (New or Bestseller) */}
       {(isNew || isBestseller) && (
         <div className="absolute top-4 left-4 z-10">
@@ -91,57 +90,49 @@ export default function ProductCard({
       )}
 
       {/* Image Container */}
-      <div className="relative aspect-[4/3] w-full overflow-hidden rounded-t-2xl p-4 sm:p-6 lg:p-8 bg-gradient-to-b from-gray-50 to-gray-100">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-gray-100 via-gray-50 to-gray-100 opacity-50"></div>
+      <div className="product-image-container rounded-t-xl">
         <Image
           src={imageUrl}
           alt={title}
           fill
-          className="object-contain transition-transform duration-500 group-hover:scale-105"
-          sizes="(min-width: 1024px) 384px, (min-width: 768px) 288px, 100vw"
+          className="no-crop"
+          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
           loading="lazy"
-          placeholder="blur"
-          blurDataURL="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAAIAAoDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAb/xAAhEAACAQMDBQAAAAAAAAAAAAABAgMABAUGIWEREiMxUf/EABUBAQEAAAAAAAAAAAAAAAAAAAMF/8QAGhEAAgIDAAAAAAAAAAAAAAAAAAECEgMRkf/aAAwDAQACEQMRAD8AltJagyeH0AthI5xdrLcNM91BF5pX2HaH9bcfaSXWGaRmknyJckliyjqTzSlT54b6bk+h0R//2Q=="
         />
       </div>
 
       {/* Content */}
-      <div className="flex flex-1 flex-col p-4 sm:p-6 pt-6 sm:pt-8">
+      <div className="flex flex-1 flex-col p-3 sm:p-4 gap-2 sm:gap-3">
         {/* Title & Rating */}
-        <div className="mb-4 sm:mb-6">
-          <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-2 min-h-[48px] sm:min-h-[56px] line-clamp-2">
+        <div>
+          <h3 className="text-sm sm:text-base font-medium line-clamp-2 mb-1">
             <Link href={href} className="hover:text-blue-600 transition-colors">
               {title}
             </Link>
           </h3>
           {subtitle && (
-            <p className="text-sm text-gray-600 mb-3">{subtitle}</p>
+            <p className="text-xs text-gray-500 line-clamp-2 mb-2">{subtitle}</p>
           )}
-          <div className="flex items-center space-x-2">
+          <div className="flex items-center space-x-1">
             <div className="flex">
               {renderStars(rating)}
             </div>
-            <span className="text-sm text-gray-600">
+            <span className="text-xs text-gray-600">
               ({reviewCount})
             </span>
           </div>
         </div>
 
-        {/* Description */}
-        <p className="text-sm text-gray-600 mb-4 sm:mb-6 line-clamp-2 flex-grow">
-          {description}
-        </p>
-
         {/* Price */}
-        <div className="mb-4 sm:mb-6">
-          <div className="flex items-baseline gap-2 flex-wrap">
-            <span className="text-xl sm:text-2xl font-bold text-gray-900">{price}</span>
+        <div className="text-[13px] sm:text-base">
+          <div className="flex items-baseline gap-1 flex-wrap">
+            <span className="text-sm sm:text-xl font-bold text-gray-900">{price}</span>
             {originalPrice && (
               <>
-                <span className="text-sm text-gray-500 line-through">
+                <span className="text-xs text-gray-500 line-through">
                   {originalPrice}
                 </span>
-                <span className="text-xs font-medium px-2 py-1 bg-green-100 text-green-700 rounded-full">
+                <span className="text-[10px] sm:text-xs font-medium px-1 py-0.5 bg-green-100 text-green-700 rounded">
                   Save ₹{calculateSavings().toLocaleString()}
                 </span>
               </>
@@ -150,14 +141,16 @@ export default function ProductCard({
         </div>
 
         {/* CTA Button */}
-        <Link
-          href={href}
-          className="inline-flex items-center justify-center w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-4 sm:px-6 py-3 sm:py-4 rounded-xl font-semibold shadow-sm hover:shadow-md transition-all duration-200 group/btn text-sm sm:text-base"
-        >
-          View Details
-          <ArrowRight className="ml-2 w-5 h-5 transition-transform duration-200 group-hover/btn:translate-x-1" />
-        </Link>
+        <div className="mt-auto pt-2">
+          <Link
+            href={href}
+            className="hidden sm:inline-flex items-center justify-center w-full bg-blue-600 text-white px-3 py-1.5 rounded-lg font-medium transition-colors hover:bg-blue-700 text-sm"
+          >
+            View Details
+            <ArrowRight className="ml-1 w-4 h-4" />
+          </Link>
+        </div>
       </div>
-    </div>
+    </article>
   );
 } 

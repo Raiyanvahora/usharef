@@ -70,12 +70,17 @@ export default function Footer() {
         <div className="border-t border-[#21243b] mb-0" />
 
         {/* Bottom Footer */}
-        <div className="py-5 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-          <p className="text-[#c7d0e2] text-sm text-left">&copy; 2024 Usha Refrigerators & Service. All rights reserved.</p>
-          <div className="flex space-x-6 text-sm md:justify-end">
-            <Link href="/privacy" className="text-[#c7d0e2] hover:text-white hover:underline transition-colors">Privacy Policy</Link>
-            <Link href="/terms" className="text-[#c7d0e2] hover:text-white hover:underline transition-colors">Terms of Service</Link>
+        <div className="py-5">
+          <div className="flex flex-col md:flex-row md:justify-between md:items-center gap-4">
+            <p className="text-[#c7d0e2] text-sm text-left">&copy; 2024 Usha Refrigerators & Service. All rights reserved.</p>
+            <div className="flex space-x-6 text-sm md:justify-end">
+              <Link href="/privacy" className="text-[#c7d0e2] hover:text-white hover:underline transition-colors">Privacy Policy</Link>
+              <Link href="/terms" className="text-[#c7d0e2] hover:text-white hover:underline transition-colors">Terms of Service</Link>
+            </div>
           </div>
+          <p className="text-[#c7d0e2] text-xs mt-3 text-center md:text-left">
+            *Prices shown are MRP. Offers and final prices are shared on WhatsApp. T & C Apply.
+          </p>
         </div>
       </div>
     </footer>

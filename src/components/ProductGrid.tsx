@@ -2,8 +2,8 @@
 
 import React, { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Search, Grid, List, Heart, MessageCircle } from 'lucide-react';
-import ProductImage from './ui/ProductImage';
 
 interface Product {
   id: string;
@@ -110,18 +110,14 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
     return Array.from(cats);
   }, [categories]);
 
-  const calculateDiscount = (mrp: number, selling: number) => {
-    if (mrp && selling && mrp > selling) {
-      return Math.round(((mrp - selling) / mrp) * 100);
-    }
-    return 0;
-  };
 
 
-  const whatsappNumber = '9898649362';
-  const getWhatsAppLink = (product: Product & { categoryId: string; categoryName: string }) => {
-    const message = encodeURIComponent(`Hi, I'm interested in the ${product.brand || 'Western'} ${product.model} - ${product.name} (${product.categoryName}). Please provide more details.`);
-    return `https://wa.me/${whatsappNumber}?text=${message}`;
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || '919898649362';
+  const getWhatsAppLink = (product: Product & { categoryId: string; categoryName: string }, forOffer: boolean = false) => {
+    const message = forOffer 
+      ? `Hi, I'm interested in ${product.name} (${product.id}); please share your best offer.`
+      : `Hi, I'm interested in the ${product.brand || 'Western'} ${product.model} - ${product.name} (${product.categoryName}). Please provide more details.`;
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
 
   return (
@@ -200,11 +196,10 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
 
       {/* Products Grid/List */}
       <div className={viewMode === 'grid' 
-        ? "grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" 
+        ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" 
         : "space-y-4"
       }>
         {filteredProducts.map((product, index) => {
-          const discount = product.price ? calculateDiscount(product.price.mrp, product.price.selling) : 0;
           const productUrl = `/products/${product.id}`;
 
           if (viewMode === 'list') {
@@ -212,16 +207,14 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
               <div key={`${product.categoryId}-${product.name}`} className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
                 <div className="flex flex-col md:flex-row gap-6">
                   {/* Product Image */}
-                  <div className="md:w-48 h-48 flex-shrink-0">
-                    <ProductImage
+                  <div className="w-full md:w-48 flex-shrink-0 product-image-container rounded-lg">
+                    <Image
                       src={product.imageUrl}
                       alt={product.name}
-                      fallbackSrc="/images/placeholder.jpg"
-                      width={192}
-                      height={192}
-                      className="w-full h-full object-contain rounded-lg bg-gray-50"
-                      objectFit="contain"
+                      fill
+                      className="no-crop"
                       loading="lazy"
+                      sizes="(max-width: 768px) 100vw, 192px"
                     />
                   </div>
 
@@ -242,23 +235,26 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                       </button>
                     </div>
 
-                    {/* Price */}
-                    <div className="flex items-center gap-3 mb-4">
-                      {product.price && (
-                        <>
-                          <span className="text-2xl font-bold text-gray-900">₹{product.price.selling.toLocaleString()}</span>
-                          {product.price.mrp > product.price.selling && (
-                            <>
-                              <span className="text-lg text-gray-500 line-through">₹{product.price.mrp.toLocaleString()}</span>
-                              {discount > 0 && (
-                                <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">
-                                  {discount}% OFF
-                                </span>
-                              )}
-                            </>
-                          )}
-                        </>
-                      )}
+                    {/* Crossed-out MRP with Offer Available */}
+                    <div className="mb-4">
+                      <div className="flex flex-wrap items-center gap-2 mb-1">
+                        {product.price?.mrp ? (
+                          <span className="text-2xl font-bold text-gray-500 line-through">
+                            MRP: ₹{product.price.mrp.toLocaleString()}
+                          </span>
+                        ) : (
+                          <span className="text-lg font-medium text-gray-600">Price on Request</span>
+                        )}
+                        <a
+                          href={getWhatsAppLink(product, true)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center px-3 py-1 bg-orange-100 hover:bg-orange-200 text-orange-700 text-sm font-semibold rounded-full transition-colors"
+                        >
+                          <span>Offer Available</span>
+                        </a>
+                      </div>
+                      <p className="text-xs text-gray-500">T & C Apply</p>
                     </div>
 
                     {/* Actions */}
@@ -270,13 +266,13 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                         View Details
                       </Link>
                       <a
-                        href={getWhatsAppLink(product)}
+                        href={getWhatsAppLink(product, true)}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
                       >
                         <MessageCircle className="w-4 h-4" />
-                        WhatsApp
+                        WhatsApp for Offer
                       </a>
                     </div>
                   </div>
@@ -288,17 +284,15 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
           return (
             <div key={`${product.categoryId}-${product.name}`} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
               {/* Product Image */}
-              <div className="aspect-square bg-gray-50 relative group">
-                <ProductImage
+              <div className="product-image-container group">
+                <Image
                   src={product.imageUrl}
                   alt={product.name}
-                  fallbackSrc="/images/placeholder.jpg"
-                  width={300}
-                  height={300}
-                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
-                  objectFit="contain"
+                  fill
+                  className="no-crop group-hover:scale-105 transition-transform duration-300"
                   loading={index < 12 ? "eager" : "lazy"}
                   priority={index < 12}
+                  sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                 />
                 <button className="absolute top-3 right-3 p-2 bg-white rounded-full shadow-md text-gray-400 hover:text-red-500 transition-colors">
                   <Heart className="w-5 h-5" />
@@ -321,25 +315,26 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                 <p className="text-sm text-gray-600 mb-2">{product.name}</p>
                 <p className="text-sm text-gray-500 mb-3">Capacity: {product.capacity || 'N/A'} Liters</p>
 
-                {/* Price */}
-                <div className="flex items-center gap-2 mb-4">
-                  {product.price ? (
-                    <>
-                      <span className="text-xl font-bold text-gray-900">₹{product.price.selling.toLocaleString()}</span>
-                      {product.price.mrp > product.price.selling && (
-                        <>
-                          <span className="text-sm text-gray-500 line-through">₹{product.price.mrp.toLocaleString()}</span>
-                          {discount > 0 && (
-                            <span className="px-2 py-1 bg-green-100 text-green-800 text-xs font-semibold rounded-full">
-                              {discount}% OFF
-                            </span>
-                          )}
-                        </>
-                      )}
-                    </>
-                  ) : (
-                    <span className="text-lg text-gray-600">Price on request</span>
-                  )}
+                {/* Crossed-out MRP with Offer Available */}
+                <div className="mb-4">
+                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                    {product.price?.mrp ? (
+                      <span className="text-xl font-bold text-gray-500 line-through">
+                        MRP: ₹{product.price.mrp.toLocaleString()}
+                      </span>
+                    ) : (
+                      <span className="text-lg font-medium text-gray-600">Price on Request</span>
+                    )}
+                    <a
+                      href={getWhatsAppLink(product, true)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center px-2 py-1 bg-orange-100 hover:bg-orange-200 text-orange-700 text-xs font-semibold rounded-full transition-colors"
+                    >
+                      <span>Offer Available</span>
+                    </a>
+                  </div>
+                  <p className="text-xs text-gray-500">T & C Apply</p>
                 </div>
 
                 {/* Actions */}
@@ -351,13 +346,13 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                     View Details
                   </Link>
                   <a
-                    href={getWhatsAppLink(product)}
+                    href={getWhatsAppLink(product, true)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>Order via WhatsApp</span>
+                    <span>WhatsApp for Offer</span>
                   </a>
                 </div>
               </div>

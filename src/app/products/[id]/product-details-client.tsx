@@ -2,6 +2,7 @@
 
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Phone, MessageCircle, Star, CheckCircle, Heart, Share2, Download, ChevronLeft, ChevronRight, ZoomIn, Mail } from 'lucide-react';
 import { useState } from 'react';
 import ProductImage from '../../../components/ui/ProductImage';
@@ -12,7 +13,8 @@ interface ProductDetailsClientProps {
     name: string;
     image: string;
     images?: string[];
-    price: string;
+    mrp?: string;
+    price?: string;
     originalPrice?: string;
     capacity?: string;
     description?: string;
@@ -39,7 +41,8 @@ interface ProductDetailsClientProps {
     id: string;
     name: string;
     image: string;
-    price: string;
+    mrp?: string;
+    price?: string;
     originalPrice?: string;
     capacity?: string;
     isNew?: boolean;
@@ -58,22 +61,21 @@ export default function ProductDetailsClient({ product, category, relatedProduct
   }
 
   // WhatsApp contact details
-  const whatsappNumber = '9898649362';
-  const whatsappMessage = encodeURIComponent(`Hi, I'm interested in the ${product.name} from ${category.name}. Please provide more details.`);
-  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
-
-  // Calculate discount if prices are available
-  const calculateDiscount = () => {
-    if (product.price && product.originalPrice) {
-      const currentPrice = parseFloat(product.price.replace(/[₹,]/g, ''));
-      const originalPrice = parseFloat(product.originalPrice.replace(/[₹,]/g, ''));
-      if (originalPrice > currentPrice) {
-        const discountPercent = Math.round(((originalPrice - currentPrice) / originalPrice) * 100);
-        return `${discountPercent}% OFF`;
-      }
-    }
-    return null;
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || '919898649362';
+  const getWhatsAppLink = (forOffer: boolean = false) => {
+    const message = forOffer 
+      ? `Hi, I'm interested in ${product.name} (${product.id}); please share your best offer.`
+      : `Hi, I'm interested in the ${product.name} from ${category.name}. Please provide more details.`;
+    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
+  const whatsappLink = getWhatsAppLink();
+
+  // Get MRP display value
+  const getMRPDisplay = () => {
+    return product.mrp || product.originalPrice || product.price || 'Contact for MRP';
+  };
+  
+  const mrpDisplay = getMRPDisplay();
 
   // Use product images or fallback to single image
   const productImages = product.images?.length ? product.images : [product.image || '/images/placeholder.jpg'];
@@ -81,7 +83,7 @@ export default function ProductDetailsClient({ product, category, relatedProduct
   // Product specifications with enhanced structure
   const specifications = product.specifications || {
     'Brand': product.brand || 'Western',
-    'Model': product.name,
+    'Model': `${product.name} (${product.id})`,
     'Category': category.name,
     'Type': product.type || 'Standard',
     ...(product.capacity && { 'Capacity': product.capacity }),
@@ -114,7 +116,7 @@ export default function ProductDetailsClient({ product, category, relatedProduct
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-[70svh] md:min-h-[85vh] bg-white">
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-200 pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -137,7 +139,7 @@ export default function ProductDetailsClient({ product, category, relatedProduct
           {/* Product Images Gallery */}
           <div className="space-y-4">
             {/* Main Image with Zoom */}
-            <div className="relative aspect-square bg-white rounded-lg border border-gray-200 overflow-hidden group">
+            <div className="product-image-container bg-white border border-gray-200 group">
               {productImages.length > 1 && (
                 <>
                   <button
@@ -161,12 +163,13 @@ export default function ProductDetailsClient({ product, category, relatedProduct
                 className="relative w-full h-full cursor-zoom-in"
                 onClick={() => setIsZoomed(!isZoomed)}
               >
-                <ProductImage
+                <Image
                   src={productImages[activeImageIndex]}
                   alt={product.name}
-                  fallbackSrc="/images/placeholder.jpg"
-                  className={`w-full h-full object-contain p-8 transition-transform duration-300 ${isZoomed ? 'scale-150' : ''}`}
+                  fill
+                  className={`no-crop transition-transform duration-300 ${isZoomed ? 'scale-150' : ''}`}
                   priority
+                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                 />
                 <div className="absolute top-4 right-4 bg-white/90 p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
                   <ZoomIn className="w-4 h-4 text-gray-600" />
@@ -188,11 +191,12 @@ export default function ProductDetailsClient({ product, category, relatedProduct
                     }`}
                   >
                     <div className="relative w-full h-full bg-white">
-                      <ProductImage
+                      <Image
                         src={image}
                         alt={`${product.name} view ${index + 1}`}
-                        fallbackSrc="/images/placeholder.jpg"
-                        className="w-full h-full object-contain p-2"
+                        fill
+                        className="no-crop"
+                        sizes="80px"
                       />
                     </div>
                   </button>
@@ -265,25 +269,26 @@ export default function ProductDetailsClient({ product, category, relatedProduct
               )}
             </div>
 
-            {/* Price Section */}
+            {/* Crossed-out MRP with Offer Available */}
             <div className="border-t border-b border-gray-200 py-4">
-              <div className="flex items-baseline space-x-3">
-                <span className="text-3xl font-bold text-gray-900">
-                  {product.price || 'Price on Request'}
-                </span>
-                {product.originalPrice && product.originalPrice !== product.price && (
-                  <>
-                    <span className="text-xl text-gray-500 line-through">
-                      {product.originalPrice}
-                    </span>
-                    {calculateDiscount() && (
-                      <span className="bg-red-500 text-white text-sm font-semibold px-2 py-1 rounded">
-                        {calculateDiscount()}
-                      </span>
-                    )}
-                  </>
+              <div className="flex flex-wrap items-center gap-3 mb-2">
+                {mrpDisplay.includes('Contact') ? (
+                  <span className="text-3xl font-bold text-gray-600">{mrpDisplay}</span>
+                ) : (
+                  <span className="text-3xl font-bold text-gray-500 line-through">
+                    MRP: {mrpDisplay}
+                  </span>
                 )}
+                <a
+                  href={getWhatsAppLink(true)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-4 py-2 bg-orange-100 hover:bg-orange-200 text-orange-700 text-sm font-semibold rounded-full transition-colors"
+                >
+                  <span>Offer Available</span>
+                </a>
               </div>
+              <p className="text-xs text-gray-500">T & C Apply</p>
               <p className="text-sm text-gray-500 mt-1">*Inclusive of all taxes</p>
             </div>
 
@@ -303,15 +308,25 @@ export default function ProductDetailsClient({ product, category, relatedProduct
 
             {/* Action Buttons */}
             <div className="space-y-3">
+              <a
+                href={getWhatsAppLink(true)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-green-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+              >
+                <MessageCircle className="w-5 h-5" />
+                <span>WhatsApp for Offer</span>
+              </a>
+              
               <div className="grid grid-cols-2 gap-3">
                 <a
                   href={whatsappLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="bg-green-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
+                  className="bg-gray-100 text-gray-700 px-4 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2"
                 >
                   <MessageCircle className="w-5 h-5" />
-                  <span>WhatsApp</span>
+                  <span>Enquiry</span>
                 </a>
                 
                 <a
@@ -494,15 +509,20 @@ export default function ProductDetailsClient({ product, category, relatedProduct
                     <p className="text-xs text-gray-500 mb-2">{relatedProduct.capacity || category.name}</p>
                     <div className="flex items-center justify-between">
                       <div>
-                        {relatedProduct.price ? (
-                          <div className="flex items-baseline space-x-1">
-                            <span className="font-bold text-blue-600">{relatedProduct.price}</span>
-                            {relatedProduct.originalPrice && (
-                              <span className="text-xs text-gray-500 line-through">{relatedProduct.originalPrice}</span>
-                            )}
+                        {relatedProduct.mrp || relatedProduct.originalPrice || relatedProduct.price ? (
+                          <div className="space-y-1">
+                            <div className="flex items-baseline space-x-1">
+                              <span className="text-sm font-bold text-gray-500 line-through">
+                                MRP: {relatedProduct.mrp || relatedProduct.originalPrice || relatedProduct.price}
+                              </span>
+                            </div>
+                            <p className="text-xs text-gray-500">T & C Apply</p>
                           </div>
                         ) : (
-                          <span className="text-xs text-gray-600">Price on request</span>
+                          <div className="space-y-1">
+                            <span className="text-xs text-gray-600">Price on request</span>
+                            <p className="text-xs text-gray-500">T & C Apply</p>
+                          </div>
                         )}
                       </div>
                     </div>

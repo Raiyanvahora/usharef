@@ -7,6 +7,7 @@ import Footer from '../components/layout/Footer';
 import VersionCheck from '../components/VersionCheck';
 import ServiceWorkerUnregister from '../components/ServiceWorkerUnregister';
 import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton';
+import EmailOptins from '../components/EmailOptins';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -71,6 +72,7 @@ export default function RootLayout({
         </main>
         <Footer />
         <WhatsAppFloatingButton />
+        <EmailOptins />
       </body>
     </html>
   );

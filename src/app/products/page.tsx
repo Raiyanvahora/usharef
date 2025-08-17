@@ -2,8 +2,8 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { categories } from '../../../data/products';
-import ProductImage from '../../components/ui/ProductImage';
 import ProductGrid from '../../components/ProductGrid';
 import { Grid, List } from 'lucide-react';
 
@@ -11,7 +11,7 @@ export default function ProductsPage() {
   const [viewMode, setViewMode] = useState<'categories' | 'all'>('categories');
 
   return (
-    <div className="min-h-screen bg-gray-50 pt-20">
+    <div className="min-h-[70svh] md:min-h-[85vh] bg-gray-50 pt-20">
       {/* Header */}
       <div className="bg-white border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
@@ -70,14 +70,13 @@ export default function ProductsPage() {
                 >
                   <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300">
                     {/* Category Image */}
-                    <div className="h-64 bg-gray-50 relative">
-                      <ProductImage
+                    <div className="product-image-container">
+                      <Image
                         src={categoryImage}
                         alt={category.name}
-                        fallbackSrc="/images/placeholder.jpg"
-                        width={400}
-                        height={256}
-                        className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300"
+                        fill
+                        className="no-crop group-hover:scale-105 transition-transform duration-300"
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       />
                     </div>
 
