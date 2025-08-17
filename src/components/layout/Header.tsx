@@ -40,10 +40,13 @@ export default function Header() {
           href="/" 
           className="flex items-center group select-none mr-3 sm:mr-6 pr-3 sm:pr-6 border-r border-[#E6E6E6]"
         >
-          <div className="flex items-center">
-            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 whitespace-nowrap">
+          <div className="flex flex-col items-start">
+            <h1 className="text-xl sm:text-2xl font-bold text-gray-900 whitespace-nowrap leading-tight">
               USHA REFRIGERATION
             </h1>
+            <span className="text-xs sm:text-sm font-medium text-gray-600 tracking-wider">
+              & SERVICE
+            </span>
           </div>
         </Link>
 

@@ -12,7 +12,10 @@ export default function Footer() {
             {/* Brand Section */}
             <div className="flex-1 min-w-[220px] space-y-6">
               <div className="mb-2">
-                <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-white">Usha Refrigerators</span>
+                <div className="flex flex-col">
+                  <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-white leading-tight">Usha Refrigerators</span>
+                  <span className="text-sm font-medium text-gray-300 tracking-wider">& Service</span>
+                </div>
               </div>
               <p className="text-[#c7d0e2] leading-relaxed max-w-md text-base">
                 Charotar&apos;s trusted refrigerator brand for over 10 years. Premium quality, energy-efficient refrigerators for every home.
@@ -68,7 +71,7 @@ export default function Footer() {
 
         {/* Bottom Footer */}
         <div className="py-5 flex flex-col md:flex-row md:justify-between md:items-center gap-4">
-          <p className="text-[#c7d0e2] text-sm text-left">&copy; 2024 Usha Refrigerators. All rights reserved.</p>
+          <p className="text-[#c7d0e2] text-sm text-left">&copy; 2024 Usha Refrigerators & Service. All rights reserved.</p>
           <div className="flex space-x-6 text-sm md:justify-end">
             <Link href="/privacy" className="text-[#c7d0e2] hover:text-white hover:underline transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="text-[#c7d0e2] hover:text-white hover:underline transition-colors">Terms of Service</Link>
