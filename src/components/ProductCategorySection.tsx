@@ -54,7 +54,7 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
                       width={300}
                       height={300}
                       className="max-w-full max-h-full object-contain drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-                      priority={index === 0}
+                      loading="lazy"
                     />
                   </div>
                   
@@ -90,7 +90,7 @@ export default function ProductCategorySection({ categories, title = "Shop by Ca
                       width={200}
                       height={200}
                       className="max-w-full max-h-full object-contain drop-shadow-2xl transition-all duration-500 group-hover:scale-110 group-hover:rotate-3"
-                      priority={index === 0}
+                      loading="lazy"
                     />
                   </div>
                   

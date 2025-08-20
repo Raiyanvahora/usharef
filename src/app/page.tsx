@@ -95,6 +95,7 @@ export default function Home() {
                   fill
                   className="object-cover"
                   priority
+                  loading="eager"
                   sizes="(max-width: 768px) 100vw, 50vw"
                 />
               </div>

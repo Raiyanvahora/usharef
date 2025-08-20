@@ -21,6 +21,9 @@ export default function EmailOptins() {
   const [lastName, setLastName] = useState('');
   const [phone, setPhone] = useState('');
 
+  // Get responsive values
+  const isMobile = typeof window !== 'undefined' && window.innerWidth < 640;
+  
   // Styles for the modal
   const styles = {
     modal: {
@@ -29,12 +32,43 @@ export default function EmailOptins() {
       left: "50%",
       top: "50%",
       transform: "translate(-50%,-50%)",
-      width: 560,
-      maxWidth: "92vw",
+      width: isMobile ? "calc(100vw - 24px)" : "min(560px, calc(100vw - 32px))",
+      maxWidth: "95vw",
       background: "#dfeee8",   // teal-ish like screenshot
-      padding: 22,
-      borderRadius: 16,
+      padding: isMobile ? 16 : 22,
+      borderRadius: isMobile ? 12 : 16,
       boxShadow: "0 24px 60px rgba(0,0,0,.25)"
+    },
+    input: {
+      padding: isMobile ? '10px' : '12px',
+      background: 'white',
+      border: '1px solid #ddd',
+      borderRadius: '10px',
+      outline: 'none',
+      fontSize: isMobile ? '14px' : '16px'
+    },
+    button: {
+      padding: isMobile ? '12px' : '14px',
+      background: '#0d3b66',
+      color: 'white',
+      border: 'none',
+      borderRadius: '10px',
+      fontWeight: '600' as const,
+      cursor: 'pointer',
+      fontSize: isMobile ? '14px' : '16px'
+    },
+    heading: {
+      fontSize: isMobile ? '24px' : '28px',
+      fontWeight: '700' as const,
+      color: '#0d3b66',
+      textAlign: 'center' as const,
+      margin: '0 0 8px 0'
+    },
+    subtext: {
+      fontSize: isMobile ? '14px' : '16px',
+      color: '#0d3b66',
+      textAlign: 'center' as const,
+      margin: '0 0 20px 0'
     }
   };
 
@@ -115,10 +149,10 @@ export default function EmailOptins() {
           >
             <div className="flex justify-between items-start mb-4">
               <div>
-                <h2 id="modal-title" style={{ margin: "0 0 6px 0", fontSize: "24px", fontWeight: "bold", color: "#111" }}>
+                <h2 id="modal-title" style={styles.heading}>
                   {OFFER_HEADLINE}
                 </h2>
-                <p style={{ marginTop: 0, color: "#444" }}>
+                <p style={styles.subtext}>
                   {OFFER_SUBTEXT}
                 </p>
               </div>
@@ -126,39 +160,27 @@ export default function EmailOptins() {
                 onClick={handleModalClose}
                 className="text-gray-400 hover:text-gray-600"
                 aria-label="Close dialog"
-                style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '18px' }}
+                style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: isMobile ? '16px' : '18px' }}
               >
                 ✕
               </button>
             </div>
             
-            <form onSubmit={handleModalSubmit} style={{ display: 'grid', gap: '16px' }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
+            <form onSubmit={handleModalSubmit} style={{ display: 'grid', gap: isMobile ? '12px' : '16px' }}>
+              <div style={{ display: 'grid', gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr', gap: isMobile ? '8px' : '12px' }}>
                 <input
                   type="text"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                   placeholder="First name"
-                  style={{ 
-                    padding: '12px', 
-                    background: 'white', 
-                    border: '1px solid #ddd', 
-                    borderRadius: '10px', 
-                    outline: 'none' 
-                  }}
+                  style={styles.input}
                 />
                 <input
                   type="text"
                   value={lastName}
                   onChange={(e) => setLastName(e.target.value)}
                   placeholder="Last name"
-                  style={{ 
-                    padding: '12px', 
-                    background: 'white', 
-                    border: '1px solid #ddd', 
-                    borderRadius: '10px', 
-                    outline: 'none' 
-                  }}
+                  style={styles.input}
                 />
               </div>
               
@@ -167,25 +189,17 @@ export default function EmailOptins() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="Email *"
-                style={{ 
-                  padding: '12px', 
-                  background: 'white', 
-                  border: '1px solid #ddd', 
-                  borderRadius: '10px', 
-                  outline: 'none' 
-                }}
+                style={styles.input}
                 required
               />
               
               <div style={{ display: 'flex' }}>
                 <select style={{ 
-                  padding: '12px', 
-                  background: 'white', 
-                  border: '1px solid #ddd', 
-                  borderTopLeftRadius: '10px', 
-                  borderBottomLeftRadius: '10px',
+                  ...styles.input,
+                  borderTopRightRadius: '0', 
+                  borderBottomRightRadius: '0',
                   borderRight: 'none',
-                  outline: 'none' 
+                  flex: '0 0 80px'
                 }}>
                   <option value="+91">+91</option>
                 </select>
@@ -195,34 +209,22 @@ export default function EmailOptins() {
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="Phone number"
                   style={{ 
+                    ...styles.input,
                     flex: 1,
-                    padding: '12px', 
-                    background: 'white', 
-                    border: '1px solid #ddd', 
-                    borderTopRightRadius: '10px', 
-                    borderBottomRightRadius: '10px',
-                    outline: 'none' 
+                    borderTopLeftRadius: '0', 
+                    borderBottomLeftRadius: '0'
                   }}
                 />
               </div>
               
               <button
                 type="submit"
-                style={{ 
-                  padding: '14px', 
-                  background: '#0d3b66', 
-                  color: 'white', 
-                  border: 'none', 
-                  borderRadius: '10px', 
-                  fontWeight: '600',
-                  cursor: 'pointer',
-                  fontSize: '16px'
-                }}
+                style={styles.button}
               >
                 Submit
               </button>
               
-              <p style={{ fontSize: '12px', color: '#666', textAlign: 'center', margin: 0 }}>
+              <p style={{ fontSize: isMobile ? '10px' : '12px', color: '#666', textAlign: 'center', margin: 0, lineHeight: 1.4 }}>
                 By subscribing, you agree to our privacy policy and terms of service.
               </p>
             </form>

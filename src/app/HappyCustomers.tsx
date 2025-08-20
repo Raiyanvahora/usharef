@@ -94,8 +94,8 @@ const HappyCustomers: React.FC = () => {
         <div className="relative">
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={20}
-            slidesPerView={2}
+            spaceBetween={12}
+            slidesPerView={3}
             navigation={{
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',
@@ -116,20 +116,24 @@ const HappyCustomers: React.FC = () => {
             grabCursor={true}
             centeredSlides={false}
             breakpoints={{
+              480: {
+                slidesPerView: 4,
+                spaceBetween: 16,
+              },
               640: {
-                slidesPerView: 3,
+                slidesPerView: 4,
                 spaceBetween: 20,
               },
               768: {
-                slidesPerView: 4,
+                slidesPerView: 5,
                 spaceBetween: 24,
               },
               1024: {
-                slidesPerView: 5,
+                slidesPerView: 6,
                 spaceBetween: 30,
               },
               1280: {
-                slidesPerView: 6,
+                slidesPerView: 7,
                 spaceBetween: 30,
               },
             }}
@@ -140,12 +144,12 @@ const HappyCustomers: React.FC = () => {
               
               return (
                 <SwiperSlide key={customer.filename + idx}>
-                  <div className="aspect-square bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group">
+                  <div className="aspect-square bg-white rounded-lg md:rounded-xl shadow-md md:shadow-lg overflow-hidden hover:shadow-xl transition-all duration-300 hover:scale-105 group">
                     <Image
                       src={imagePath}
                       alt={`Happy Customer ${idx + 1}`}
-                      width={300}
-                      height={300}
+                      width={200}
+                      height={200}
                       className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-500"
                       loading="lazy"
                       onLoad={() => {}}
@@ -154,7 +158,7 @@ const HappyCustomers: React.FC = () => {
                         target.style.display = 'none';
                         const parent = target.parentElement;
                         if (parent) {
-                          parent.innerHTML = `<div class="p-4 text-xs text-red-500 flex items-center justify-center h-full">Image not available</div>`;
+                          parent.innerHTML = `<div class="p-2 md:p-4 text-xs text-red-500 flex items-center justify-center h-full">Image not available</div>`;
                         }
                       }}
                     />
@@ -165,14 +169,14 @@ const HappyCustomers: React.FC = () => {
           </Swiper>
 
           {/* Custom Navigation Buttons */}
-          <button className="swiper-button-prev-custom absolute left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-[#1428A0] rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group">
-            <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button className="swiper-button-prev-custom absolute left-1 md:left-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-[#1428A0] rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <svg className="w-4 h-4 md:w-6 md:h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </button>
           
-          <button className="swiper-button-next-custom absolute right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-[#1428A0] rounded-full p-3 shadow-lg hover:shadow-xl transition-all duration-300 group">
-            <svg className="w-6 h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <button className="swiper-button-next-custom absolute right-1 md:right-4 top-1/2 -translate-y-1/2 z-10 bg-white/90 hover:bg-white text-[#1428A0] rounded-full p-2 md:p-3 shadow-lg hover:shadow-xl transition-all duration-300 group">
+            <svg className="w-4 h-4 md:w-6 md:h-6 group-hover:scale-110 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
             </svg>
           </button>

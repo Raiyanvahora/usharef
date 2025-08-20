@@ -1,6 +1,5 @@
 import Link from 'next/link';
 import { Phone, Mail, MapPin } from 'lucide-react';
-import { FaFacebookF, FaInstagram, FaTwitter, FaYoutube } from 'react-icons/fa';
 
 export default function Footer() {
   return (
@@ -9,25 +8,6 @@ export default function Footer() {
         {/* Main Footer Content */}
         <div className="py-14">
           <div className="flex flex-col md:flex-row justify-between items-start gap-12 md:gap-16">
-            {/* Brand Section */}
-            <div className="flex-1 min-w-[220px] space-y-6">
-              <div className="mb-2">
-                <div className="flex flex-col">
-                  <span className="text-2xl md:text-3xl font-extrabold tracking-wide text-white leading-tight">Usha Refrigerators</span>
-                  <span className="text-sm font-medium text-gray-300 tracking-wider">& Service</span>
-                </div>
-              </div>
-              <p className="text-[#c7d0e2] leading-relaxed max-w-md text-base">
-                Charotar&apos;s trusted refrigerator brand for over 10 years. Premium quality, energy-efficient refrigerators for every home.
-              </p>
-              <div className="flex space-x-4 mt-2">
-                <a href="#" aria-label="Facebook" className="hover:text-white transition-colors"><FaFacebookF size={18} /></a>
-                <a href="#" aria-label="Instagram" className="hover:text-white transition-colors"><FaInstagram size={18} /></a>
-                <a href="#" aria-label="Twitter" className="hover:text-white transition-colors"><FaTwitter size={18} /></a>
-                <a href="#" aria-label="YouTube" className="hover:text-white transition-colors"><FaYoutube size={18} /></a>
-              </div>
-            </div>
-
             {/* Quick Links */}
             <div className="flex-1 min-w-[180px] space-y-6">
               <h3 className="text-lg font-bold text-white mb-2">Quick Links</h3>
