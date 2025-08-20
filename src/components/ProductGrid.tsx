@@ -152,7 +152,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
 
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || '919898649362';
-  const getWhatsAppLink = (product: Product & { categoryId: string; categoryName: string }, forOffer: boolean = false) => {
+  const getWhatsAppLink = (product: Product & { categoryId: string; categoryName: string }) => {
     const currentUrl = typeof window !== 'undefined' ? window.location.origin + `/products/${product.id}` : `/products/${product.id}`;
     const message = `Hi Usha Refrigeration, I'm interested in ${product.brand || 'Western'} ${product.categoryName} – ${product.name} (${product.capacity || 'N/A'} L).
 Link: ${currentUrl}

@@ -17,7 +17,7 @@ interface QuoteAreaProps {
 
 const WHATSAPP_NUMBER = '919898649362';
 
-export default function QuoteArea({ product, showForm = false, className = '' }: QuoteAreaProps) {
+export default function QuoteArea({ product, className = '' }: QuoteAreaProps) {
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [city, setCity] = useState('Anand, Gujarat');
   const [formData, setFormData] = useState({

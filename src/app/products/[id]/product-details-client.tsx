@@ -3,7 +3,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, MessageCircle, Star, CheckCircle, Heart, Share2, Download, ChevronLeft, ChevronRight, ZoomIn, Mail } from 'lucide-react';
+import { MessageCircle, Star, CheckCircle, Heart, Share2, Download, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { useState } from 'react';
 import ProductImage from '../../../components/ui/ProductImage';
 import QuoteArea from '../../../components/ui/QuoteArea';
@@ -62,22 +62,6 @@ export default function ProductDetailsClient({ product, category, relatedProduct
     return notFound();
   }
 
-  // WhatsApp contact details
-  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || '919898649362';
-  const getWhatsAppLink = (forOffer: boolean = false) => {
-    const message = forOffer 
-      ? `Hi, I'm interested in ${product.name} (${product.id}); please share your best offer.`
-      : `Hi, I'm interested in the ${product.name} from ${category.name}. Please provide more details.`;
-    return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-  };
-  const whatsappLink = getWhatsAppLink();
-
-  // Get MRP display value
-  const getMRPDisplay = () => {
-    return product.mrp || product.originalPrice || product.price || 'Contact for MRP';
-  };
-  
-  const mrpDisplay = getMRPDisplay();
 
   // Use product images or fallback to single image
   const productImages = product.images?.length ? product.images : [product.image || '/images/placeholder.jpg'];

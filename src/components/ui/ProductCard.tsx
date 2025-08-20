@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Star, StarHalf, MessageCircle } from 'lucide-react';
-import QuoteArea from './QuoteArea';
 
 interface ProductCardProps {
   id: string;
@@ -20,7 +19,6 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({
-  id,
   title,
   subtitle,
   imageUrl,
