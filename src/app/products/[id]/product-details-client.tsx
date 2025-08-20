@@ -6,6 +6,8 @@ import Image from 'next/image';
 import { Phone, MessageCircle, Star, CheckCircle, Heart, Share2, Download, ChevronLeft, ChevronRight, ZoomIn, Mail } from 'lucide-react';
 import { useState } from 'react';
 import ProductImage from '../../../components/ui/ProductImage';
+import QuoteArea from '../../../components/ui/QuoteArea';
+import ProductSchema from '../../../components/seo/ProductSchema';
 
 interface ProductDetailsClientProps {
   product: {
@@ -116,7 +118,22 @@ export default function ProductDetailsClient({ product, category, relatedProduct
   };
 
   return (
-    <div className="min-h-[70svh] md:min-h-[85vh] bg-white">
+    <>
+      <ProductSchema 
+        product={{
+          id: product.id,
+          name: product.name,
+          brand: product.brand,
+          category: category.name,
+          capacity: product.capacity,
+          image: product.image,
+          description: product.description,
+          features: product.features,
+          specifications: product.specifications
+        }}
+        category={category}
+      />
+      <div className="min-h-[70svh] md:min-h-[85vh] bg-white">
       {/* Breadcrumb */}
       <div className="bg-gray-50 border-b border-gray-200 pt-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
@@ -269,28 +286,17 @@ export default function ProductDetailsClient({ product, category, relatedProduct
               )}
             </div>
 
-            {/* Crossed-out MRP with Offer Available */}
-            <div className="border-t border-b border-gray-200 py-4">
-              <div className="flex flex-wrap items-center gap-3 mb-2">
-                {mrpDisplay.includes('Contact') ? (
-                  <span className="text-3xl font-bold text-gray-600">{mrpDisplay}</span>
-                ) : (
-                  <span className="text-3xl font-bold text-gray-500 line-through">
-                    MRP: {mrpDisplay}
-                  </span>
-                )}
-                <a
-                  href={getWhatsAppLink(true)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-4 py-2 bg-orange-100 hover:bg-orange-200 text-orange-700 text-sm font-semibold rounded-full transition-colors"
-                >
-                  <span>Offer Available</span>
-                </a>
-              </div>
-              <p className="text-xs text-gray-500">T & C Apply</p>
-              <p className="text-sm text-gray-500 mt-1">*Inclusive of all taxes</p>
-            </div>
+            {/* Quote Area */}
+            <QuoteArea 
+              product={{
+                id: product.id,
+                name: product.name,
+                brand: product.brand,
+                category: category.name,
+                capacity: product.capacity
+              }}
+              className="border-t border-b border-gray-200 py-4"
+            />
 
             {/* Key Highlights */}
             <div className="bg-gray-50 rounded-lg p-4">
@@ -306,44 +312,9 @@ export default function ProductDetailsClient({ product, category, relatedProduct
             </div>
 
 
-            {/* Action Buttons */}
+            {/* Additional Action Buttons */}
             <div className="space-y-3">
-              <a
-                href={getWhatsAppLink(true)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full bg-green-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-green-700 transition-colors flex items-center justify-center space-x-2"
-              >
-                <MessageCircle className="w-5 h-5" />
-                <span>WhatsApp for Offer</span>
-              </a>
-              
               <div className="grid grid-cols-2 gap-3">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="bg-gray-100 text-gray-700 px-4 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2"
-                >
-                  <MessageCircle className="w-5 h-5" />
-                  <span>Enquiry</span>
-                </a>
-                
-                <a
-                  href={`tel:${whatsappNumber}`}
-                  className="bg-blue-600 text-white px-4 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center space-x-2"
-                >
-                  <Phone className="w-5 h-5" />
-                  <span>Call Now</span>
-                </a>
-              </div>
-              
-              <div className="grid grid-cols-2 gap-3">
-                <button className="bg-gray-100 text-gray-700 px-4 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
-                  <Mail className="w-5 h-5" />
-                  <span>Enquiry</span>
-                </button>
-                
                 {product.brochureUrl && (
                   <a
                     href={product.brochureUrl}
@@ -354,12 +325,10 @@ export default function ProductDetailsClient({ product, category, relatedProduct
                     <span>Brochure</span>
                   </a>
                 )}
-                {!product.brochureUrl && (
-                  <button className="bg-gray-100 text-gray-700 px-4 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
-                    <Share2 className="w-5 h-5" />
-                    <span>Share</span>
-                  </button>
-                )}
+                <button className="bg-gray-100 text-gray-700 px-4 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-colors flex items-center justify-center space-x-2">
+                  <Share2 className="w-5 h-5" />
+                  <span>Share</span>
+                </button>
               </div>
             </div>
           </div>
@@ -508,22 +477,22 @@ export default function ProductDetailsClient({ product, category, relatedProduct
                     <h3 className="font-semibold text-gray-900 mb-1 text-sm">{relatedProduct.name}</h3>
                     <p className="text-xs text-gray-500 mb-2">{relatedProduct.capacity || category.name}</p>
                     <div className="flex items-center justify-between">
-                      <div>
-                        {relatedProduct.mrp || relatedProduct.originalPrice || relatedProduct.price ? (
-                          <div className="space-y-1">
-                            <div className="flex items-baseline space-x-1">
-                              <span className="text-sm font-bold text-gray-500 line-through">
-                                MRP: {relatedProduct.mrp || relatedProduct.originalPrice || relatedProduct.price}
-                              </span>
-                            </div>
-                            <p className="text-xs text-gray-500">T & C Apply</p>
-                          </div>
-                        ) : (
-                          <div className="space-y-1">
-                            <span className="text-xs text-gray-600">Price on request</span>
-                            <p className="text-xs text-gray-500">T & C Apply</p>
-                          </div>
-                        )}
+                      <div className="w-full">
+                        <button 
+                          onClick={(e) => {
+                            e.preventDefault();
+                            e.stopPropagation();
+                            const waLink = `https://wa.me/919898649362?text=${encodeURIComponent(
+                              `Hi Usha Refrigeration, I'm interested in ${relatedProduct.name} (${relatedProduct.capacity || 'N/A'} L).\nLink: ${window.location.origin}/products/${relatedProduct.id}\nCity: Anand, Gujarat\nPlease share today's best price and delivery time.`
+                            )}`;
+                            window.open(waLink, '_blank');
+                          }}
+                          className="w-full bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded text-xs font-medium transition-colors flex items-center justify-center space-x-1"
+                        >
+                          <MessageCircle className="w-3 h-3" />
+                          <span>WhatsApp</span>
+                        </button>
+                        <p className="text-xs text-gray-500 mt-1 text-center">GST invoice • Brand-authorized</p>
                       </div>
                     </div>
                   </div>
@@ -532,6 +501,7 @@ export default function ProductDetailsClient({ product, category, relatedProduct
           </div>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   );
 }

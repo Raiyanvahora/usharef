@@ -1455,6 +1455,121 @@ export const productCategories: ProductCategory[] = [
         }
       }
     ]
+  },
+  {
+    id: 'back-bar-refrigerators',
+    name: 'Back Bar Refrigerators',
+    description: 'Compact under-counter back bar refrigerators perfect for bars, restaurants, and commercial establishments. Easy-access glass tops for quick beverage service.',
+    image: '/PRD-NEW/ICE-BACK-BAR/images/Back-Bar-135-300x300.png',
+    backgroundImage: '/PRD-NEW/ICE-BACK-BAR/images/Back-Bar-135-300x300.png',
+    warranty: '2 years comprehensive warranty',
+    deliveryInfo: 'Free delivery in Gujarat, paid delivery outside Gujarat',
+    brands: ['Western', 'Icemake'],
+    filterOptions: {
+      types: ['Under Counter', 'Back Bar', 'Glass Top'],
+      capacities: ['230L', '384L'],
+      applications: ['Bars', 'Restaurants', 'Hotels', 'Commercial Kitchens']
+    },
+    models: [
+      {
+        id: 'RBWH195',
+        name: 'Western Back Bar RBWH195',
+        image: '/PRD-NEW/ICE-BACK-BAR/images/Back-Bar-95-300x300.png',
+        images: ['/PRD-NEW/ICE-BACK-BAR/images/Back-Bar-95-300x300.png'],
+        mrp: 'Contact for MRP',
+        type: 'Under Counter',
+        capacity: '230L',
+        warranty: '2 years comprehensive warranty',
+        brand: 'Western',
+        isNew: true,
+        description: 'Western Back Bar RBWH195 with 230L capacity and 153 PET bottle loading capacity. Perfect for commercial establishments.',
+        features: [
+          'Thermostat temperature control',
+          '153 PET bottle loading capacity',
+          'Energy efficient R600a refrigerant',
+          'Temperature range +0 to +10°C',
+          'Commercial grade construction',
+          '220W compressor capacity',
+          'Under-counter design',
+          'Easy maintenance access'
+        ],
+        specifications: {
+          'Model': 'RBWH195',
+          'Gross Volume': '230 Litres',
+          'Net Weight': '89 kg',
+          'External Dimensions': '900 × 545 × 900 mm',
+          'Internal Dimensions': '828 × 435 × 728 mm',
+          'Temperature Range': '+0 to +10°C',
+          'Refrigerant': 'R-600a / 45 gms',
+          'Power Supply': '220V AC / 50Hz',
+          'Compressor Capacity': '220 W',
+          'Temperature Control': 'Thermostat',
+          'Bottle Loading': '153 PET bottles',
+          'Type': 'Back Bar Under Counter Refrigerator',
+          'Warranty': '2 Years Comprehensive'
+        },
+        technicalSpecs: {
+          'grossVolume': '230L',
+          'netWeight': '89kg',
+          'temperatureRange': '+0 to +10°C',
+          'compressorCapacity': '220W',
+          'energyRating': '4 Star',
+          'refrigerant': 'R600a',
+          'compressor': 'Reciprocating',
+          'bottleCapacity': '153',
+          'noOfDoors': '1'
+        }
+      },
+      {
+        id: 'RBWH135',
+        name: 'Western Back Bar RBWH135',
+        image: '/PRD-NEW/ICE-BACK-BAR/images/Back-Bar-135-300x300.png',
+        images: ['/PRD-NEW/ICE-BACK-BAR/images/Back-Bar-135-300x300.png'],
+        mrp: 'Contact for MRP',
+        type: 'Under Counter',
+        capacity: '384L',
+        warranty: '2 years comprehensive warranty',
+        brand: 'Western',
+        isBestseller: true,
+        description: 'Western Back Bar RBWH135 with 384L capacity and 288 PET bottle loading capacity. Ideal for high-volume commercial establishments.',
+        features: [
+          'Thermostat temperature control',
+          '288 PET bottle loading capacity',
+          'Energy efficient R600a refrigerant',
+          'Temperature range +0 to +10°C',
+          'Heavy-duty commercial construction',
+          '220W compressor capacity',
+          'Large capacity design',
+          'Professional grade performance'
+        ],
+        specifications: {
+          'Model': 'RBWH135',
+          'Gross Volume': '384 Litres',
+          'Net Weight': '119 kg',
+          'External Dimensions': '1350 × 545 × 900 mm',
+          'Internal Dimensions': '1278 × 435 × 728 mm',
+          'Temperature Range': '+0 to +10°C',
+          'Refrigerant': 'R-600a / 65 gms',
+          'Power Supply': '220V AC / 50Hz',
+          'Compressor Capacity': '220 W',
+          'Temperature Control': 'Thermostat',
+          'Bottle Loading': '288 PET bottles',
+          'Type': 'Back Bar Under Counter Refrigerator',
+          'Warranty': '2 Years Comprehensive'
+        },
+        technicalSpecs: {
+          'grossVolume': '384L',
+          'netWeight': '119kg',
+          'temperatureRange': '+0 to +10°C',
+          'compressorCapacity': '220W',
+          'energyRating': '4 Star',
+          'refrigerant': 'R600a',
+          'compressor': 'Reciprocating',
+          'bottleCapacity': '288',
+          'noOfDoors': '1'
+        }
+      }
+    ]
   }
 ];
 

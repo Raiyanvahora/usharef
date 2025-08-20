@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowRight, Star, StarHalf } from 'lucide-react';
+import { ArrowRight, Star, StarHalf, MessageCircle } from 'lucide-react';
+import QuoteArea from './QuoteArea';
 
 interface ProductCardProps {
   id: string;
@@ -8,8 +9,9 @@ interface ProductCardProps {
   subtitle?: string;
   description: string;
   imageUrl: string;
-  price: string;
-  originalPrice?: string;
+  brand?: string;
+  category?: string;
+  capacity?: string;
   rating?: number;
   reviewCount?: number;
   isNew?: boolean;
@@ -18,24 +20,19 @@ interface ProductCardProps {
 }
 
 export default function ProductCard({
+  id,
   title,
   subtitle,
   imageUrl,
-  price,
-  originalPrice,
+  brand,
+  category,
+  capacity,
   rating = 4.5,
   reviewCount = 24,
   isNew = false,
   isBestseller = false,
   href
 }: ProductCardProps) {
-  // Calculate savings
-  const calculateSavings = () => {
-    if (!originalPrice || !price) return 0;
-    const original = parseInt(originalPrice.replace(/[^0-9]/g, ''));
-    const current = parseInt(price.replace(/[^0-9]/g, ''));
-    return original - current;
-  };
 
   // Generate star rating display
   const renderStars = (rating: number) => {
@@ -123,20 +120,28 @@ export default function ProductCard({
           </div>
         </div>
 
-        {/* Price */}
-        <div className="text-[13px] sm:text-base">
-          <div className="flex items-baseline gap-1 flex-wrap">
-            <span className="text-sm sm:text-xl font-bold text-gray-900">{price}</span>
-            {originalPrice && (
-              <>
-                <span className="text-xs text-gray-500 line-through">
-                  {originalPrice}
-                </span>
-                <span className="text-[10px] sm:text-xs font-medium px-1 py-0.5 bg-green-100 text-green-700 rounded">
-                  Save ₹{calculateSavings().toLocaleString()}
-                </span>
-              </>
-            )}
+        {/* Quote Area - Replace Price */}
+        <div className="text-sm">
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+            <p className="text-xs font-semibold text-gray-900 mb-1">
+              Get best price on WhatsApp
+            </p>
+            <p className="text-xs text-gray-600 mb-2">
+              GST invoice • Brand-authorized
+            </p>
+            <button 
+              onClick={(e) => {
+                e.preventDefault();
+                const waLink = `https://wa.me/919898649362?text=${encodeURIComponent(
+                  `Hi Usha Refrigeration, I'm interested in ${brand || 'Western'} ${category || 'Refrigerator'} – ${title} (${capacity || 'N/A'} L).\nLink: ${typeof window !== 'undefined' ? window.location.origin + href : href}\nCity: Anand, Gujarat\nPlease share today's best price and delivery time.`
+                )}`;
+                window.open(waLink, '_blank');
+              }}
+              className="w-full bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 rounded text-xs font-medium transition-colors flex items-center justify-center space-x-1"
+            >
+              <MessageCircle className="w-3 h-3" />
+              <span>WhatsApp</span>
+            </button>
           </div>
         </div>
 

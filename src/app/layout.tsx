@@ -8,6 +8,7 @@ import VersionCheck from '../components/VersionCheck';
 import ServiceWorkerUnregister from '../components/ServiceWorkerUnregister';
 import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton';
 import EmailOptins from '../components/EmailOptins';
+import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -62,6 +63,7 @@ export default function RootLayout({
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+        <LocalBusinessSchema />
       </head>
       <body className={`${inter.className || 'font-sans'} antialiased`}>
         <ServiceWorkerUnregister />

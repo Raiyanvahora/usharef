@@ -16,8 +16,9 @@ export default function PreviewPage() {
             subtitle="Premium Series"
             description="High-performance refrigerator with advanced cooling technology and energy-efficient operation."
             imageUrl="/PRD/DOUBLE DOOR/product/IMG-20240703-WA0219.jpg"
-            price="₹24,999"
-            originalPrice="₹29,999"
+            brand="Western"
+            category="Double Door Refrigerator"
+            capacity="500"
             rating={4.5}
             reviewCount={24}
             isNew={true}
@@ -31,8 +32,9 @@ export default function PreviewPage() {
             subtitle="Commercial Series"
             description="Large capacity deep freezer perfect for commercial use with reliable cooling performance."
             imageUrl="/PRD/DEEP FREEZER/product/IMG-20240703-WA0219.jpg"
-            price="₹45,999"
-            originalPrice="₹52,999"
+            brand="Western"
+            category="Deep Freezer"
+            capacity="500"
             rating={5}
             reviewCount={86}
             isBestseller={true}
@@ -46,7 +48,9 @@ export default function PreviewPage() {
             subtitle="Display Series"
             description="Premium display cooler with energy-efficient LED lighting and superior visibility."
             imageUrl="/PRD/VISI COOLER/product/IMG-20240703-WA0219.jpg"
-            price="₹32,999"
+            brand="Western"
+            category="Visi Cooler"
+            capacity="300"
             rating={4}
             reviewCount={15}
             href="/products/visi-cooler/sample-product"
@@ -59,8 +63,9 @@ export default function PreviewPage() {
             subtitle="Commercial Series"
             description="Commercial grade water cooler with built-in purification system and large storage capacity."
             imageUrl="/PRD/WATER COOLER/product/IMG-20240703-WA0219.jpg"
-            price="₹18,999"
-            originalPrice="₹22,999"
+            brand="Western"
+            category="Water Cooler"
+            capacity="100"
             rating={4.5}
             reviewCount={42}
             href="/products/water-cooler/sample-product"

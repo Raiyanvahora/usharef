@@ -48,6 +48,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
   const [filterCategory, setFilterCategory] = useState(selectedCategory || 'all');
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('name');
+  const [useCaseFilter, setUseCaseFilter] = useState('all');
 
   // Get all products from all categories
   const allProducts = useMemo(() => {
@@ -64,6 +65,40 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
     return products;
   }, [categories]);
 
+  // Use case mappings
+  const getUseCaseForProduct = (product: Product & { categoryId: string; categoryName: string }): string[] => {
+    const category = product.categoryName.toLowerCase();
+    const name = product.name.toLowerCase();
+    
+    const useCases: string[] = [];
+    
+    if (category.includes('deep freezer') || category.includes('freezer')) {
+      useCases.push('dairy', 'retail', 'restaurant');
+    }
+    if (category.includes('visi cooler') || category.includes('display')) {
+      useCases.push('retail', 'restaurant');
+    }
+    if (category.includes('water cooler') || category.includes('dispenser')) {
+      useCases.push('retail', 'restaurant');
+    }
+    if (category.includes('ice') || name.includes('ice')) {
+      useCases.push('restaurant', 'retail');
+    }
+    if (category.includes('medical') || name.includes('pharma') || name.includes('medical')) {
+      useCases.push('pharma');
+    }
+    if (category.includes('pastry') || category.includes('cake')) {
+      useCases.push('restaurant', 'retail');
+    }
+    
+    // Default use cases if none matched
+    if (useCases.length === 0) {
+      useCases.push('retail', 'restaurant');
+    }
+    
+    return useCases;
+  };
+
   // Filter and search products
   const filteredProducts = useMemo(() => {
     let filtered = allProducts;
@@ -71,6 +106,14 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
     // Filter by category
     if (filterCategory !== 'all') {
       filtered = filtered.filter(product => product.categoryId === filterCategory);
+    }
+
+    // Filter by use case
+    if (useCaseFilter !== 'all') {
+      filtered = filtered.filter(product => {
+        const productUseCases = getUseCaseForProduct(product);
+        return productUseCases.includes(useCaseFilter);
+      });
     }
 
     // Filter by search term
@@ -86,10 +129,6 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
     // Sort products
     filtered.sort((a, b) => {
       switch (sortBy) {
-        case 'price':
-          const priceA = a.price?.selling || 0;
-          const priceB = b.price?.selling || 0;
-          return priceA - priceB;
         case 'capacity':
           const capacityA = parseFloat(a.capacity || '0') || 0;
           const capacityB = parseFloat(b.capacity || '0') || 0;
@@ -102,7 +141,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
     });
 
     return filtered;
-  }, [allProducts, filterCategory, searchTerm, sortBy]);
+  }, [allProducts, filterCategory, useCaseFilter, searchTerm, sortBy]);
 
   // Get unique categories for filter dropdown
   const uniqueCategories = useMemo(() => {
@@ -114,9 +153,11 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
 
   const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP || '919898649362';
   const getWhatsAppLink = (product: Product & { categoryId: string; categoryName: string }, forOffer: boolean = false) => {
-    const message = forOffer 
-      ? `Hi, I'm interested in ${product.name} (${product.id}); please share your best offer.`
-      : `Hi, I'm interested in the ${product.brand || 'Western'} ${product.model} - ${product.name} (${product.categoryName}). Please provide more details.`;
+    const currentUrl = typeof window !== 'undefined' ? window.location.origin + `/products/${product.id}` : `/products/${product.id}`;
+    const message = `Hi Usha Refrigeration, I'm interested in ${product.brand || 'Western'} ${product.categoryName} – ${product.name} (${product.capacity || 'N/A'} L).
+Link: ${currentUrl}
+City: Anand, Gujarat
+Please share today's best price and delivery time.`;
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
 
@@ -151,6 +192,19 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
               ))}
             </select>
 
+            {/* Use Case Filter */}
+            <select
+              value={useCaseFilter}
+              onChange={(e) => setUseCaseFilter(e.target.value)}
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="all">All Use Cases</option>
+              <option value="dairy">Dairy</option>
+              <option value="retail">Retail</option>
+              <option value="restaurant">Restaurant</option>
+              <option value="pharma">Pharma</option>
+            </select>
+
             {/* Sort */}
             <select
               value={sortBy}
@@ -158,8 +212,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
               className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="name">Sort by Name</option>
-              <option value="price">Sort by Price</option>
-              <option value="capacity">Sort by Capacity</option>
+              <option value="capacity">Sort by Capacity (Liters)</option>
               <option value="brand">Sort by Brand</option>
             </select>
 
@@ -183,14 +236,21 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
 
         {/* Results Count */}
         <div className="mt-4 pt-4 border-t border-gray-200">
-          <p className="text-sm text-gray-600">
-            Showing {filteredProducts.length} of {allProducts.length} products
+          <div className="flex flex-wrap items-center gap-2">
+            <p className="text-sm text-gray-600">
+              Showing {filteredProducts.length} of {allProducts.length} products
+            </p>
             {filterCategory !== 'all' && (
-              <span className="ml-2 px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
+              <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
                 {uniqueCategories.find(cat => cat.id === filterCategory)?.name}
               </span>
             )}
-          </p>
+            {useCaseFilter !== 'all' && (
+              <span className="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">
+                {useCaseFilter.charAt(0).toUpperCase() + useCaseFilter.slice(1)} Use Case
+              </span>
+            )}
+          </div>
         </div>
       </div>
 
@@ -235,26 +295,16 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                       </button>
                     </div>
 
-                    {/* Crossed-out MRP with Offer Available */}
+                    {/* Quote Area */}
                     <div className="mb-4">
-                      <div className="flex flex-wrap items-center gap-2 mb-1">
-                        {product.price?.mrp ? (
-                          <span className="text-2xl font-bold text-gray-500 line-through">
-                            MRP: ₹{product.price.mrp.toLocaleString()}
-                          </span>
-                        ) : (
-                          <span className="text-lg font-medium text-gray-600">Price on Request</span>
-                        )}
-                        <a
-                          href={getWhatsAppLink(product, true)}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-flex items-center px-3 py-1 bg-orange-100 hover:bg-orange-200 text-orange-700 text-sm font-semibold rounded-full transition-colors"
-                        >
-                          <span>Offer Available</span>
-                        </a>
+                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                        <p className="text-sm font-semibold text-gray-900 mb-1">
+                          Get best price on WhatsApp
+                        </p>
+                        <p className="text-xs text-gray-600 mb-2">
+                          GST invoice • Brand-authorized • Fast delivery
+                        </p>
                       </div>
-                      <p className="text-xs text-gray-500">T & C Apply</p>
                     </div>
 
                     {/* Actions */}
@@ -272,7 +322,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                         className="flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
                       >
                         <MessageCircle className="w-4 h-4" />
-                        WhatsApp for Offer
+                        WhatsApp for Best Price
                       </a>
                     </div>
                   </div>
@@ -315,26 +365,16 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                 <p className="text-sm text-gray-600 mb-2">{product.name}</p>
                 <p className="text-sm text-gray-500 mb-3">Capacity: {product.capacity || 'N/A'} Liters</p>
 
-                {/* Crossed-out MRP with Offer Available */}
+                {/* Quote Area */}
                 <div className="mb-4">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
-                    {product.price?.mrp ? (
-                      <span className="text-xl font-bold text-gray-500 line-through">
-                        MRP: ₹{product.price.mrp.toLocaleString()}
-                      </span>
-                    ) : (
-                      <span className="text-lg font-medium text-gray-600">Price on Request</span>
-                    )}
-                    <a
-                      href={getWhatsAppLink(product, true)}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center px-2 py-1 bg-orange-100 hover:bg-orange-200 text-orange-700 text-xs font-semibold rounded-full transition-colors"
-                    >
-                      <span>Offer Available</span>
-                    </a>
+                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
+                    <p className="text-xs font-semibold text-gray-900 mb-1">
+                      Get best price on WhatsApp
+                    </p>
+                    <p className="text-xs text-gray-600">
+                      GST invoice • Brand-authorized • Fast delivery
+                    </p>
                   </div>
-                  <p className="text-xs text-gray-500">T & C Apply</p>
                 </div>
 
                 {/* Actions */}
@@ -352,7 +392,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
                     className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp for Offer</span>
+                    <span>WhatsApp for Best Price</span>
                   </a>
                 </div>
               </div>
@@ -375,6 +415,7 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
             onClick={() => {
               setSearchTerm('');
               setFilterCategory('all');
+              setUseCaseFilter('all');
             }}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >
