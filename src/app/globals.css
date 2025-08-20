@@ -183,22 +183,34 @@ a, button {
   opacity: 0.5;
 }
 
-/* Samsung-style dark hero section */
+/* Hero section with configurable background - Updated to match reference */
 .hero-section-dark {
-  background: #000000;
+  background: #C5E3F6;
   position: relative;
   overflow: hidden;
 }
 
-.hero-section-dark::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
-  z-index: -1;
+/* Alternative Hero Background Options */
+
+/* Option 1: Light Aqua Sky */
+.hero-section-aqua {
+  background: #E0F7FA;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Option 2: Baby Sky Blue */
+.hero-section-baby-blue {
+  background: #D6F0FF;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Option 3: Misty Sky */
+.hero-section-misty {
+  background: #EAF4FA;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Hero main content area with background image */

@@ -16,18 +16,18 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Usha Refrigeration-Anand | Commercial Refrigeration Equipment',
+  title: 'Usha Refrigeration & Service-Anand | Commercial Refrigeration Equipment',
   description: 'Leading supplier of commercial refrigeration equipment in Anand, Gujarat. Freezers, coolers, water dispensers, pastry counters. Western, Icemake, Frigoglass, Blue Star brands.',
   keywords: 'commercial refrigeration, freezers, coolers, water dispensers, Anand Gujarat, Western refrigeration, Icemake, Frigoglass, Blue Star',
-  authors: [{ name: 'Usha Refrigeration' }],
-  creator: 'Usha Refrigeration',
-  publisher: 'Usha Refrigeration',
+  authors: [{ name: 'Usha Refrigeration & Service' }],
+  creator: 'Usha Refrigeration & Service',
+  publisher: 'Usha Refrigeration & Service',
   openGraph: {
-    title: 'Usha Refrigeration-Anand | Commercial Refrigeration Equipment',
+    title: 'Usha Refrigeration & Service-Anand | Commercial Refrigeration Equipment',
     description: 'Leading supplier of commercial refrigeration equipment in Anand, Gujarat.',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Usha Refrigeration'
+    siteName: 'Usha Refrigeration & Service'
   },
   icons: {
     icon: [

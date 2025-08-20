@@ -146,7 +146,7 @@ export default function About() {
                 <p className="text-lg">
                   What started as a small refrigeration repair shop in Anand has grown into one of 
                   Gujarat&apos;s most trusted brands. Our founder, driven by a passion for quality and 
-                  customer satisfaction, laid the foundation for what Usha Refrigeration is today.
+                  customer satisfaction, laid the foundation for what Usha Refrigeration & Service is today.
                 </p>
                 <p className="text-lg">
                   Over the years, we&apos;ve expanded our product range, embraced new technologies, and 
@@ -278,7 +278,7 @@ export default function About() {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
               <div className="animate-on-scroll">
                 <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                  Why Families Trust Usha Refrigeration
+                  Why Families Trust Usha Refrigeration & Service
                 </h2>
                 <ul className="space-y-4">
                   {[

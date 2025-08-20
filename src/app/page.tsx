@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useEffect, useRef, useState } from 'react';
+import Link from 'next/link';
 import { 
   Award,
   Wrench,
@@ -102,23 +103,23 @@ export default function Home() {
             {/* Right Side - Content */}
             <div className="space-y-4 sm:space-y-6">
               {/* Brand Badge */}
-              <div className="inline-flex items-center space-x-2 bg-white bg-opacity-10 px-4 py-2 rounded-full border border-white border-opacity-20">
-                <Award className="w-4 h-4 text-white" />
-                <span className="text-white font-medium text-sm">Charotar&apos;s Trusted Refrigerator Brand</span>
+              <div className="inline-flex items-center space-x-2 bg-gray-900 bg-opacity-10 px-4 py-2 rounded-full border border-gray-900 border-opacity-20">
+                <Award className="w-4 h-4 text-gray-900" />
+                <span className="text-gray-900 font-medium text-sm">Charotar&apos;s Trusted Refrigerator Brand</span>
               </div>
 
               {/* Main Business Name */}
-              <h1 className="font-bold text-white leading-tight [font-size:clamp(24px,8vw,48px)]">
-                <span className="text-blue-400">Usha</span> Refrigeration
+              <h1 className="font-bold text-gray-900 leading-tight [font-size:clamp(24px,8vw,48px)]">
+                <span className="text-blue-600">Usha</span> Refrigeration & Service
               </h1>
               
               {/* Main Heading */}
-              <h2 className="font-bold text-gray-200 leading-tight [font-size:clamp(18px,5vw,32px)]">
+              <h2 className="font-bold text-gray-700 leading-tight [font-size:clamp(18px,5vw,32px)]">
                 Your Trusted Cooling Partner
               </h2>
 
               {/* Subheading */}
-              <p className="text-blue-400 font-semibold leading-snug [font-size:clamp(14px,3.8vw,20px)] line-clamp-4 sm:line-clamp-none">
+              <p className="text-blue-600 font-semibold leading-snug [font-size:clamp(14px,3.8vw,20px)] line-clamp-4 sm:line-clamp-none">
                 Efficient. Reliable. Affordable.
               </p>
 
@@ -128,14 +129,14 @@ export default function Home() {
                   href="https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center rounded-xl px-4 py-2 bg-white text-black font-semibold hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center rounded-xl px-4 py-2 bg-blue-600 text-white font-semibold hover:bg-blue-700 transition-colors"
                 >
                   <MapPin className="w-4 h-4 mr-2" />
                   <span>Get Direction</span>
                 </a>
                 <button 
                   onClick={() => setIsServiceModalOpen(true)}
-                  className="inline-flex items-center rounded-xl px-4 py-2 border-2 border-white text-white font-semibold hover:bg-white hover:text-black transition-colors"
+                  className="inline-flex items-center rounded-xl px-4 py-2 border-2 border-gray-900 text-gray-900 font-semibold hover:bg-gray-900 hover:text-white transition-colors"
                 >
                   <Wrench className="w-4 h-4 mr-2" />
                   <span>Book a Service</span>
@@ -172,9 +173,9 @@ export default function Home() {
             <p className="text-sm sm:text-base text-gray-600 max-w-2xl mx-auto">We partner with leading refrigeration brands to bring you the best in cooling technology</p>
           </div>
           
-          <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 justify-items-center">
-            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 mb-8 sm:mb-12 justify-items-center">
+            <Link href="/products?brand=western" className="flex flex-col items-center justify-center text-center animate-on-scroll hover:transform hover:scale-105 transition-transform duration-200">
+              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3 hover:shadow-lg transition-shadow">
                 <Image
                   src="/logo/western-head-logo-2025.png"
                   alt="Western Refrigeration"
@@ -188,10 +189,10 @@ export default function Home() {
               </div>
               <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Western</h3>
               <p className="text-xs sm:text-sm text-gray-600">Premium Refrigeration</p>
-            </div>
+            </Link>
             
-            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
+            <Link href="/products?brand=icemake" className="flex flex-col items-center justify-center text-center animate-on-scroll hover:transform hover:scale-105 transition-transform duration-200">
+              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3 hover:shadow-lg transition-shadow">
                 <Image
                   src="/logo/logo-1.png"
                   alt="Icemake"
@@ -205,10 +206,10 @@ export default function Home() {
               </div>
               <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Icemake</h3>
               <p className="text-xs sm:text-sm text-gray-600">Ice Solutions</p>
-            </div>
+            </Link>
             
-            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
+            <Link href="/products?brand=frigoglass" className="flex flex-col items-center justify-center text-center animate-on-scroll hover:transform hover:scale-105 transition-transform duration-200">
+              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3 hover:shadow-lg transition-shadow">
                 <Image
                   src="/logo/download.png"
                   alt="Frigoglass"
@@ -222,24 +223,7 @@ export default function Home() {
               </div>
               <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Frigoglass</h3>
               <p className="text-xs sm:text-sm text-gray-600">European Technology</p>
-            </div>
-            
-            <div className="flex flex-col items-center justify-center text-center animate-on-scroll">
-              <div className="bg-white rounded-xl flex items-center justify-center mb-2 shadow-md border border-gray-200 p-3">
-                <Image
-                  src="/logo/images.png"
-                  alt="Blue Star"
-                  width={240}
-                  height={120}
-                  className="h-12 sm:h-14 md:h-16 w-auto object-contain"
-                  loading="lazy"
-                  decoding="async"
-                  sizes="(max-width: 640px) 80px, (max-width: 768px) 96px, 120px"
-                />
-              </div>
-              <h3 className="text-sm sm:text-base font-semibold text-gray-900 mb-1">Blue Star</h3>
-              <p className="text-xs sm:text-sm text-gray-600">Cooling Excellence</p>
-            </div>
+            </Link>
           </div>
 
         </div>

@@ -120,26 +120,26 @@ export const productCategories: ProductCategory[] = [
       { id: 'D625H225', name: 'D625H225', image: '/PRD-NEW/DEEP FREEZERS/images/D525-300x300.png', mrp: '₹43,190', type: 'Convertible', capacity: '565L', warranty: '4 years for deep freezers', brand: 'Western', description: '565L largest convertible freezer for heavy commercial use.' },
       { id: 'NWHF875H', name: 'NWHF875H', image: '/PRD-NEW/DEEP FREEZERS/images/D875-2-300x300.png', mrp: '₹66,200', type: 'Convertible', capacity: '722L', warranty: '4 years for deep freezers', brand: 'Western', description: '722L industrial convertible freezer with premium features.' },
       // Combi Freezer/Cooler
-      { id: 'B325H220', name: 'B325H220', image: '/PRD-NEW/DEEP FREEZERS/images/B325-300x300.png', mrp: '₹39,999', type: 'Combi', capacity: '325L', description: '325L combination freezer/cooler with separate compartments.' },
-      { id: 'B425H220', name: 'B425H220', image: '/PRD-NEW/DEEP FREEZERS/images/B425-300x300.png', mrp: '₹49,999', type: 'Combi', capacity: '425L', description: '425L combi unit with dual temperature zones.' },
-      { id: 'B525H220', name: 'B525H220', image: '/PRD-NEW/DEEP FREEZERS/images/B525-300x300.png', mrp: '₹59,999', type: 'Combi', capacity: '525L', description: '525L large combi freezer/cooler for commercial use.' },
+      { id: 'B325H220', name: 'B325H220', image: '/PRD-NEW/DEEP FREEZERS/images/B325-300x300.png', mrp: '₹39,999', type: 'Combi', capacity: '325L', brand: 'Western', description: '325L combination freezer/cooler with separate compartments.' },
+      { id: 'B425H220', name: 'B425H220', image: '/PRD-NEW/DEEP FREEZERS/images/B425-300x300.png', mrp: '₹49,999', type: 'Combi', capacity: '425L', brand: 'Western', description: '425L combi unit with dual temperature zones.' },
+      { id: 'B525H220', name: 'B525H220', image: '/PRD-NEW/DEEP FREEZERS/images/B525-300x300.png', mrp: '₹59,999', type: 'Combi', capacity: '525L', brand: 'Western', description: '525L large combi freezer/cooler for commercial use.' },
       // Glass Top Deep Freezers
-      { id: 'F250GL25', name: 'F250GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹32,999', type: 'Glass Top', capacity: '250L', description: '250L glass top deep freezer with curved glass lid.' },
-      { id: 'F350GL25', name: 'F350GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹42,999', type: 'Glass Top', capacity: '350L', description: '350L glass top freezer with enhanced visibility.' },
-      { id: 'F450GL25', name: 'F450GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹52,999', type: 'Glass Top', capacity: '422L', description: '422L (gross) large glass top freezer for retail display.' },
-      { id: 'F550GL25', name: 'F550GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹62,999', type: 'Glass Top', capacity: '550L', description: '550L premium glass top freezer with LED lighting.' },
+      { id: 'F250GL25', name: 'F250GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹32,999', type: 'Glass Top', capacity: '250L', brand: 'Western', description: '250L glass top deep freezer with curved glass lid.' },
+      { id: 'F350GL25', name: 'F350GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹42,999', type: 'Glass Top', capacity: '350L', brand: 'Western', description: '350L glass top freezer with enhanced visibility.' },
+      { id: 'F450GL25', name: 'F450GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹52,999', type: 'Glass Top', capacity: '422L', brand: 'Western', description: '422L (gross) large glass top freezer for retail display.' },
+      { id: 'F550GL25', name: 'F550GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹62,999', type: 'Glass Top', capacity: '550L', brand: 'Western', description: '550L premium glass top freezer with LED lighting.' },
       // Eutectic Freezers
-      { id: 'E325H220', name: 'E325H220', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹75,999', type: 'Eutectic', capacity: '325L', description: '325L eutectic freezer with energy-efficient cooling plates.' },
-      { id: 'E425H220', name: 'E425H220', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹85,999', type: 'Eutectic', capacity: '425L', description: '425L eutectic freezer with hard top cover.' },
-      { id: 'E425D220', name: 'E425D220', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹89,999', type: 'Eutectic', capacity: '425L', description: '425L eutectic freezer with dual compartments.' },
-      { id: 'E425GT20', name: 'E425GT20', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹92,999', type: 'Eutectic', capacity: '474L', description: '474L eutectic scooping-style freezer with glass top display.' },
-      { id: 'E525D320', name: 'E525D320', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹105,999', type: 'Eutectic', capacity: '393L', description: '393L eutectic freezer with dual zone cooling.' },
+      { id: 'E325H220', name: 'E325H220', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹75,999', type: 'Eutectic', capacity: '325L', brand: 'Western', description: '325L eutectic freezer with energy-efficient cooling plates.' },
+      { id: 'E425H220', name: 'E425H220', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹85,999', type: 'Eutectic', capacity: '425L', brand: 'Western', description: '425L eutectic freezer with hard top cover.' },
+      { id: 'E425D220', name: 'E425D220', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹89,999', type: 'Eutectic', capacity: '425L', brand: 'Western', description: '425L eutectic freezer with dual compartments.' },
+      { id: 'E425GT20', name: 'E425GT20', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹92,999', type: 'Eutectic', capacity: '474L', brand: 'Western', description: '474L eutectic scooping-style freezer with glass top display.' },
+      { id: 'E525D320', name: 'E525D320', image: '/PRD-NEW/DEEP FREEZERS/images/E325-LT-SIDE-ISO-VIEW-300x300.png', mrp: '₹105,999', type: 'Eutectic', capacity: '393L', brand: 'Western', description: '393L eutectic freezer with dual zone cooling.' },
       // Scooping Parlours
-      { id: 'F450GT25AAINGMXWHS', name: 'F450GT25AAINGMXWHS', image: '/PRD-NEW/DEEP FREEZERS/images/F325GC24-300x300.png', mrp: '₹135,999', type: 'Scooping', capacity: '422L', description: '422L scooping parlour with glass top and multiple tubs.' },
-      { id: 'F550GT25AAINGMXWHS', name: 'F550GT25AAINGMXWHS', image: '/PRD-NEW/DEEP FREEZERS/images/F325GC24-300x300.png', mrp: '₹155,999', type: 'Scooping', capacity: '536L', description: '536L premium scooping parlour for ice cream shops.' },
+      { id: 'F450GT25AAINGMXWHS', name: 'F450GT25AAINGMXWHS', image: '/PRD-NEW/DEEP FREEZERS/images/F325GC24-300x300.png', mrp: '₹135,999', type: 'Scooping', capacity: '422L', brand: 'Western', description: '422L scooping parlour with glass top and multiple tubs.' },
+      { id: 'F550GT25AAINGMXWHS', name: 'F550GT25AAINGMXWHS', image: '/PRD-NEW/DEEP FREEZERS/images/F325GC24-300x300.png', mrp: '₹155,999', type: 'Scooping', capacity: '536L', brand: 'Western', description: '536L premium scooping parlour for ice cream shops.' },
       // Freezer on Wheel
-      { id: 'G200H120', name: 'G200H120', image: '/PRD-NEW/DEEP FREEZERS/images/G200H120ECINGMXWHX_left-Angle-300x300.png', mrp: '₹46,999', type: 'Mobile', capacity: '117L', description: '117L mobile freezer with wheels for easy movement.' },
-      { id: 'G300H120', name: 'G300H120', image: '/PRD-NEW/DEEP FREEZERS/images/G200H120ECINGMXWHX_left-Angle-300x300.png', mrp: '₹56,999', type: 'Mobile', capacity: '200L', description: '200L single-tank mobile freezer with enhanced portability.' },
+      { id: 'G200H120', name: 'G200H120', image: '/PRD-NEW/DEEP FREEZERS/images/G200H120ECINGMXWHX_left-Angle-300x300.png', mrp: '₹46,999', type: 'Mobile', capacity: '117L', brand: 'Western', description: '117L mobile freezer with wheels for easy movement.' },
+      { id: 'G300H120', name: 'G300H120', image: '/PRD-NEW/DEEP FREEZERS/images/G200H120ECINGMXWHX_left-Angle-300x300.png', mrp: '₹56,999', type: 'Mobile', capacity: '200L', brand: 'Western', description: '200L single-tank mobile freezer with enhanced portability.' },
       // Icemake Combi Freezer/Cooler
       {
         id: 'ICEMAKE_IFC425',
@@ -324,19 +324,19 @@ export const productCategories: ProductCategory[] = [
     },
     models: [
       // Visi Coolers (SRC Models)
-      { id: 'SRC200HCF-GL', name: 'SRC200HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-250-300x300.png', mrp: '₹29,999', doorType: 'Single', type: 'SRC', capacity: '167L', description: '167L single door visi cooler with frost-free technology.' },
-      { id: 'SRC201HCF-GL', name: 'SRC201HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-250-300x300.png', mrp: '₹30,999', doorType: 'Single', type: 'SRC', capacity: '167L', description: '167L single door enhanced visi cooler with improved efficiency.' },
-      { id: 'SRC280HCF-GL', name: 'SRC280HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/New-Project-15-300x300.png', mrp: '₹36,999', doorType: 'Single', type: 'SRC', capacity: '216L', description: '216L single door mid-size visi cooler with frost-free operation.' },
-      { id: 'SRC281HC-GL', name: 'SRC281HC-GL', image: '/PRD-NEW/VISI COOLERS/images/src281-1-300x300.png', mrp: '₹37,999', doorType: 'Single', type: 'SRC', capacity: '281L', description: '281L visi cooler with hard cooling system.' },
-      { id: 'SRC360HCF-GL', name: 'SRC360HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹44,999', doorType: 'Single', type: 'SRC', capacity: '302L', description: '302L single door visi cooler with frost-free cooling.' },
-      { id: 'SRC380HCF-GL', name: 'SRC380HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹46,999', doorType: 'Single', type: 'SRC', capacity: '380L', description: '380L frost-free visi cooler with premium features.' },
-      { id: 'SRC381HC-GL', name: 'SRC381HC-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹47,999', doorType: 'Single', type: 'SRC', capacity: '340L', description: '340L single door advanced visi cooler with hard cooling.' },
-      { id: 'SRC501HC-GL', name: 'SRC501HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-501-Side-View-300x300.png', mrp: '₹60,999', doorType: 'Double', type: 'SRC', capacity: '405L', description: '405L double door visi cooler for large retail spaces.' },
-      { id: 'SRC752HC-GL', name: 'SRC752HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC752HC-Front-Angle-With-Stock-300x300.png', mrp: '₹84,999', doorType: 'Triple', type: 'SRC', capacity: '585L', description: '585L triple door visi cooler for supermarkets.' },
-      { id: 'SRC810HC-GL', name: 'SRC810HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC950-Front-Angle-With-Stock-300x300.png', mrp: '₹92,999', doorType: 'Triple', type: 'SRC', capacity: '810L', description: '810L large triple door visi cooler.' },
-      { id: 'SRC950HC-GL', name: 'SRC950HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC950-Front-Angle-With-Stock-300x300.png', mrp: '₹105,999', doorType: 'Triple', type: 'SRC', capacity: '807L', description: '807L premium triple door visi cooler.' },
-      { id: 'SRC1050HC-GL', name: 'SRC1050HC-GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹115,999', doorType: 'Triple', type: 'SRC', capacity: '908L', description: '908L extra large triple door visi cooler.' },
-      { id: 'SRC1800-GL', name: 'SRC1800-GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹168,999', doorType: 'Triple', type: 'SRC', capacity: '1882L', description: '1882L triple door industrial visi cooler for large establishments.' },
+      { id: 'SRC200HCF-GL', name: 'SRC200HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-250-300x300.png', mrp: '₹29,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '167L', description: '167L single door visi cooler with frost-free technology.' },
+      { id: 'SRC201HCF-GL', name: 'SRC201HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-250-300x300.png', mrp: '₹30,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '167L', description: '167L single door enhanced visi cooler with improved efficiency.' },
+      { id: 'SRC280HCF-GL', name: 'SRC280HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/New-Project-15-300x300.png', mrp: '₹36,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '216L', description: '216L single door mid-size visi cooler with frost-free operation.' },
+      { id: 'SRC281HC-GL', name: 'SRC281HC-GL', image: '/PRD-NEW/VISI COOLERS/images/src281-1-300x300.png', mrp: '₹37,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '281L', description: '281L visi cooler with hard cooling system.' },
+      { id: 'SRC360HCF-GL', name: 'SRC360HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹44,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '302L', description: '302L single door visi cooler with frost-free cooling.' },
+      { id: 'SRC380HCF-GL', name: 'SRC380HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹46,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '380L', description: '380L frost-free visi cooler with premium features.' },
+      { id: 'SRC381HC-GL', name: 'SRC381HC-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹47,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '340L', description: '340L single door advanced visi cooler with hard cooling.' },
+      { id: 'SRC501HC-GL', name: 'SRC501HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-501-Side-View-300x300.png', mrp: '₹60,999', doorType: 'Double', brand: 'Western', type: 'SRC', capacity: '405L', description: '405L double door visi cooler for large retail spaces.' },
+      { id: 'SRC752HC-GL', name: 'SRC752HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC752HC-Front-Angle-With-Stock-300x300.png', mrp: '₹84,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '585L', description: '585L triple door visi cooler for supermarkets.' },
+      { id: 'SRC810HC-GL', name: 'SRC810HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC950-Front-Angle-With-Stock-300x300.png', mrp: '₹92,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '810L', description: '810L large triple door visi cooler.' },
+      { id: 'SRC950HC-GL', name: 'SRC950HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC950-Front-Angle-With-Stock-300x300.png', mrp: '₹105,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '807L', description: '807L premium triple door visi cooler.' },
+      { id: 'SRC1050HC-GL', name: 'SRC1050HC-GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹115,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '908L', description: '908L extra large triple door visi cooler.' },
+      { id: 'SRC1800-GL', name: 'SRC1800-GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹168,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '1882L', description: '1882L triple door industrial visi cooler for large establishments.' },
 
 
       // Visi Coolers (Frigoglass Models)
@@ -702,8 +702,8 @@ export const productCategories: ProductCategory[] = [
       },
 
       // Vertical Coolers / Supermarket Coolers
-      { id: 'SMR 12 GL', name: 'SMR 12 GL', image: '/PRD-NEW/VISI COOLERS/images/SRC752HC-Front-Angle-With-Stock-300x300.png', mrp: '₹155,999', doorType: 'Multi', type: 'Vertical', capacity: '1200L', description: '1200L vertical supermarket cooler with 12 glass doors.' },
-      { id: 'SMR 18 GL', name: 'SMR 18 GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹195,999', doorType: 'Multi', type: 'Vertical', capacity: '1800L', description: '1800L large vertical supermarket cooler with 18 glass doors.' },
+      { id: 'SMR 12 GL', name: 'SMR 12 GL', image: '/PRD-NEW/VISI COOLERS/images/SRC752HC-Front-Angle-With-Stock-300x300.png', mrp: '₹155,999', doorType: 'Multi', type: 'Vertical', capacity: '1200L', brand: 'Western', description: '1200L vertical supermarket cooler with 12 glass doors.' },
+      { id: 'SMR 18 GL', name: 'SMR 18 GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹195,999', doorType: 'Multi', type: 'Vertical', capacity: '1800L', brand: 'Western', description: '1800L large vertical supermarket cooler with 18 glass doors.' },
 
       // IceMake Visi Coolers - IMVC Series
       { 
@@ -816,9 +816,9 @@ export const productCategories: ProductCategory[] = [
       applications: ['Bakeries', 'Cafes', 'Pastry Shops']
     },
     models: [
-      { id: 'PTW06', name: 'PTW06', image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-1-300x300.png', mrp: '₹72,999', type: 'Counter', size: '600mm', capacity: '232L', dimensions: { external: '600×665×1235mm' }, description: '232L pastry counter (600×665×1235mm) with curved glass display, base + 3 shelves.' },
-      { id: 'PTW09', name: 'PTW09', image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-2-300x300.png', mrp: '₹92,999', type: 'Counter', size: '900mm', capacity: '360L', dimensions: { external: '900×665×1235mm' }, description: '360L pastry counter (900×665×1235mm) with LED lighting, base + 3 shelves.' },
-      { id: 'PTW12', name: 'PTW12', image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/Right-Angle-With-Stock-300x300.png', mrp: '₹115,999', type: 'Counter', size: '1200mm', capacity: '500L', dimensions: { external: '1200×665×1235mm' }, description: '500L pastry counter (1200×665×1235mm) with multi-shelf display, base + 3 shelves.' }
+      { id: 'PTW06', name: 'PTW06', image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-1-300x300.png', mrp: '₹72,999', type: 'Counter', size: '600mm', capacity: '232L', dimensions: { external: '600×665×1235mm' }, brand: 'Western', description: '232L pastry counter (600×665×1235mm) with curved glass display, base + 3 shelves.' },
+      { id: 'PTW09', name: 'PTW09', image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/With-Stock-2-300x300.png', mrp: '₹92,999', type: 'Counter', size: '900mm', capacity: '360L', dimensions: { external: '900×665×1235mm' }, brand: 'Western', description: '360L pastry counter (900×665×1235mm) with LED lighting, base + 3 shelves.' },
+      { id: 'PTW12', name: 'PTW12', image: '/PRD-NEW/DISPLAY-PASTRY-COUNTERS/images/Right-Angle-With-Stock-300x300.png', mrp: '₹115,999', type: 'Counter', size: '1200mm', capacity: '500L', dimensions: { external: '1200×665×1235mm' }, brand: 'Western', description: '500L pastry counter (1200×665×1235mm) with multi-shelf display, base + 3 shelves.' }
     ]
   },
   {
@@ -834,6 +834,7 @@ export const productCategories: ProductCategory[] = [
         image: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png', 
         mrp: '₹49,999',
         capacity: '40 LPH cooling / 80L storage',
+        brand: 'Western',
         description: 'Commercial water cooler with 40 LPH cooling capacity and 80L storage tank. Fully stainless steel SS-304 construction for inner tank and outer body. Designed for high-demand applications in schools, colleges, offices, factories, and public places.',
         features: [
           'Food-grade SS-304 stainless steel construction',
@@ -867,6 +868,7 @@ export const productCategories: ProductCategory[] = [
         image: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png', 
         mrp: '₹54,999',
         capacity: '60 LPH cooling / 80L storage',
+        brand: 'Western',
         description: 'Commercial water cooler with 60 LPH cooling capacity and 80L storage tank.'
       },
       { 
@@ -875,6 +877,7 @@ export const productCategories: ProductCategory[] = [
         image: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png', 
         mrp: '₹59,999',
         capacity: '60 LPH cooling / 120L storage',
+        brand: 'Western',
         description: 'Commercial water cooler with 60 LPH cooling capacity and 120L storage tank.'
       },
       { 
@@ -883,6 +886,7 @@ export const productCategories: ProductCategory[] = [
         image: '/PRD-NEW/WATER-SOLUTIONS/images/SWC-80120-1-300x300.png', 
         mrp: '₹45,999',
         capacity: '60 LPH cooling / 60L storage',
+        brand: 'Western',
         description: 'Large capacity water cooler with 60 LPH cooling and 60L storage.'
       },
       { 
@@ -891,6 +895,7 @@ export const productCategories: ProductCategory[] = [
         image: '/PRD-NEW/WATER-SOLUTIONS/images/SWC-80120-1-300x300.png', 
         mrp: '₹55,999',
         capacity: '80 LPH cooling / 80L storage',
+        brand: 'Western',
         description: 'Extra large water cooler with 80 LPH cooling and 80L storage.'
       },
       { 
@@ -899,6 +904,7 @@ export const productCategories: ProductCategory[] = [
         image: '/PRD-NEW/WATER-SOLUTIONS/images/SWC-150150-300x300.png', 
         mrp: '₹78,999',
         capacity: '150 LPH cooling / 150L storage',
+        brand: 'Western',
         description: 'Industrial water cooler with 150 LPH cooling and 150L storage.'
       },
       {
@@ -1029,6 +1035,7 @@ export const productCategories: ProductCategory[] = [
         name: 'BWD-3FMCGA', 
         image: '/PRD-NEW/Water Dispenser/bwd3fmcga-bwd-mi-01-resized.jpg', 
         mrp: '₹10,999',
+        brand: 'Blue Star',
         capacity: '2.5 LPH cooling / 5 LPH heating',
         description: 'Blue Star 3-tap floor standing water dispenser with refrigerator. Hot, Cold & Normal water with child safety lock.',
         features: [
@@ -1055,6 +1062,7 @@ export const productCategories: ProductCategory[] = [
         name: 'BWD-3FMRGA-B', 
         image: '/PRD-NEW/Water Dispenser/bwd3fmrga-b-bwd-mi-01-resized.jpg', 
         mrp: '₹9,499',
+        brand: 'Blue Star',
         capacity: '2.5 LPH cooling / 5 LPH heating',
         description: 'Blue Star 3-tap water dispenser with bottom loading. Hot, Cold & Normal water with refrigerator.',
         features: [
@@ -1071,6 +1079,7 @@ export const productCategories: ProductCategory[] = [
         name: 'BWD-3FMRGA', 
         image: '/PRD-NEW/Water Dispenser/bwd3fmrga-bwd-mi-01-resized.jpg', 
         mrp: '₹8,999',
+        brand: 'Blue Star',
         capacity: '2.5 LPH cooling / 5 LPH heating',
         description: 'Blue Star 3-tap standard water dispenser. Hot, Cold & Normal water with refrigerator.',
         features: [
@@ -1086,6 +1095,7 @@ export const productCategories: ProductCategory[] = [
         name: 'BWD-3TTGA', 
         image: '/PRD-NEW/Water Dispenser/bwd3ttga-bwd-mi-01_1_.jpg', 
         mrp: '₹8,499',
+        brand: 'Blue Star',
         capacity: '2.5 LPH cooling / 5 LPH heating',
         description: 'Blue Star 3-tap table top water dispenser. Hot, Cold & Normal water for compact spaces.',
         features: [
@@ -1101,6 +1111,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Premium Hot & Cold Dispenser',
         image: '/PRD-NEW/Water Dispenser/37h6pgpYr9KH3-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Premium hot and cold water dispenser with advanced purification system.',
         features: [
@@ -1129,6 +1140,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Triple Temperature Dispenser',
         image: '/PRD-NEW/Water Dispenser/9bxwqCslkCKVl-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Advanced water dispenser with hot, cold, and normal temperature options.',
         features: [
@@ -1157,6 +1169,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Compressor Cooling Dispenser',
         image: '/PRD-NEW/Water Dispenser/AegRpGIpgIjsX-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Heavy-duty water dispenser with compressor cooling for commercial use.',
         features: [
@@ -1185,6 +1198,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Slim Design Water Dispenser',
         image: '/PRD-NEW/Water Dispenser/E1yrbWTtNuxyu-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Space-saving slim design water dispenser perfect for offices and homes.',
         features: [
@@ -1213,6 +1227,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Stainless Steel Premium Dispenser',
         image: '/PRD-NEW/Water Dispenser/HGV7zTwlW7Nj5-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Premium stainless steel water dispenser with advanced features.',
         features: [
@@ -1241,6 +1256,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Bottom Loading Dispenser',
         image: '/PRD-NEW/Water Dispenser/NVrECxTcnAGrQ-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Convenient bottom loading water dispenser with no heavy lifting required.',
         features: [
@@ -1269,6 +1285,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Countertop Mini Dispenser',
         image: '/PRD-NEW/Water Dispenser/XCWxIuTRwvej0-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Compact countertop water dispenser ideal for small spaces.',
         features: [
@@ -1297,6 +1314,7 @@ export const productCategories: ProductCategory[] = [
         name: 'RO Purifier Dispenser',
         image: '/PRD-NEW/Water Dispenser/iOX8k1VoBk7UA-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Water dispenser with built-in RO purification system.',
         features: [
@@ -1325,6 +1343,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Floor Standing Classic',
         image: '/PRD-NEW/Water Dispenser/l1cJm6rPdOz5j-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Classic floor standing water dispenser with reliable performance.',
         features: [
@@ -1353,6 +1372,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Digital Control Dispenser',
         image: '/PRD-NEW/Water Dispenser/roAi8jMOQK9cN-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Advanced digital control water dispenser with smart features.',
         features: [
@@ -1381,6 +1401,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Office Pro Dispenser',
         image: '/PRD-NEW/Water Dispenser/sCJQDrGF6FWJm-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'High-capacity water dispenser designed for office environments.',
         features: [
@@ -1409,6 +1430,7 @@ export const productCategories: ProductCategory[] = [
         name: 'Luxury Premium Dispenser',
         image: '/PRD-NEW/Water Dispenser/xqGXC3pvCsooV-large.jpg',
         mrp: 'Contact for MRP',
+        brand: 'Blue Star',
         originalPrice: '',
         description: 'Luxury water dispenser with premium features and elegant design.',
         features: [

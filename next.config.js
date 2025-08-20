@@ -19,6 +19,10 @@ const nextConfig = {
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production',
   },
+  // Optimize worker processes for development
+  experimental: {
+    workerThreads: false,
+  },
   generateBuildId: async () => {
     // Generate a unique build ID based on timestamp
     return `build-${Date.now()}`
