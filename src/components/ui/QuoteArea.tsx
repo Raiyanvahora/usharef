@@ -3,6 +3,13 @@
 import { useState } from 'react';
 import { MessageCircle, Phone, Mail, Send } from 'lucide-react';
 
+// Declare dataLayer for Google Analytics
+declare global {
+  interface Window {
+    dataLayer?: unknown[];
+  }
+}
+
 interface QuoteAreaProps {
   product: {
     id: string;

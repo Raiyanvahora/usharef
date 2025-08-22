@@ -19,12 +19,15 @@ interface ProductModel {
   technicalSpecs?: {
     grossVolume?: string;
     netVolume?: string;
+    netWeight?: string;
     temperatureRange?: string;
     powerConsumption?: string;
+    compressorCapacity?: string;
     energyRating?: string;
     refrigerant?: string;
     compressor?: string;
     noOfBaskets?: string;
+    bottleCapacity?: string;
     noOfDoors?: string;
   };
   isNew?: boolean;
@@ -72,7 +75,7 @@ export const productCategories: ProductCategory[] = [
     brands: ['Western', 'Icemake'],
     filterOptions: {
       types: ['Convertible', 'Combi', 'Glass Top', 'Eutectic', 'Scooping', 'Mobile'],
-      capacities: ['70L', '100L', '150L', '200L', '210L', '225L', '250L', '300L', '305L', '325L', '350L', '375L', '380L', '400L', '405L', '425L', '450L', '475L', '495L', '500L', '505L', '525L', '550L', '600L', '625L', '875L'],
+      capacities: ['70L', '100L', '150L', '200L', '210L', '225L', '250L', '300L', '305L', '325L', '350L', '375L', '380L', '400L', '405L', '425L', '450L', '475L', '495L', '500L', '505L', '525L', '550L', '600L', '625L', '750L', '850L', '875L'],
       applications: ['Ice Cream Parlours', 'Retail Stores', 'Supermarkets', 'Commercial Establishments']
     },
     models: [
@@ -112,6 +115,7 @@ export const productCategories: ProductCategory[] = [
       },
       { id: 'D150H164', name: 'D150H164', image: '/PRD-NEW/DEEP FREEZERS/images/D150-300x300.png', mrp: '₹20,890', type: 'Convertible', capacity: '106L', warranty: '4 years for deep freezers', brand: 'Western', description: '106L convertible freezer/cooler with hard top cover.' },
       { id: 'D300H124', name: 'D300H124', image: '/PRD-NEW/DEEP FREEZERS/images/D300-Single-Door-300x300.png', mrp: '₹27,610', type: 'Convertible', capacity: '220L', warranty: '4 years for deep freezers', brand: 'Western', description: '220L convertible freezer with double door design.' },
+      { id: 'D325H223', name: 'D325H223', image: '/PRD-NEW/DEEP FREEZERS/images/D325-H223-300x300.png', mrp: '₹29,990', type: 'Convertible', capacity: '301L', warranty: '4 years for deep freezers', brand: 'Western', description: '301L hard-top convertible deep freezer for commercial use.' },
       { id: 'D350H225', name: 'D350H225', image: '/PRD-NEW/DEEP FREEZERS/images/D350-300x300.png', mrp: '₹31,660', type: 'Convertible', capacity: '282L', warranty: '4 years for deep freezers', brand: 'Western', description: '282L high capacity convertible freezer.' },
       { id: 'D375H225', name: 'D375H225', image: '/PRD-NEW/DEEP FREEZERS/images/D375-300x300.png', mrp: '₹33,280', type: 'Convertible', capacity: '306L', warranty: '4 years for deep freezers', brand: 'Western', description: '306L premium convertible freezer/cooler.' },
       { id: 'D475H224', name: 'D475H224', image: '/PRD-NEW/DEEP FREEZERS/images/D475-300x300.png', mrp: '₹37,170', type: 'Convertible', capacity: '444L', warranty: '4 years for deep freezers', brand: 'Western', description: '444L large convertible freezer for commercial use.' },
@@ -124,7 +128,7 @@ export const productCategories: ProductCategory[] = [
       { id: 'B425H220', name: 'B425H220', image: '/PRD-NEW/DEEP FREEZERS/images/B425-300x300.png', mrp: '₹49,999', type: 'Combi', capacity: '425L', brand: 'Western', description: '425L combi unit with dual temperature zones.' },
       { id: 'B525H220', name: 'B525H220', image: '/PRD-NEW/DEEP FREEZERS/images/B525-300x300.png', mrp: '₹59,999', type: 'Combi', capacity: '525L', brand: 'Western', description: '525L large combi freezer/cooler for commercial use.' },
       // Glass Top Deep Freezers
-      { id: 'F250GL25', name: 'F250GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹32,999', type: 'Glass Top', capacity: '250L', brand: 'Western', description: '250L glass top deep freezer with curved glass lid.' },
+      { id: 'F250GL25', name: 'F250GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹32,999', type: 'Glass Top', capacity: '192L', brand: 'Western', description: '192L glass top deep freezer with curved glass lid.' },
       { id: 'F350GL25', name: 'F350GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹42,999', type: 'Glass Top', capacity: '350L', brand: 'Western', description: '350L glass top freezer with enhanced visibility.' },
       { id: 'F450GL25', name: 'F450GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹52,999', type: 'Glass Top', capacity: '422L', brand: 'Western', description: '422L (gross) large glass top freezer for retail display.' },
       { id: 'F550GL25', name: 'F550GL25', image: '/PRD-NEW/DEEP FREEZERS/images/F250GL-300x300.png', mrp: '₹62,999', type: 'Glass Top', capacity: '550L', brand: 'Western', description: '550L premium glass top freezer with LED lighting.' },
@@ -142,19 +146,21 @@ export const productCategories: ProductCategory[] = [
       { id: 'G300H120', name: 'G300H120', image: '/PRD-NEW/DEEP FREEZERS/images/G200H120ECINGMXWHX_left-Angle-300x300.png', mrp: '₹56,999', type: 'Mobile', capacity: '200L', brand: 'Western', description: '200L single-tank mobile freezer with enhanced portability.' },
       // Icemake Combi Freezer/Cooler
       {
-        id: 'ICEMAKE_IFC425',
-        name: 'Icemake IFC425 – 380 L Combi Freezer & Cooler',
+        id: 'ICEMAKE_IFC425DD',
+        name: 'Icemake IFC-425 DD – 380L Combi Freezer & Cooler',
         image: '/PRD-NEW/DEEP FREEZERS/images/61EnGYeMNyL._SL1500_-264x264.jpg',
         images: ['/PRD-NEW/DEEP FREEZERS/images/61EnGYeMNyL._SL1500_-264x264.jpg'],
         mrp: 'Contact for MRP',
         type: 'Combi',
-        capacity: '380L',
+        capacity: '380L (Freezer: 172L + Cooler: 208L)',
         warranty: '4 years for deep freezers',
         brand: 'Icemake',
-        description: 'Dual-zone chest (freezer + cooler) with thick PUF insulation, copper condenser, and lockable lids—reliable for daily retail use.',
+        description: 'Dual-zone chest freezer with separate freezer (172L) and cooler (208L) compartments. Features thick PUF insulation, copper condenser, and lockable lids.',
         specifications: {
-          'Model': 'IFC425',
-          'Capacity': '380 Liters',
+          'Model': 'IFC-425 DD',
+          'Total Capacity': '380 Liters',
+          'Freezer Capacity': '172 Liters',
+          'Cooler Capacity': '208 Liters',
           'Type': 'Combi Freezer/Cooler',
           'Brand': 'Icemake'
         },
@@ -162,34 +168,91 @@ export const productCategories: ProductCategory[] = [
         isNew: true
       },
       {
-        id: 'ICEMAKE_IFC525',
-        name: 'Icemake IFC525 – 495 L Combi Freezer & Cooler',
+        id: 'ICEMAKE_IFC525DD',
+        name: 'Icemake IFC-525 DD – 495L Combi Freezer & Cooler',
         image: '/PRD-NEW/DEEP FREEZERS/images/51WkWRK0qL._SL1500_-264x264.jpg',
         images: ['/PRD-NEW/DEEP FREEZERS/images/51WkWRK0qL._SL1500_-264x264.jpg'],
         mrp: 'Contact for MRP',
         type: 'Combi',
-        capacity: '495L',
+        capacity: '495L (Freezer: 230L + Cooler: 265L)',
         warranty: '4 years for deep freezers',
         brand: 'Icemake',
-        description: 'Higher-capacity dual-zone storage with rugged build, efficient holdover, and easy service access for supermarkets and bulk use.',
+        description: 'High-capacity dual-zone storage with separate freezer (230L) and cooler (265L) sections. Rugged build with efficient holdover for supermarkets.',
         specifications: {
-          'Model': 'IFC525',
-          'Capacity': '495 Liters',
+          'Model': 'IFC-525 DD',
+          'Total Capacity': '495 Liters',
+          'Freezer Capacity': '230 Liters',
+          'Cooler Capacity': '265 Liters',
           'Type': 'Combi Freezer/Cooler',
           'Brand': 'Icemake'
         },
         features: ['Higher capacity dual-zone', 'Rugged build', 'Efficient holdover', 'Easy service access', 'Ideal for supermarkets'],
         isNew: true
       },
-      // Icemake Glass Top Deep Freezers
+      // Icemake Glass Top Deep Freezers (New Models)
       {
-        id: 'ICEMAKE_IGT350',
-        name: 'Icemake IGT350 – 300 L Glass Top Deep Freezer',
+        id: 'ICEMAKE_GT_300',
+        name: 'Icemake GT-300 – 300L (Glass Top)',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-gt300-300l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-gt300-300l.jpg'],
+        mrp: '₹28,500',
+        type: 'Glass Top',
+        capacity: '300L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '300L glass top deep freezer with curved sliding glass lids for easy product viewing.',
+        specifications: {
+          'Model': 'GT-300',
+          'Capacity': '300 Liters',
+          'Type': 'Glass Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_GT_400',
+        name: 'Icemake GT-400 – 400L (Glass Top)',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-gt400-400l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-gt400-400l.jpg'],
+        mrp: '₹32,500',
+        type: 'Glass Top',
+        capacity: '400L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '400L glass top deep freezer with curved sliding glass lids for easy product viewing.',
+        specifications: {
+          'Model': 'GT-400',
+          'Capacity': '400 Liters',
+          'Type': 'Glass Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_GT_500',
+        name: 'Icemake GT-500 – 500L (Glass Top)',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-gt500-500l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-gt500-500l.jpg'],
+        mrp: '₹36,500',
+        type: 'Glass Top',
+        capacity: '500L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '500L glass top deep freezer with curved sliding glass lids for easy product viewing.',
+        specifications: {
+          'Model': 'GT-500',
+          'Capacity': '500 Liters',
+          'Type': 'Glass Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      // Icemake Glass Top Deep Freezers (Existing Models)
+      {
+        id: 'ICEMAKE_IGT350FG',
+        name: 'Icemake IGT-350 FG – 330L Glass Top Deep Freezer',
         image: '/PRD-NEW/DEEP FREEZERS/images/51Ru3-x9ldL._SL1080_-264x264.jpg',
         images: ['/PRD-NEW/DEEP FREEZERS/images/51Ru3-x9ldL._SL1080_-264x264.jpg'],
         mrp: 'Contact for MRP',
         type: 'Glass Top',
-        capacity: '300L',
+        capacity: '330L',
         warranty: '4 years for deep freezers',
         brand: 'Icemake',
         description: 'Sliding glass-top display freezer with 70 mm PUF insulation—ideal for frozen foods and ice cream.',
@@ -204,13 +267,13 @@ export const productCategories: ProductCategory[] = [
         isNew: true
       },
       {
-        id: 'ICEMAKE_IGT450',
-        name: 'Icemake IGT450 – 400 L Glass Top Deep Freezer',
+        id: 'ICEMAKE_IGT450FG',
+        name: 'Icemake IGT-450 FG – 440L Glass Top Deep Freezer',
         image: '/PRD-NEW/DEEP FREEZERS/images/whatsapp-image-2025-01-17-at-5-13-50-pm-1000x1000-1-264x264.jpg',
         images: ['/PRD-NEW/DEEP FREEZERS/images/whatsapp-image-2025-01-17-at-5-13-50-pm-1000x1000-1-264x264.jpg'],
         mrp: 'Contact for MRP',
         type: 'Glass Top',
-        capacity: '400L',
+        capacity: '440L',
         warranty: '4 years for deep freezers',
         brand: 'Icemake',
         description: 'Mid-size glass-top with wide display area and efficient cooling for high-turnover outlets.',
@@ -224,13 +287,13 @@ export const productCategories: ProductCategory[] = [
         isNew: true
       },
       {
-        id: 'ICEMAKE_IGT550',
-        name: 'Icemake IGT550 – 500 L Glass Top Deep Freezer',
+        id: 'ICEMAKE_IGT550FG',
+        name: 'Icemake IGT-550 FG – 550L Glass Top Deep Freezer',
         image: '/PRD-NEW/DEEP FREEZERS/images/Difference-between-3-Star-4-Star-and-5-Star-Electrical-appliances-264x264.jpg',
         images: ['/PRD-NEW/DEEP FREEZERS/images/Difference-between-3-Star-4-Star-and-5-Star-Electrical-appliances-264x264.jpg'],
         mrp: 'Contact for MRP',
         type: 'Glass Top',
-        capacity: '500L',
+        capacity: '550L',
         warranty: '4 years for deep freezers',
         brand: 'Icemake',
         description: 'Large capacity with deep baskets and thick PUF for long holdover during outages.',
@@ -243,7 +306,191 @@ export const productCategories: ProductCategory[] = [
         features: ['Large capacity', 'Deep baskets', 'Thick PUF insulation', 'Long holdover during outages'],
         isNew: true
       },
-      // Icemake Hard Top Deep Freezers
+      // Icemake CF Series Deep Freezers
+      {
+        id: 'ICEMAKE_CF_100',
+        name: 'Icemake CF-100 – 100L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf100-100l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf100-100l.jpg'],
+        mrp: '₹14,500',
+        type: 'Hard Top',
+        capacity: '100L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '100L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-100',
+          'Capacity': '100 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_CF_200',
+        name: 'Icemake CF-200 – 200L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf200-200l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf200-200l.jpg'],
+        mrp: '₹18,500',
+        type: 'Hard Top',
+        capacity: '200L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '200L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-200',
+          'Capacity': '200 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_CF_300',
+        name: 'Icemake CF-300 – 300L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf300-300l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf300-300l.jpg'],
+        mrp: '₹22,500',
+        type: 'Hard Top',
+        capacity: '300L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '300L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-300',
+          'Capacity': '300 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_CF_400',
+        name: 'Icemake CF-400 – 400L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf400-400l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf400-400l.jpg'],
+        mrp: '₹26,500',
+        type: 'Hard Top',
+        capacity: '400L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '400L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-400',
+          'Capacity': '400 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_CF_500',
+        name: 'Icemake CF-500 – 500L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf500-500l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf500-500l.jpg'],
+        mrp: '₹30,500',
+        type: 'Hard Top',
+        capacity: '500L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '500L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-500',
+          'Capacity': '500 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_CF_600',
+        name: 'Icemake CF-600 – 600L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf600-600l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf600-600l.jpg'],
+        mrp: '₹34,500',
+        type: 'Hard Top',
+        capacity: '600L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '600L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-600',
+          'Capacity': '600 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_CF_750',
+        name: 'Icemake CF-750 – 750L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf750-750l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf750-750l.jpg'],
+        mrp: '₹38,500',
+        type: 'Hard Top',
+        capacity: '750L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '750L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-750',
+          'Capacity': '750 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_CF_900',
+        name: 'Icemake CF-900 – 850L Deep Freezer',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf900-850l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-cf900-850l.jpg'],
+        mrp: '₹42,500',
+        type: 'Hard Top',
+        capacity: '850L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '850L hard top deep freezer with efficient cooling and energy-saving technology.',
+        specifications: {
+          'Model': 'CF-900',
+          'Capacity': '850 Liters',
+          'Type': 'Hard Top Deep Freezer',
+          'Brand': 'Icemake'
+        }
+      },
+      // Icemake Combi Freezers (New Models with Dual Zone)
+      {
+        id: 'ICEMAKE_COMBI_400',
+        name: 'Icemake Combi 400 – 400L (Dual Zone)',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-combi400-400l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-combi400-400l.jpg'],
+        mrp: '₹32,500',
+        type: 'Combi',
+        capacity: '400L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '400L dual-zone combi freezer and cooler. Allows independent temperature control in each compartment.',
+        specifications: {
+          'Model': 'Combi 400',
+          'Capacity': '400 Liters',
+          'Type': 'Combi (Dual Zone)',
+          'Temperature Range': '-18°C to +10°C',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_COMBI_500',
+        name: 'Icemake Combi 500 – 500L (Dual Zone)',
+        image: '/PRD-NEW/DEEP FREEZERS/icemake/icemake-combi500-500l.jpg',
+        images: ['/PRD-NEW/DEEP FREEZERS/icemake/icemake-combi500-500l.jpg'],
+        mrp: '₹36,500',
+        type: 'Combi',
+        capacity: '500L',
+        warranty: '4 years for deep freezers',
+        brand: 'Icemake',
+        description: '500L dual-zone combi freezer and cooler. Allows independent temperature control in each compartment.',
+        specifications: {
+          'Model': 'Combi 500',
+          'Capacity': '500 Liters',
+          'Type': 'Combi (Dual Zone)',
+          'Temperature Range': '-18°C to +10°C',
+          'Brand': 'Icemake'
+        }
+      },
+      // Icemake Hard Top Deep Freezers (existing models)
       {
         id: 'ICEMAKE_IHT175_SD',
         name: 'Icemake IHT175 SD – 100 L Hard Top Deep Freezer',
@@ -319,7 +566,7 @@ export const productCategories: ProductCategory[] = [
     filterOptions: {
       types: ['SRC', 'IMVC', 'Frigoglass', 'Vertical'],
       doorTypes: ['Single', 'Double', 'Triple', 'Multi'],
-      capacities: ['30L', '60L', '200L', '201L', '250L', '280L', '281L', '295L', '300L', '333L', '360L', '370L', '380L', '381L', '400L', '450L', '457L', '500L', '501L', '550L', '569L', '600L', '650L', '752L', '800L', '810L', '900L', '950L', '1000L', '1009L', '1050L', '1200L', '1800L'],
+      capacities: ['30L', '60L', '200L', '201L', '250L', '280L', '281L', '295L', '300L', '333L', '360L', '370L', '380L', '381L', '400L', '450L', '457L', '500L', '501L', '550L', '569L', '600L', '650L', '681L', '752L', '800L', '810L', '900L', '950L', '1000L', '1009L', '1050L', '1100L', '1200L', '1256L', '1800L'],
       applications: ['Convenience Stores', 'Supermarkets', 'Retail Outlets', 'Commercial Use']
     },
     models: [
@@ -327,22 +574,44 @@ export const productCategories: ProductCategory[] = [
       { id: 'SRC200HCF-GL', name: 'SRC200HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-250-300x300.png', mrp: '₹29,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '167L', description: '167L single door visi cooler with frost-free technology.' },
       { id: 'SRC201HCF-GL', name: 'SRC201HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-250-300x300.png', mrp: '₹30,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '167L', description: '167L single door enhanced visi cooler with improved efficiency.' },
       { id: 'SRC280HCF-GL', name: 'SRC280HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/New-Project-15-300x300.png', mrp: '₹36,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '216L', description: '216L single door mid-size visi cooler with frost-free operation.' },
-      { id: 'SRC281HC-GL', name: 'SRC281HC-GL', image: '/PRD-NEW/VISI COOLERS/images/src281-1-300x300.png', mrp: '₹37,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '281L', description: '281L visi cooler with hard cooling system.' },
+      { id: 'SRC281HC-GL', name: 'SRC281HC-GL', image: '/PRD-NEW/VISI COOLERS/images/src281-1-300x300.png', mrp: '₹37,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '216L', description: '216L visi cooler with hard cooling system.' },
       { id: 'SRC360HCF-GL', name: 'SRC360HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹44,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '302L', description: '302L single door visi cooler with frost-free cooling.' },
       { id: 'SRC380HCF-GL', name: 'SRC380HCF-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹46,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '380L', description: '380L frost-free visi cooler with premium features.' },
       { id: 'SRC381HC-GL', name: 'SRC381HC-GL', image: '/PRD-NEW/VISI COOLERS/images/0709091_SRC380HC-GL_Left-Angle-300x300.png', mrp: '₹47,999', doorType: 'Single', brand: 'Western', type: 'SRC', capacity: '340L', description: '340L single door advanced visi cooler with hard cooling.' },
       { id: 'SRC501HC-GL', name: 'SRC501HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC-501-Side-View-300x300.png', mrp: '₹60,999', doorType: 'Double', brand: 'Western', type: 'SRC', capacity: '405L', description: '405L double door visi cooler for large retail spaces.' },
       { id: 'SRC752HC-GL', name: 'SRC752HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC752HC-Front-Angle-With-Stock-300x300.png', mrp: '₹84,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '585L', description: '585L triple door visi cooler for supermarkets.' },
-      { id: 'SRC810HC-GL', name: 'SRC810HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC950-Front-Angle-With-Stock-300x300.png', mrp: '₹92,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '810L', description: '810L large triple door visi cooler.' },
+      { id: 'SRC810HC-GL', name: 'SRC810HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC950-Front-Angle-With-Stock-300x300.png', mrp: '₹92,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '695L', description: '695L large triple door visi cooler.' },
       { id: 'SRC950HC-GL', name: 'SRC950HC-GL', image: '/PRD-NEW/VISI COOLERS/images/SRC950-Front-Angle-With-Stock-300x300.png', mrp: '₹105,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '807L', description: '807L premium triple door visi cooler.' },
       { id: 'SRC1050HC-GL', name: 'SRC1050HC-GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹115,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '908L', description: '908L extra large triple door visi cooler.' },
       { id: 'SRC1800-GL', name: 'SRC1800-GL', image: '/PRD-NEW/VISI COOLERS/images/1050-Front-View-with-Products-300x300.png', mrp: '₹168,999', doorType: 'Triple', brand: 'Western', type: 'SRC', capacity: '1882L', description: '1882L triple door industrial visi cooler for large establishments.' },
 
 
+      { 
+        id: 'ICEMAKE_IMVC1100',
+        name: 'Icemake IMVC-1100 – 1256L Visi Cooler', 
+        image: '/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg',
+        images: ['/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg'],
+        mrp: 'Contact for MRP', 
+        type: 'IMVC', 
+        doorType: 'Triple',
+        capacity: '1256L', 
+        warranty: '1 year for Visi Coolers', 
+        brand: 'Icemake', 
+        description: 'Triple-door visi cooler with 1256L capacity for large retail establishments.',
+        specifications: {
+          'Model': 'IMVC-1100',
+          'Capacity': '1256 Liters',
+          'Type': 'Triple Door Visi Cooler',
+          'Brand': 'Icemake',
+          'Door Type': 'Fog-free toughened glass',
+          'Temperature Range': '2°C to 8°C'
+        }
+      },
+      
       // Visi Coolers (Frigoglass Models)
       {
-        id: 'FRIGOGLASS_VG333',
-        name: 'Frigoglass VG333 – 333L Visi Cooler',
+        id: 'FRIGOGLASS_VG1D370',
+        name: 'Frigoglass VG1D-370 – 369L Visi Cooler',
         image: '/PRD-NEW/VISI COOLERS/images/FUR.VIS.227105563_1723466712391.webp',
         images: ['/PRD-NEW/VISI COOLERS/images/FUR.VIS.227105563_1723466712391.webp'],
         mrp: 'Contact for MRP',
@@ -353,8 +622,8 @@ export const productCategories: ProductCategory[] = [
         brand: 'Frigoglass',
         description: 'Premium European single-door visi cooler with fog-free glass, adjustable shelves, and energy-efficient cooling.',
         specifications: {
-          'Model': 'VG333',
-          'Capacity': '333 Liters',
+          'Model': 'VG1D-370',
+          'Capacity': '369 Liters (Net ~358L)',
           'Type': 'Single Door Visi Cooler',
           'Brand': 'Frigoglass',
           'Door Type': 'Fog-free tempered glass',
@@ -413,8 +682,8 @@ export const productCategories: ProductCategory[] = [
         isNew: true
       },
       {
-        id: 'FRIGOGLASS_VG500',
-        name: 'Frigoglass VG500 – 500L Visi Cooler',
+        id: 'FRIGOGLASS_VG1D600',
+        name: 'Frigoglass VG1D-600 – 613L Visi Cooler',
         image: '/PRD-NEW/VISI COOLERS/images/FUR.VIS.232932658_1747388025053.webp',
         images: ['/PRD-NEW/VISI COOLERS/images/FUR.VIS.232932658_1747388025053.webp'],
         mrp: 'Contact for MRP',
@@ -425,8 +694,8 @@ export const productCategories: ProductCategory[] = [
         brand: 'Frigoglass',
         description: 'High-capacity single-door visi cooler with advanced LED lighting system and multiple adjustable shelves for maximum product display.',
         specifications: {
-          'Model': 'VG500',
-          'Capacity': '500 Liters',
+          'Model': 'VG1D-600',
+          'Capacity': '613 Liters',
           'Type': 'Single Door Premium Cooler',
           'Brand': 'Frigoglass',
           'Door Type': 'Low-E glass with anti-fog',
@@ -437,8 +706,8 @@ export const productCategories: ProductCategory[] = [
         isNew: true
       },
       {
-        id: 'FRIGOGLASS_VG380',
-        name: 'Frigoglass VG380 – 380L Multi-Purpose Cooler',
+        id: 'FRIGOGLASS_VG1D450',
+        name: 'Frigoglass VG1D-450 – 462L Multi-Purpose Cooler',
         image: '/PRD-NEW/VISI COOLERS/images/FUR.VIS.432932665_1747388025801.webp',
         images: ['/PRD-NEW/VISI COOLERS/images/FUR.VIS.432932665_1747388025801.webp'],
         mrp: 'Contact for MRP',
@@ -449,8 +718,8 @@ export const productCategories: ProductCategory[] = [
         brand: 'Frigoglass',
         description: 'Versatile single-door cooler perfect for mixed merchandise display including snacks, dairy, and beverages.',
         specifications: {
-          'Model': 'VG380',
-          'Capacity': '380 Liters',
+          'Model': 'VG1D-450',
+          'Capacity': '462 Liters',
           'Type': 'Multi-Purpose Display Cooler',
           'Brand': 'Frigoglass',
           'Door Type': 'Clear tempered glass',
@@ -555,6 +824,82 @@ export const productCategories: ProductCategory[] = [
         },
         features: ['Vibrant blue design', 'Premium cooling', 'Clear glass visibility', 'European styling', 'Energy Star rated', 'Commercial durability'],
         isNew: true
+      },
+      {
+        id: 'FRIGOGLASS_VG200',
+        name: 'Frigoglass VG-200 – 190L Visi Cooler',
+        image: '/PRD-NEW/VISI COOLERS/images/FUR.VIS.227105563_1723466712391.webp',
+        images: ['/PRD-NEW/VISI COOLERS/images/FUR.VIS.227105563_1723466712391.webp'],
+        mrp: 'Contact for MRP',
+        doorType: 'Single',
+        type: 'Frigoglass',
+        capacity: '190L',
+        warranty: '1 year for Visi Coolers',
+        brand: 'Frigoglass',
+        description: 'Compact single-door visi cooler with 187-193L capacity for small retail spaces.',
+        specifications: {
+          'Model': 'VG-200',
+          'Capacity': '187-193 Liters',
+          'Type': 'Single Door Visi Cooler',
+          'Brand': 'Frigoglass'
+        }
+      },
+      {
+        id: 'FRIGOGLASS_VG250',
+        name: 'Frigoglass VG-250 – 235L Visi Cooler',
+        image: '/PRD-NEW/VISI COOLERS/images/FUR.VIS.227105563_1723466712391.webp',
+        images: ['/PRD-NEW/VISI COOLERS/images/FUR.VIS.227105563_1723466712391.webp'],
+        mrp: 'Contact for MRP',
+        doorType: 'Single',
+        type: 'Frigoglass',
+        capacity: '235L',
+        warranty: '1 year for Visi Coolers',
+        brand: 'Frigoglass',
+        description: 'Single-door visi cooler with 230-237L capacity, ideal for convenience stores.',
+        specifications: {
+          'Model': 'VG-250',
+          'Capacity': '230-237 Liters',
+          'Type': 'Single Door Visi Cooler',
+          'Brand': 'Frigoglass'
+        }
+      },
+      {
+        id: 'FRIGOGLASS_VG650',
+        name: 'Frigoglass VG-650 – 530L Visi Cooler',
+        image: '/PRD-NEW/VISI COOLERS/images/FUR.VIS.432932665_1747388025801.webp',
+        images: ['/PRD-NEW/VISI COOLERS/images/FUR.VIS.432932665_1747388025801.webp'],
+        mrp: 'Contact for MRP',
+        doorType: 'Double',
+        type: 'Frigoglass',
+        capacity: '530L',
+        warranty: '1 year for Visi Coolers',
+        brand: 'Frigoglass',
+        description: 'Double-door visi cooler with 522-538L capacity for medium retail establishments.',
+        specifications: {
+          'Model': 'VG-650',
+          'Capacity': '522-538 Liters',
+          'Type': 'Double Door Visi Cooler',
+          'Brand': 'Frigoglass'
+        }
+      },
+      {
+        id: 'FRIGOGLASS_VG2D1000',
+        name: 'Frigoglass VG2D-1000 – 960L Visi Cooler',
+        image: '/PRD-NEW/VISI COOLERS/images/FUR.VIS.432932665_1747388025801.webp',
+        images: ['/PRD-NEW/VISI COOLERS/images/FUR.VIS.432932665_1747388025801.webp'],
+        mrp: 'Contact for MRP',
+        doorType: 'Double',
+        type: 'Frigoglass',
+        capacity: '960L',
+        warranty: '1 year for Visi Coolers',
+        brand: 'Frigoglass',
+        description: 'Large double-door visi cooler with 947-975L capacity for supermarkets.',
+        specifications: {
+          'Model': 'VG2D-1000',
+          'Capacity': '947-975 Liters',
+          'Type': 'Double Door Visi Cooler',
+          'Brand': 'Frigoglass'
+        }
       },
       {
         id: 'FRIGOGLASS_VG380_COMPACT',
@@ -708,7 +1053,7 @@ export const productCategories: ProductCategory[] = [
       // IceMake Visi Coolers - IMVC Series
       { 
         id: 'ICEMAKE_IMVC300',
-        name: 'Icemake IMVC300 – 333 L Visi Cooler', 
+        name: 'Icemake IMVC-300 – 333L Visi Cooler', 
         image: '/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg',
         images: ['/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg'],
         mrp: 'Contact for MRP', 
@@ -719,7 +1064,7 @@ export const productCategories: ProductCategory[] = [
         brand: 'Icemake', 
         description: 'Single-door visi cooler with fog-free toughened glass, adjustable shelves, and vertical LED lighting.',
         specifications: {
-          'Model': 'IMVC300',
+          'Model': 'IMVC-300',
           'Capacity': '333 Liters',
           'Type': 'Single Door Visi Cooler',
           'Brand': 'Icemake',
@@ -776,8 +1121,29 @@ export const productCategories: ProductCategory[] = [
         isNew: true
       },
       { 
+        id: 'ICEMAKE_IMVC675',
+        name: 'Icemake IMVC-675 – 681L Visi Cooler', 
+        image: '/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg',
+        images: ['/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg'],
+        mrp: 'Contact for MRP', 
+        type: 'IMVC', 
+        doorType: 'Double',
+        capacity: '681L', 
+        warranty: '1 year for Visi Coolers', 
+        brand: 'Icemake', 
+        description: 'Double-door visi cooler with 681L capacity, ideal for medium to large retail spaces.',
+        specifications: {
+          'Model': 'IMVC-675',
+          'Capacity': '681 Liters',
+          'Type': 'Double Door Visi Cooler',
+          'Brand': 'Icemake',
+          'Door Type': 'Fog-free toughened glass',
+          'Temperature Range': '2°C to 8°C'
+        }
+      },
+      { 
         id: 'ICEMAKE_IMVC900',
-        name: 'Icemake IMVC900 – 1009 L Visi Cooler', 
+        name: 'Icemake IMVC-900 – 1009L Visi Cooler', 
         image: '/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg',
         images: ['/PRD-NEW/VISI COOLERS/images/product-1000x1000_-264x264.jpg'],
         mrp: 'Contact for MRP', 
@@ -798,6 +1164,87 @@ export const productCategories: ProductCategory[] = [
         },
         features: ['Eight adjustable shelves', 'Bright LED merchandising lighting', 'Double door design', 'Maximum 1009L capacity', 'Commercial grade construction'],
         isNew: true
+      },
+      // New Icemake Visi Coolers
+      {
+        id: 'ICEMAKE_VISI_400',
+        name: 'Icemake Visi Cooler 400 – 400L (Single Door)',
+        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-visi400-400l.jpg',
+        images: ['/PRD-NEW/VISI COOLERS/icemake/icemake-visi400-400l.jpg'],
+        mrp: '₹38,500',
+        type: 'IMVC',
+        doorType: 'Single',
+        capacity: '400L',
+        warranty: '1 year parts, 5 years compressor warranty',
+        brand: 'Icemake',
+        description: '400L single door visi cooler with LED lighting and digital temperature control.',
+        specifications: {
+          'Model': 'Visi Cooler 400',
+          'Capacity': '400 Liters',
+          'Door Type': 'Single Door',
+          'Brand': 'Icemake',
+          'Temperature Range': '2°C to 8°C'
+        }
+      },
+      {
+        id: 'ICEMAKE_VISI_500',
+        name: 'Icemake Visi Cooler 500 – 500L (Single Door)',
+        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-visi500-500l.jpg',
+        images: ['/PRD-NEW/VISI COOLERS/icemake/icemake-visi500-500l.jpg'],
+        mrp: '₹42,500',
+        type: 'IMVC',
+        doorType: 'Single',
+        capacity: '500L',
+        warranty: '1 year parts, 5 years compressor warranty',
+        brand: 'Icemake',
+        description: '500L single door visi cooler with LED lighting and digital temperature control.',
+        specifications: {
+          'Model': 'Visi Cooler 500',
+          'Capacity': '500 Liters',
+          'Door Type': 'Single Door',
+          'Brand': 'Icemake',
+          'Temperature Range': '2°C to 8°C'
+        }
+      },
+      {
+        id: 'ICEMAKE_VISI_600',
+        name: 'Icemake Visi Cooler 600 – 600L (Single Door)',
+        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-visi600-600l.jpg',
+        images: ['/PRD-NEW/VISI COOLERS/icemake/icemake-visi600-600l.jpg'],
+        mrp: '₹46,500',
+        type: 'IMVC',
+        doorType: 'Single',
+        capacity: '600L',
+        warranty: '1 year parts, 5 years compressor warranty',
+        brand: 'Icemake',
+        description: '600L single door visi cooler with LED lighting and digital temperature control.',
+        specifications: {
+          'Model': 'Visi Cooler 600',
+          'Capacity': '600 Liters',
+          'Door Type': 'Single Door',
+          'Brand': 'Icemake',
+          'Temperature Range': '2°C to 8°C'
+        }
+      },
+      {
+        id: 'ICEMAKE_VISI_1100',
+        name: 'Icemake Visi Cooler 1100 – 1100L (Double Door)',
+        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-visi1100-1100l.jpg',
+        images: ['/PRD-NEW/VISI COOLERS/icemake/icemake-visi1100-1100l.jpg'],
+        mrp: '₹68,500',
+        type: 'IMVC',
+        doorType: 'Double',
+        capacity: '1100L',
+        warranty: '1 year parts, 5 years compressor warranty',
+        brand: 'Icemake',
+        description: '1100L double door visi cooler with LED lighting and digital temperature control.',
+        specifications: {
+          'Model': 'Visi Cooler 1100',
+          'Capacity': '1100 Liters',
+          'Door Type': 'Double Door',
+          'Brand': 'Icemake',
+          'Temperature Range': '2°C to 8°C'
+        }
       }
     ]
   },
@@ -863,8 +1310,8 @@ export const productCategories: ProductCategory[] = [
         }
       },
       { 
-        id: 'PWC-60-80',
-        name: 'PWC 60/80', 
+        id: 'PWC6080',
+        name: 'PWC6080', 
         image: '/PRD-NEW/WATER-SOLUTIONS/images/PWC-40806080-1-300x300.png', 
         mrp: '₹54,999',
         capacity: '60 LPH cooling / 80L storage',
@@ -879,6 +1326,15 @@ export const productCategories: ProductCategory[] = [
         capacity: '60 LPH cooling / 120L storage',
         brand: 'Western',
         description: 'Commercial water cooler with 60 LPH cooling capacity and 120L storage tank.'
+      },
+      { 
+        id: 'SWC4080HC',
+        name: 'SWC4080HC', 
+        image: '/PRD-NEW/WATER-SOLUTIONS/images/SWC-80120-1-300x300.png', 
+        mrp: '₹44,999',
+        capacity: '40 LPH cooling / 80L storage',
+        brand: 'Western',
+        description: 'Hard cooling water cooler with 40 LPH cooling capacity and 80L storage tank.'
       },
       { 
         id: 'SWC-60-60',
@@ -897,6 +1353,24 @@ export const productCategories: ProductCategory[] = [
         capacity: '80 LPH cooling / 80L storage',
         brand: 'Western',
         description: 'Extra large water cooler with 80 LPH cooling and 80L storage.'
+      },
+      { 
+        id: 'SWC80120',
+        name: 'SWC80120', 
+        image: '/PRD-NEW/WATER-SOLUTIONS/images/SWC-80120-1-300x300.png', 
+        mrp: '₹62,999',
+        capacity: '80 LPH cooling / 120L storage',
+        brand: 'Western',
+        description: 'High capacity water cooler with 80 LPH cooling and 120L storage tank.'
+      },
+      { 
+        id: 'SWC150150',
+        name: 'SWC150150', 
+        image: '/PRD-NEW/WATER-SOLUTIONS/images/SWC-150150-300x300.png', 
+        mrp: '₹78,999',
+        capacity: '150 LPH cooling / 150L storage',
+        brand: 'Western',
+        description: 'Industrial water cooler with 150 LPH cooling and 150L storage.'
       },
       { 
         id: 'SWC-150-150',
@@ -1452,6 +1926,79 @@ export const productCategories: ProductCategory[] = [
           'Power': '600W total',
           'Dimensions': '360 x 360 x 1080mm',
           'Warranty': '3 Years'
+        }
+      },
+      // Icemake Water Dispensers
+      {
+        id: 'ICEMAKE_WD_20L_FLOOR',
+        name: 'Icemake Water Dispenser – 20L Cooling Tank (Floor-Standing)',
+        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-water1-20l.jpg',
+        mrp: '₹12,500',
+        brand: 'Icemake',
+        capacity: '20L cooling tank',
+        description: 'Floor-standing water dispenser with 20L cooling tank, providing hot, cold, and normal water.',
+        features: [
+          'Three temperature options (Hot/Cold/Normal)',
+          '20L cooling tank capacity',
+          'Floor-standing design',
+          'Child safety lock on hot tap',
+          'LED indicators',
+          'Energy efficient operation'
+        ],
+        specifications: {
+          'Model': 'WD-20L-FS',
+          'Cooling Tank': '20 Liters',
+          'Temperature Options': 'Hot, Cold, Normal',
+          'Type': 'Floor Standing',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_WD_20L_CABINET',
+        name: 'Icemake Water Dispenser – 20L Cooling Tank + Cabinet',
+        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-water2-20l.jpg',
+        mrp: '₹14,500',
+        brand: 'Icemake',
+        capacity: '20L cooling tank',
+        description: 'Floor-standing water dispenser with 20L cooling tank and storage cabinet.',
+        features: [
+          'Three temperature options (Hot/Cold/Normal)',
+          '20L cooling tank capacity',
+          'Storage cabinet included',
+          'Child safety lock on hot tap',
+          'LED indicators',
+          'Energy efficient operation'
+        ],
+        specifications: {
+          'Model': 'WD-20L-CAB',
+          'Cooling Tank': '20 Liters',
+          'Temperature Options': 'Hot, Cold, Normal',
+          'Type': 'Floor Standing with Cabinet',
+          'Brand': 'Icemake'
+        }
+      },
+      {
+        id: 'ICEMAKE_WD_5L_TABLETOP',
+        name: 'Icemake Water Dispenser – 5L Cooling Tank (Tabletop/Countertop)',
+        image: '/PRD-NEW/Water Dispenser/icemake-water3-5l.jpg',
+        mrp: '₹8,500',
+        brand: 'Icemake',
+        capacity: '5L cooling tank',
+        description: 'Compact tabletop/countertop water dispenser with 5L cooling tank.',
+        features: [
+          'Two temperature options (Hot/Cold)',
+          '5L cooling tank capacity',
+          'Compact tabletop design',
+          'Child safety lock on hot tap',
+          'LED indicators',
+          'Space-saving design'
+        ],
+        specifications: {
+          'Model': 'WD-5L-TT',
+          'Cooling Tank': '5 Liters',
+          'Temperature Options': 'Hot, Cold',
+          'Type': 'Tabletop/Countertop',
+          'Brand': 'Icemake'
         }
       }
     ]

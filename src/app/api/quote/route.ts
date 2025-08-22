@@ -40,7 +40,7 @@ Generated from Usha Refrigeration Website
 `;
 
     // Configure nodemailer (you'll need to set up SMTP credentials)
-    const transporter = nodemailer.createTransporter({
+    const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || 'smtp.gmail.com',
       port: parseInt(process.env.SMTP_PORT || '587'),
       secure: false,
