@@ -3,9 +3,9 @@ export default function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     "@id": "https://usharefrigeration.com/#business",
-    name: "Usha Refrigeration & Service",
-    alternateName: "Usha Refrigeration",
-    description: "Charotar's trusted refrigerator brand for over 10 years. We specialize in commercial refrigeration equipment including deep freezers, visi coolers, water coolers, and display fridges. Premium quality, energy-efficient refrigeration solutions for dairy, retail, restaurant, and pharmaceutical applications.",
+    name: "Usha Refrigeration & Service-Anand",
+    alternateName: "ઉષા રેફ્રિજરેશન એન્ડ સર્વિસ",
+    description: "Leading supplier of commercial refrigeration equipment in Gujarat. Western, Icemake, Frigoglass brands. Deep freezers, visi coolers, water coolers, ice machines. Trusted by leading brands across Gujarat. ગુજરાતમાં કોમર્શિયલ રેફ્રિજરેશન સાધનોના અગ્રણી સપ્લાયર.",
     url: "https://usharefrigeration.com",
     logo: "https://usharefrigeration.com/logo/usha-logo.png",
     image: [

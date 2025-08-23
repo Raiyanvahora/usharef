@@ -1,0 +1,46 @@
+# Robots.txt for Usha Refrigeration & Service
+# https://usharefrigeration.com
+
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /node_modules/
+
+# Allow search engines to access all product pages
+Allow: /products
+Allow: /products/category/
+Allow: /products/*/
+
+# Sitemap location
+Sitemap: https://usharefrigeration.com/sitemap.xml
+
+# Crawl-delay for bots (in seconds)
+Crawl-delay: 1
+
+# Specific rules for major search engines
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 0
+
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# Block bad bots
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /

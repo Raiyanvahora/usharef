@@ -17,18 +17,30 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Usha Refrigeration & Service-Anand | Commercial Refrigeration Equipment',
-  description: 'Leading supplier of commercial refrigeration equipment in Anand, Gujarat. Freezers, coolers, water dispensers, pastry counters. Western, Icemake, Frigoglass, Blue Star brands.',
-  keywords: 'commercial refrigeration, freezers, coolers, water dispensers, Anand Gujarat, Western refrigeration, Icemake, Frigoglass, Blue Star',
+  metadataBase: new URL('https://usharefrigeration.com'),
+  title: 'Usha Refrigeration & Service-Anand | Western, Icemake, Frigoglass Dealer Gujarat',
+  description: 'Leading supplier of commercial refrigeration equipment in Anand, Gujarat. Deep freezers, visi coolers, water coolers, ice machines. Western, Icemake, Frigoglass brands. Trusted by leading brands across Gujarat. આણંદ ગુજરાતમાં કોમર્શિયલ રેફ્રિજરેશન સાધનોના અગ્રણી સપ્લાયર.',
+  keywords: 'commercial refrigeration gujarat, western deep freezer, icemake visi cooler, water cooler, ice machine, pastry counter, back bar chiller, anand, baroda, ahmedabad, vadodara, surat, rajkot, western refrigeration dealer, icemake distributor, frigoglass supplier, વેસ્ટર્ન ડીપ ફ્રીઝર, આઈસમેક વિઝી કૂલર, વોટર કૂલર ગુજરાત',
   authors: [{ name: 'Usha Refrigeration & Service' }],
   creator: 'Usha Refrigeration & Service',
   publisher: 'Usha Refrigeration & Service',
   openGraph: {
-    title: 'Usha Refrigeration & Service-Anand | Commercial Refrigeration Equipment',
-    description: 'Leading supplier of commercial refrigeration equipment in Anand, Gujarat.',
+    title: 'Usha Refrigeration & Service-Anand | Western, Icemake, Frigoglass Dealer',
+    description: 'Leading supplier of commercial refrigeration equipment in Gujarat. Deep freezers, visi coolers, water coolers. Trusted by leading brands. Service centers in Anand, Baroda, Ahmedabad.',
     type: 'website',
     locale: 'en_IN',
-    siteName: 'Usha Refrigeration & Service'
+    siteName: 'Usha Refrigeration & Service',
+    images: [
+      {
+        url: '/banners/60435acb-98b7-412c-b983-42433e438f72.png',
+        width: 1200,
+        height: 630,
+        alt: 'Usha Refrigeration - Commercial Cooling Solutions'
+      }
+    ]
+  },
+  alternates: {
+    canonical: 'https://usharefrigeration.com'
   },
   icons: {
     icon: [
@@ -39,7 +51,7 @@ export const metadata: Metadata = {
       { url: '/favicon.svg', sizes: '180x180', type: 'image/svg+xml' }
     ]
   },
-  robots: 'index, follow',
+  robots: 'index, follow, max-image-preview:large',
   other: {
     'Cache-Control': 'no-cache, no-store, must-revalidate',
     'Pragma': 'no-cache',
