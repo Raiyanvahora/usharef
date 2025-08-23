@@ -149,15 +149,15 @@ export default function Home() {
       </section>
 
       {/* Stats Section */}
-      <section className="bg-gray-50 py-8 sm:py-12 lg:py-16">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-6 sm:gap-8 lg:gap-12">
+      <section className="bg-gray-50 py-4 sm:py-8 lg:py-12">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-3 gap-3 sm:gap-6 lg:gap-8">
             {stats.map((stat, index) => (
-              <div key={index} className="flex flex-col items-center justify-center text-center animate-on-scroll px-3 py-3 w-full sm:w-auto">
-                <div className="text-2xl sm:text-3xl lg:text-4xl font-bold text-primary-600 mb-1 sm:mb-2">
+              <div key={index} className="flex flex-col items-center justify-center text-center animate-on-scroll py-2 sm:py-4">
+                <div className="text-lg sm:text-2xl lg:text-3xl xl:text-4xl font-bold text-primary-600 mb-1">
                   {stat.number}
                 </div>
-                <div className="text-sm sm:text-base text-gray-600 font-medium">
+                <div className="text-xs sm:text-sm lg:text-base text-gray-600 font-medium leading-tight px-1">
                   {stat.label}
                 </div>
               </div>

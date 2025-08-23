@@ -49,6 +49,8 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
   const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid');
   const [sortBy, setSortBy] = useState('name');
   const [useCaseFilter, setUseCaseFilter] = useState('all');
+  const [capacityFilter, setCapacityFilter] = useState('all');
+  const [displayedCount, setDisplayedCount] = useState(12);
 
   // Get all products from all categories
   const allProducts = useMemo(() => {
@@ -99,6 +101,18 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
     return useCases;
   };
 
+  // Capacity range helper function
+  const getCapacityRange = (capacity?: string): string => {
+    if (!capacity) return 'unknown';
+    const capacityNum = parseFloat(capacity);
+    if (capacityNum <= 100) return '0-100L';
+    if (capacityNum <= 300) return '100-300L';
+    if (capacityNum <= 500) return '300-500L';
+    if (capacityNum <= 800) return '500-800L';
+    if (capacityNum <= 1200) return '800-1200L';
+    return '1200L+';
+  };
+
   // Filter and search products
   const filteredProducts = useMemo(() => {
     let filtered = allProducts;
@@ -113,6 +127,14 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
       filtered = filtered.filter(product => {
         const productUseCases = getUseCaseForProduct(product);
         return productUseCases.includes(useCaseFilter);
+      });
+    }
+
+    // Filter by capacity range
+    if (capacityFilter !== 'all') {
+      filtered = filtered.filter(product => {
+        const productCapacityRange = getCapacityRange(product.capacity);
+        return productCapacityRange === capacityFilter;
       });
     }
 
@@ -141,13 +163,28 @@ export default function ProductGrid({ categories, selectedCategory }: ProductGri
     });
 
     return filtered;
-  }, [allProducts, filterCategory, useCaseFilter, searchTerm, sortBy]);
+  }, [allProducts, filterCategory, useCaseFilter, capacityFilter, searchTerm, sortBy]);
 
   // Get unique categories for filter dropdown
   const uniqueCategories = useMemo(() => {
     const cats = new Set(categories.map(cat => ({ id: cat.id, name: cat.name })));
     return Array.from(cats);
   }, [categories]);
+
+  // Displayed products with load more functionality
+  const displayedProducts = useMemo(() => {
+    return filteredProducts.slice(0, displayedCount);
+  }, [filteredProducts, displayedCount]);
+
+  // Load more handler
+  const handleLoadMore = () => {
+    setDisplayedCount(prev => Math.min(prev + 12, filteredProducts.length));
+  };
+
+  // Reset displayed count when filters change
+  const resetDisplayedCount = () => {
+    setDisplayedCount(12);
+  };
 
 
 
@@ -173,7 +210,10 @@ Please share today's best price and delivery time.`;
               type="text"
               placeholder="Search products, brands, or models..."
               value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                resetDisplayedCount();
+              }}
               className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
@@ -183,7 +223,10 @@ Please share today's best price and delivery time.`;
             {/* Category Filter */}
             <select
               value={filterCategory}
-              onChange={(e) => setFilterCategory(e.target.value)}
+              onChange={(e) => {
+                setFilterCategory(e.target.value);
+                resetDisplayedCount();
+              }}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="all">All Categories</option>
@@ -195,7 +238,10 @@ Please share today's best price and delivery time.`;
             {/* Use Case Filter */}
             <select
               value={useCaseFilter}
-              onChange={(e) => setUseCaseFilter(e.target.value)}
+              onChange={(e) => {
+                setUseCaseFilter(e.target.value);
+                resetDisplayedCount();
+              }}
               className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             >
               <option value="all">All Use Cases</option>
@@ -203,6 +249,24 @@ Please share today's best price and delivery time.`;
               <option value="retail">Retail</option>
               <option value="restaurant">Restaurant</option>
               <option value="pharma">Pharma</option>
+            </select>
+
+            {/* Capacity Range Filter */}
+            <select
+              value={capacityFilter}
+              onChange={(e) => {
+                setCapacityFilter(e.target.value);
+                resetDisplayedCount();
+              }}
+              className="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+            >
+              <option value="all">All Capacities</option>
+              <option value="0-100L">0-100L</option>
+              <option value="100-300L">100-300L</option>
+              <option value="300-500L">300-500L</option>
+              <option value="500-800L">500-800L</option>
+              <option value="800-1200L">800-1200L</option>
+              <option value="1200L+">1200L+</option>
             </select>
 
             {/* Sort */}
@@ -238,7 +302,10 @@ Please share today's best price and delivery time.`;
         <div className="mt-4 pt-4 border-t border-gray-200">
           <div className="flex flex-wrap items-center gap-2">
             <p className="text-sm text-gray-600">
-              Showing {filteredProducts.length} of {allProducts.length} products
+              Showing {displayedProducts.length} of {filteredProducts.length} products
+              {filteredProducts.length !== allProducts.length && (
+                <span className="text-gray-400"> (filtered from {allProducts.length} total)</span>
+              )}
             </p>
             {filterCategory !== 'all' && (
               <span className="px-2 py-1 bg-blue-100 text-blue-800 rounded-full text-xs">
@@ -250,6 +317,11 @@ Please share today's best price and delivery time.`;
                 {useCaseFilter.charAt(0).toUpperCase() + useCaseFilter.slice(1)} Use Case
               </span>
             )}
+            {capacityFilter !== 'all' && (
+              <span className="px-2 py-1 bg-purple-100 text-purple-800 rounded-full text-xs">
+                {capacityFilter}
+              </span>
+            )}
           </div>
         </div>
       </div>
@@ -259,7 +331,7 @@ Please share today's best price and delivery time.`;
         ? "grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4" 
         : "space-y-4"
       }>
-        {filteredProducts.map((product, index) => {
+        {displayedProducts.map((product, index) => {
           const productUrl = `/products/${product.id}`;
 
           if (viewMode === 'list') {
@@ -403,6 +475,18 @@ Please share today's best price and delivery time.`;
         })}
       </div>
 
+      {/* Load More Button */}
+      {displayedProducts.length < filteredProducts.length && filteredProducts.length > 0 && (
+        <div className="text-center mt-12 mb-8">
+          <button
+            onClick={handleLoadMore}
+            className="px-8 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-lg"
+          >
+            Load More Products ({filteredProducts.length - displayedProducts.length} remaining)
+          </button>
+        </div>
+      )}
+
       {/* No Results */}
       {filteredProducts.length === 0 && (
         <div className="text-center py-12">
@@ -418,6 +502,8 @@ Please share today's best price and delivery time.`;
               setSearchTerm('');
               setFilterCategory('all');
               setUseCaseFilter('all');
+              setCapacityFilter('all');
+              resetDisplayedCount();
             }}
             className="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
           >

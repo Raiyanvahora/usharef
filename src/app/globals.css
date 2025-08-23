@@ -521,10 +521,17 @@ a, button {
 .product-image-container {
   position: relative;
   width: 100%;
-  aspect-ratio: 4/3;
+  aspect-ratio: 3/2;
   overflow: hidden;
   background: #f9fafb;
-  border-radius: 12px;
+  border-radius: 8px;
+}
+
+@media (min-width: 640px) {
+  .product-image-container {
+    aspect-ratio: 4/3;
+    border-radius: 12px;
+  }
 }
 
 .product-image-container img {
@@ -533,14 +540,26 @@ a, button {
   object-fit: contain;
   object-position: center;
   display: block;
-  padding: 12px;
+  padding: 8px;
+}
+
+@media (min-width: 640px) {
+  .product-image-container img {
+    padding: 12px;
+  }
 }
 
 /* Ensure Next.js Image components behave properly */
 .product-image-container [data-nimg] {
   object-fit: contain !important;
   object-position: center !important;
-  padding: 12px !important;
+  padding: 8px !important;
+}
+
+@media (min-width: 640px) {
+  .product-image-container [data-nimg] {
+    padding: 12px !important;
+  }
 }
 
 /* Force aspect ratio for all product images */
