@@ -31,10 +31,6 @@ interface CategoryPageClientProps {
 }
 
 export default function CategoryPageClient({ category }: CategoryPageClientProps) {
-  if (!category) {
-    return notFound();
-  }
-
   // State for filtering and load more
   const [searchTerm, setSearchTerm] = useState('');
   const [capacityFilter, setCapacityFilter] = useState('all');
@@ -57,6 +53,7 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
 
   // Filter and sort products
   const filteredProducts = useMemo(() => {
+    if (!category || !category.models) return [];
     let filtered = [...category.models];
 
     // Filter by search term
@@ -90,7 +87,7 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
     });
 
     return filtered;
-  }, [category.models, searchTerm, capacityFilter, sortBy]);
+  }, [category, searchTerm, capacityFilter, sortBy]);
 
   // Displayed products with load more functionality
   const displayedProducts = useMemo(() => {
@@ -106,6 +103,10 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
   const resetDisplayedCount = () => {
     setDisplayedCount(12);
   };
+
+  if (!category) {
+    return notFound();
+  }
 
   const getWhatsAppLink = (product: typeof category.models[0], forOffer: boolean = false) => {
     const message = forOffer 
