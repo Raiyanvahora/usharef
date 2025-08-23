@@ -1928,55 +1928,6 @@ export const productCategories: ProductCategory[] = [
           'Warranty': '3 Years'
         }
       },
-      // Icemake Water Dispensers
-      {
-        id: 'ICEMAKE_WD_20L_FLOOR',
-        name: 'Icemake Water Dispenser – 20L Cooling Tank (Floor-Standing)',
-        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-water1-20l.jpg',
-        mrp: '₹12,500',
-        brand: 'Icemake',
-        capacity: '20L cooling tank',
-        description: 'Floor-standing water dispenser with 20L cooling tank, providing hot, cold, and normal water.',
-        features: [
-          'Three temperature options (Hot/Cold/Normal)',
-          '20L cooling tank capacity',
-          'Floor-standing design',
-          'Child safety lock on hot tap',
-          'LED indicators',
-          'Energy efficient operation'
-        ],
-        specifications: {
-          'Model': 'WD-20L-FS',
-          'Cooling Tank': '20 Liters',
-          'Temperature Options': 'Hot, Cold, Normal',
-          'Type': 'Floor Standing',
-          'Brand': 'Icemake'
-        }
-      },
-      {
-        id: 'ICEMAKE_WD_20L_CABINET',
-        name: 'Icemake Water Dispenser – 20L Cooling Tank + Cabinet',
-        image: '/PRD-NEW/VISI COOLERS/icemake/icemake-water2-20l.jpg',
-        mrp: '₹14,500',
-        brand: 'Icemake',
-        capacity: '20L cooling tank',
-        description: 'Floor-standing water dispenser with 20L cooling tank and storage cabinet.',
-        features: [
-          'Three temperature options (Hot/Cold/Normal)',
-          '20L cooling tank capacity',
-          'Storage cabinet included',
-          'Child safety lock on hot tap',
-          'LED indicators',
-          'Energy efficient operation'
-        ],
-        specifications: {
-          'Model': 'WD-20L-CAB',
-          'Cooling Tank': '20 Liters',
-          'Temperature Options': 'Hot, Cold, Normal',
-          'Type': 'Floor Standing with Cabinet',
-          'Brand': 'Icemake'
-        }
-      },
       {
         id: 'ICEMAKE_WD_5L_TABLETOP',
         name: 'Icemake Water Dispenser – 5L Cooling Tank (Tabletop/Countertop)',
