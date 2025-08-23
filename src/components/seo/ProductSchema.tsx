@@ -32,11 +32,7 @@ export default function ProductSchema({ product, category }: ProductSchemaProps)
       url: "https://usharefrigeration.com"
     },
     category: category?.name || product.category || "Refrigeration Equipment",
-    image: [
-      typeof window !== 'undefined' 
-        ? new URL(product.image, window.location.origin).href
-        : product.image
-    ],
+    image: [product.image],
     additionalProperty: [
       ...(product.capacity ? [{
         "@type": "PropertyValue",
@@ -84,9 +80,7 @@ export default function ProductSchema({ product, category }: ProductSchemaProps)
         reviewBody: "Very satisfied with the cooling performance and energy efficiency."
       }
     ],
-    url: typeof window !== 'undefined' 
-      ? `${window.location.origin}/products/${product.id}`
-      : `/products/${product.id}`,
+    url: `/products/${product.id}`,
     // Note: No "offers" section as per requirement
     seller: {
       "@type": "Organization",

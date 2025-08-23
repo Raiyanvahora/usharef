@@ -43,10 +43,6 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
     return `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
   };
 
-  // Remove discount calculation as we're only showing MRP now
-  const getMRPDisplay = (product: typeof category.models[0]) => {
-    return product.mrp || product.originalPrice || product.price || 'Contact for MRP';
-  };
 
   return (
     <div className="min-h-[70svh] md:min-h-[85vh] bg-gray-50 pt-20">
@@ -96,7 +92,6 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
           {category.models.map((product) => {
-            const mrpDisplay = getMRPDisplay(product);
             
             return (
               <div key={product.id} className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-all duration-300 group">
@@ -142,26 +137,17 @@ export default function CategoryPageClient({ category }: CategoryPageClientProps
                     </p>
                   )}
 
-                  {/* Crossed-out MRP with Offer Available */}
-                  <div className="mb-2">
-                    <div className="flex flex-wrap items-center gap-2">
-                      {mrpDisplay.includes('Contact') ? (
-                        <span className="text-lg font-medium text-gray-600">{mrpDisplay}</span>
-                      ) : (
-                        <span className="text-lg font-medium text-gray-500 line-through">
-                          MRP: {mrpDisplay}
-                        </span>
-                      )}
-                      <a
-                        href={getWhatsAppLink(product, true)}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center px-3 py-1 bg-orange-100 hover:bg-orange-200 text-orange-700 text-sm font-semibold rounded-full transition-colors"
-                      >
-                        <span>Offer Available</span>
-                      </a>
+                  {/* Price Display */}
+                  <div className="mb-3">
+                    <div className="mb-3">
+                      <span className="text-lg font-semibold text-gray-800">Contact for MRP</span>
                     </div>
-                    <p className="text-xs text-gray-500 mt-1">T & C Apply</p>
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full">
+                        Offer Available
+                      </span>
+                    </div>
+                    <p className="text-xs text-gray-500">T & C Apply</p>
                   </div>
 
                   {/* Actions */}

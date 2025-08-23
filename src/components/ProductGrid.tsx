@@ -295,16 +295,17 @@ Please share today's best price and delivery time.`;
                       </button>
                     </div>
 
-                    {/* Quote Area */}
+                    {/* Price Display */}
                     <div className="mb-4">
-                      <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                        <p className="text-sm font-semibold text-gray-900 mb-1">
-                          Get best price on WhatsApp
-                        </p>
-                        <p className="text-xs text-gray-600 mb-2">
-                          GST invoice • Brand-authorized • Fast delivery
-                        </p>
+                      <div className="mb-3">
+                        <span className="text-lg font-semibold text-gray-800">Contact for MRP</span>
                       </div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full">
+                          Offer Available
+                        </span>
+                      </div>
+                      <p className="text-xs text-gray-500">T & C Apply</p>
                     </div>
 
                     {/* Actions */}
@@ -322,7 +323,7 @@ Please share today's best price and delivery time.`;
                         className="flex items-center gap-2 bg-green-600 text-white px-6 py-2 rounded-lg hover:bg-green-700 transition-colors"
                       >
                         <MessageCircle className="w-4 h-4" />
-                        WhatsApp for Best Price
+                        WhatsApp for Offer
                       </a>
                     </div>
                   </div>
@@ -365,16 +366,17 @@ Please share today's best price and delivery time.`;
                 <p className="text-sm text-gray-600 mb-2">{product.name}</p>
                 <p className="text-sm text-gray-500 mb-3">Capacity: {product.capacity || 'N/A'} Liters</p>
 
-                {/* Quote Area */}
+                {/* Price Display */}
                 <div className="mb-4">
-                  <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-                    <p className="text-xs font-semibold text-gray-900 mb-1">
-                      Get best price on WhatsApp
-                    </p>
-                    <p className="text-xs text-gray-600">
-                      GST invoice • Brand-authorized • Fast delivery
-                    </p>
+                  <div className="mb-3">
+                    <span className="text-lg font-semibold text-gray-800">Contact for MRP</span>
                   </div>
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full">
+                      Offer Available
+                    </span>
+                  </div>
+                  <p className="text-xs text-gray-500">T & C Apply</p>
                 </div>
 
                 {/* Actions */}
@@ -392,7 +394,7 @@ Please share today's best price and delivery time.`;
                     className="w-full flex items-center justify-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
                   >
                     <MessageCircle className="w-4 h-4" />
-                    <span>WhatsApp for Best Price</span>
+                    <span>WhatsApp for Offer</span>
                   </a>
                 </div>
               </div>

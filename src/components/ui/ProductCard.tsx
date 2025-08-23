@@ -118,29 +118,30 @@ export default function ProductCard({
           </div>
         </div>
 
-        {/* Quote Area - Replace Price */}
-        <div className="text-sm">
-          <div className="bg-blue-50 border border-blue-200 rounded-lg p-3">
-            <p className="text-xs font-semibold text-gray-900 mb-1">
-              Get best price on WhatsApp
-            </p>
-            <p className="text-xs text-gray-600 mb-2">
-              GST invoice • Brand-authorized
-            </p>
-            <button 
-              onClick={(e) => {
-                e.preventDefault();
-                const waLink = `https://wa.me/919898649362?text=${encodeURIComponent(
-                  `Hi Usha Refrigeration, I'm interested in ${brand || 'Western'} ${category || 'Refrigerator'} – ${title} (${capacity || 'N/A'} L).\nLink: ${typeof window !== 'undefined' ? window.location.origin + href : href}\nCity: Anand, Gujarat\nPlease share today's best price and delivery time.`
-                )}`;
-                window.open(waLink, '_blank');
-              }}
-              className="w-full bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 rounded text-xs font-medium transition-colors flex items-center justify-center space-x-1"
-            >
-              <MessageCircle className="w-3 h-3" />
-              <span>WhatsApp</span>
-            </button>
+        {/* Price Display */}
+        <div className="mb-4">
+          <div className="mb-3">
+            <span className="text-lg font-semibold text-gray-800">Contact for MRP</span>
           </div>
+          <div className="flex items-center gap-2 mb-2">
+            <span className="inline-flex items-center px-3 py-1 bg-orange-100 text-orange-700 text-sm font-semibold rounded-full">
+              Offer Available
+            </span>
+          </div>
+          <p className="text-xs text-gray-500 mb-2">T & C Apply</p>
+          <button 
+            onClick={(e) => {
+              e.preventDefault();
+              const waLink = `https://wa.me/919898649362?text=${encodeURIComponent(
+                `Hi Usha Refrigeration, I'm interested in ${brand || 'Western'} ${category || 'Refrigerator'} – ${title} (${capacity || 'N/A'} L).\nLink: ${typeof window !== 'undefined' ? window.location.origin + href : href}\nCity: Anand, Gujarat\nPlease share today's best price and delivery time.`
+              )}`;
+              window.open(waLink, '_blank');
+            }}
+            className="w-full bg-green-600 hover:bg-green-700 text-white px-2 py-1.5 rounded text-xs font-medium transition-colors flex items-center justify-center space-x-1"
+          >
+            <MessageCircle className="w-3 h-3" />
+            <span>WhatsApp for Offer</span>
+          </button>
         </div>
 
         {/* CTA Button */}
