@@ -2,35 +2,35 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Main Pages -->
   <url>
-    <loc>https://usharefrigeration.com/</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/about</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/about</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/contact</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/contact</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/service</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/service</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -38,42 +38,42 @@
   
   <!-- Product Categories -->
   <url>
-    <loc>https://usharefrigeration.com/products/category/deep-freezers</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products/category/deep-freezers</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products/category/visi-coolers</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products/category/visi-coolers</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products/category/water-coolers</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products/category/water-coolers</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products/category/ice-machines</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products/category/ice-machines</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products/category/pastry-counters</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products/category/pastry-counters</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products/category/back-bar-chillers</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products/category/back-bar-chillers</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
@@ -81,21 +81,21 @@
   
   <!-- Brand Pages -->
   <url>
-    <loc>https://usharefrigeration.com/products?brand=western</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products?brand=western</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products?brand=icemake</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products?brand=icemake</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://usharefrigeration.com/products?brand=frigoglass</loc>
+    <loc>https://usha-refrigeration-anand.netlify.app/products?brand=frigoglass</loc>
     <lastmod>2025-01-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>

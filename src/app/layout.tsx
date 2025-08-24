@@ -17,7 +17,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://usharefrigeration.com'),
+  metadataBase: new URL('https://usha-refrigeration-anand.netlify.app'),
   title: 'Usha Refrigeration & Service-Anand | Western, Icemake, Frigoglass Dealer Gujarat',
   description: 'Leading supplier of commercial refrigeration equipment in Anand, Gujarat. Deep freezers, visi coolers, water coolers, ice machines. Western, Icemake, Frigoglass brands. Trusted by leading brands across Gujarat. આણંદ ગુજરાતમાં કોમર્શિયલ રેફ્રિજરેશન સાધનોના અગ્રણી સપ્લાયર.',
   keywords: 'commercial refrigeration gujarat, western deep freezer, icemake visi cooler, water cooler, ice machine, pastry counter, back bar chiller, anand, baroda, ahmedabad, vadodara, surat, rajkot, western refrigeration dealer, icemake distributor, frigoglass supplier, વેસ્ટર્ન ડીપ ફ્રીઝર, આઈસમેક વિઝી કૂલર, વોટર કૂલર ગુજરાત',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     ]
   },
   alternates: {
-    canonical: 'https://usharefrigeration.com'
+    canonical: 'https://usha-refrigeration-anand.netlify.app'
   },
   icons: {
     icon: [
@@ -75,6 +75,9 @@ export default function RootLayout({
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
+        {/* Google Search Console verification */}
+        {/* Uncomment and add your verification code below */}
+        {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
         <LocalBusinessSchema />
       </head>
       <body className={`${inter.className || 'font-sans'} antialiased`}>

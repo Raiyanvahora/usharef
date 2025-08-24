@@ -6,7 +6,7 @@ export default function LocalBusinessSchema() {
     name: "Usha Refrigeration & Service-Anand",
     alternateName: "ઉષા રેફ્રિજરેશન એન્ડ સર્વિસ",
     description: "Leading supplier of commercial refrigeration equipment in Gujarat. Western, Icemake, Frigoglass brands. Deep freezers, visi coolers, water coolers, ice machines. Trusted by leading brands across Gujarat. ગુજરાતમાં કોમર્શિયલ રેફ્રિજરેશન સાધનોના અગ્રણી સપ્લાયર.",
-    url: "https://usharefrigeration.com",
+    url: "https://usha-refrigeration-anand.netlify.app",
     logo: "https://usharefrigeration.com/logo/usha-logo.png",
     image: [
       "https://usharefrigeration.com/banners/60435acb-98b7-412c-b983-42433e438f72.png"
