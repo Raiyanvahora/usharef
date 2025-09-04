@@ -25,6 +25,7 @@ export default function Header() {
     { name: 'Products', href: '/products', icon: null },
     { name: 'About Us', href: '/about', icon: null },
     { name: 'Service', href: '/service', icon: null },
+    { name: 'Reviews', href: '/reviews', icon: null },
     { name: 'Location', href: 'https://maps.google.com/?q=Usha+Refrigeration+%26+A.C,+Enter+city+Arcades,+Bhalej+Rd,+near+Abdullah+Masjid+Barbeques+Restaurants,+Anand,+Gujarat+388001', icon: MapPin, external: true },
   ];
 
