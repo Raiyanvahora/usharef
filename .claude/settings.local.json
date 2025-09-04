@@ -21,7 +21,8 @@
       "Bash(npx tsc:*)",
       "mcp__ide__getDiagnostics",
       "Bash(git commit:*)",
-      "WebFetch(domain:dynamicdistributors.in)"
+      "WebFetch(domain:dynamicdistributors.in)",
+      "Read(/C:\\Users\\Admin\\Downloads/**)"
     ],
     "deny": []
   }

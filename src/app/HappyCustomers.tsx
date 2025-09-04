@@ -182,6 +182,66 @@ const HappyCustomers: React.FC = () => {
           </button>
         </div>
 
+        {/* Customer Reviews */}
+        <div className="mt-12">
+          <h3 className="text-2xl font-bold text-center mb-8 text-[#1428A0]">Customer Reviews</h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {"★".repeat(5)}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4">&ldquo;Excellent service! My Western deep freezer has been working perfectly for 3 years. Usha team is very professional and reliable.&rdquo;</p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-blue-600 font-semibold">R</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">Rajesh Patel</p>
+                  <p className="text-sm text-gray-600">Anand</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {"★".repeat(5)}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4">&ldquo;Best refrigeration dealer in Gujarat! Quick installation and great after-sales service. Highly recommend for commercial needs.&rdquo;</p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-green-600 font-semibold">M</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">Mukesh Shah</p>
+                  <p className="text-sm text-gray-600">Vadodara</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow md:col-span-2 lg:col-span-1">
+              <div className="flex items-center mb-4">
+                <div className="flex text-yellow-400">
+                  {"★".repeat(5)}
+                </div>
+              </div>
+              <p className="text-gray-700 mb-4">&ldquo;Usha Refrigeration saved our restaurant business! Their Icemake visi cooler is energy efficient and keeps our products fresh.&rdquo;</p>
+              <div className="flex items-center">
+                <div className="w-10 h-10 bg-purple-100 rounded-full flex items-center justify-center mr-3">
+                  <span className="text-purple-600 font-semibold">P</span>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-900">Priya Restaurant</p>
+                  <p className="text-sm text-gray-600">Ahmedabad</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Additional Info */}
         <div className="text-center mt-8">
           <p className="text-gray-600 text-sm">
