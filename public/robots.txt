@@ -1,5 +1,5 @@
 # Robots.txt for Usha Refrigeration & Service
-# https://usharefrigeration.com
+# https://usharefrigerationandservice.com
 
 User-agent: *
 Allow: /
@@ -12,9 +12,10 @@ Disallow: /node_modules/
 Allow: /products
 Allow: /products/category/
 Allow: /products/*/
+Allow: /reviews
 
 # Sitemap location
-Sitemap: https://usharefrigeration.com/sitemap.xml
+Sitemap: https://usharefrigerationandservice.com/sitemap.xml
 
 # Crawl-delay for bots (in seconds)
 Crawl-delay: 1

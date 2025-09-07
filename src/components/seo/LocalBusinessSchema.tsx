@@ -2,14 +2,14 @@ export default function LocalBusinessSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
-    "@id": "https://usharefrigeration.com/#business",
+    "@id": "https://usharefrigerationandservice.com/#business",
     name: "Usha Refrigeration & Service-Anand",
     alternateName: "ઉષા રેફ્રિજરેશન એન્ડ સર્વિસ",
-    description: "Leading supplier of commercial refrigeration equipment in Gujarat. Western, Icemake, Frigoglass brands. Deep freezers, visi coolers, water coolers, ice machines. Trusted by leading brands across Gujarat. ગુજરાતમાં કોમર્શિયલ રેફ્રિજરેશન સાધનોના અગ્રણી સપ્લાયર.",
-    url: "https://usha-refrigeration-anand.netlify.app",
-    logo: "https://usharefrigeration.com/logo/usha-logo.png",
+    description: "Gujarat's No.1 commercial refrigeration dealer serving Anand, Vadodara, Ahmedabad, Surat, Rajkot. Authorized dealer for Western Deep Freezer, Icemake Visi Cooler, Frigoglass, Blue Star. Best prices, 24/7 service, genuine spare parts. ગુજરાતમાં કોમર્શિયલ રેફ્રિજરેશન સાધનોના અગ્રણી સપ્લાયર.",
+    url: "https://usharefrigerationandservice.com",
+    logo: "https://usharefrigerationandservice.com/logo/usha-logo.png",
     image: [
-      "https://usharefrigeration.com/banners/60435acb-98b7-412c-b983-42433e438f72.png"
+      "https://usharefrigerationandservice.com/banners/60435acb-98b7-412c-b983-42433e438f72.png"
     ],
     telephone: "+91-9898649362",
     priceRange: "$$",
@@ -48,10 +48,32 @@ export default function LocalBusinessSchema() {
       name: "Sabbir Vahora"
     },
     foundingDate: "2014",
-    serviceArea: {
-      "@type": "AdministrativeArea",
-      name: "Gujarat, India"
-    },
+    serviceArea: [
+      {
+        "@type": "AdministrativeArea",
+        name: "Anand, Gujarat"
+      },
+      {
+        "@type": "AdministrativeArea", 
+        name: "Vadodara, Gujarat"
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Ahmedabad, Gujarat"
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Surat, Gujarat"
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Rajkot, Gujarat"
+      },
+      {
+        "@type": "AdministrativeArea",
+        name: "Bhavnagar, Gujarat"
+      }
+    ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
       name: "Refrigeration Equipment",

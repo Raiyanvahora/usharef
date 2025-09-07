@@ -17,16 +17,16 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://usha-refrigeration-anand.netlify.app'),
-  title: 'Usha Refrigeration & Service-Anand | Western, Icemake, Frigoglass Dealer Gujarat',
-  description: 'Leading supplier of commercial refrigeration equipment in Anand, Gujarat. Deep freezers, visi coolers, water coolers, ice machines. Western, Icemake, Frigoglass brands. Trusted by leading brands across Gujarat. આણંદ ગુજરાતમાં કોમર્શિયલ રેફ્રિજરેશન સાધનોના અગ્રણી સપ્લાયર.',
-  keywords: 'commercial refrigeration gujarat, western deep freezer, icemake visi cooler, water cooler, ice machine, pastry counter, back bar chiller, anand, baroda, ahmedabad, vadodara, surat, rajkot, western refrigeration dealer, icemake distributor, frigoglass supplier, વેસ્ટર્ન ડીપ ફ્રીઝર, આઈસમેક વિઝી કૂલર, વોટર કૂલર ગુજરાત',
+  metadataBase: new URL('https://usharefrigerationandservice.com'),
+  title: 'Usha Refrigeration Anand | #1 Commercial Refrigeration Dealer Gujarat | Western, Icemake, Frigoglass',
+  description: 'Gujarat का No.1 commercial refrigeration supplier! ✅ Western Deep Freezer ✅ Icemake Visi Cooler ✅ Ice Machines ✅ Best Prices ✅ 24/7 Service in Anand, Vadodara, Ahmedabad, Surat, Rajkot. Call 9898649362. ગુજરાતમાં સર્વોત્તમ રેફ્રિજરેશન સાધનો અને સેવા.',
+  keywords: 'refrigeration dealer gujarat, commercial refrigeration anand, western deep freezer gujarat, icemake visi cooler price, water cooler supplier gujarat, ice machine dealer anand, pastry counter gujarat, back bar chiller vadodara, refrigerator repair gujarat, commercial fridge dealer, કોમર્શિયલ રેફ્રિજરેશન ગુજરાત, વેસ્ટર્ન ડીપ ફ્રીઝર, આઈસમેક વિઝી કૂલર, refrigeration anand vadodara ahmedabad surat rajkot bhavnagar jamnagar gandhinagar mehsana patan, western refrigeration authorized dealer, frigoglass distributor gujarat, blue star commercial refrigeration',
   authors: [{ name: 'Usha Refrigeration & Service' }],
   creator: 'Usha Refrigeration & Service',
   publisher: 'Usha Refrigeration & Service',
   openGraph: {
-    title: 'Usha Refrigeration & Service-Anand | Western, Icemake, Frigoglass Dealer',
-    description: 'Leading supplier of commercial refrigeration equipment in Gujarat. Deep freezers, visi coolers, water coolers. Trusted by leading brands. Service centers in Anand, Baroda, Ahmedabad.',
+    title: 'Gujarat No.1 Commercial Refrigeration Dealer - Usha Refrigeration Anand',
+    description: 'Best prices on Western Deep Freezer, Icemake Visi Cooler, Ice Machines in Gujarat! 24/7 Service across Anand, Vadodara, Ahmedabad, Surat. Call 9898649362 for instant quote.',
     type: 'website',
     locale: 'en_IN',
     siteName: 'Usha Refrigeration & Service',
@@ -35,12 +35,18 @@ export const metadata: Metadata = {
         url: '/banners/60435acb-98b7-412c-b983-42433e438f72.png',
         width: 1200,
         height: 630,
-        alt: 'Usha Refrigeration - Commercial Cooling Solutions'
+        alt: 'Usha Refrigeration Gujarat - Western Deep Freezer, Icemake Visi Cooler, Commercial Refrigeration Equipment'
       }
     ]
   },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Gujarat No.1 Commercial Refrigeration Dealer - Usha Refrigeration',
+    description: 'Best prices on Western Deep Freezer, Icemake Visi Cooler, Ice Machines in Gujarat! 24/7 Service. Call 9898649362',
+    images: ['/banners/60435acb-98b7-412c-b983-42433e438f72.png'],
+  },
   alternates: {
-    canonical: 'https://usha-refrigeration-anand.netlify.app'
+    canonical: 'https://usharefrigerationandservice.com'
   },
   icons: {
     icon: [
