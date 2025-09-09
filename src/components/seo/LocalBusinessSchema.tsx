@@ -76,29 +76,74 @@ export default function LocalBusinessSchema() {
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
-      name: "Refrigeration Equipment",
+      name: "Commercial Refrigeration Equipment",
       itemListElement: [
         {
           "@type": "OfferCatalog",
-          name: "Commercial Refrigerators",
-          description: "Deep freezers, visi coolers, display fridges"
-        },
-        {
-          "@type": "OfferCatalog", 
-          name: "Water Cooling Systems",
-          description: "Water coolers and dispensers"
+          name: "Convertible Freezer & Cooler",
+          description: "Multi-function refrigeration units for commercial use"
         },
         {
           "@type": "OfferCatalog",
-          name: "Ice Making Equipment", 
-          description: "Ice cube machines and accessories"
+          name: "Deep Freezer",
+          description: "Hard Top, Glass Top, Scooping deep freezers for commercial storage"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Chest Freezer",
+          description: "Large capacity chest freezers for bulk storage"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Eutectic Freezer",
+          description: "Advanced eutectic plate freezing technology"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Freezer on Wheel (FOW)",
+          description: "Mobile freezing solutions for commercial use"
+        },
+        {
+          "@type": "OfferCatalog", 
+          name: "Visi Cooler",
+          description: "Glass door display coolers for beverages and products"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Vertical Freezer / Vertical Cooler", 
+          description: "Space-saving vertical refrigeration units"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Super Market Cooler",
+          description: "Large capacity cooling solutions for supermarkets"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Pastry Cabinet / Confectionary Cabinet",
+          description: "Temperature-controlled display for bakery and confectionary"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Back Bar Chiller",
+          description: "Under-counter cooling solutions for restaurants and bars"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Ice Maker / Ice Machine",
+          description: "Commercial ice making equipment and cube machines"
+        },
+        {
+          "@type": "OfferCatalog",
+          name: "Water Cooler",
+          description: "SS Water Cooler, PCS Water Cooler - stainless steel and plastic body variants"
         }
       ]
     },
     brand: [
       {
         "@type": "Brand",
-        name: "Western"
+        name: "Western Refrigeration Pvt. Ltd."
       },
       {
         "@type": "Brand", 
@@ -110,7 +155,7 @@ export default function LocalBusinessSchema() {
       },
       {
         "@type": "Brand",
-        name: "Blue Star"
+        name: "Usha Refrigeration & Air Conditioning"
       }
     ],
     makesOffer: [
