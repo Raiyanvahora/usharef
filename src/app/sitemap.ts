@@ -1,8 +1,19 @@
 import { MetadataRoute } from 'next';
-import { categories } from '../../data/products';
 
-export default function sitemap(): MetadataRoute.Sitemap {
+// Dynamically import to avoid build issues
+async function getCategories() {
+  try {
+    const { categories } = await import('../../data/products');
+    return categories;
+  } catch (error) {
+    console.error('Error loading categories:', error);
+    return [];
+  }
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const baseUrl = 'https://usharefrigerationandservice.com';
+  const categories = await getCategories();
 
   // Static pages with higher priority
   const staticPages = [
