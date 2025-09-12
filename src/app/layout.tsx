@@ -86,14 +86,14 @@ export default function RootLayout({
         {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
         
         {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-35N57R9H67"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-YLEMFDBDC2"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}
               gtag('js', new Date());
-              gtag('config', 'G-35N57R9H67');
+              gtag('config', 'G-YLEMFDBDC2');
             `,
           }}
         />
