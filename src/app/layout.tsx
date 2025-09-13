@@ -9,6 +9,7 @@ import ServiceWorkerUnregister from '../components/ServiceWorkerUnregister';
 import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton';
 import EmailOptins from '../components/EmailOptins';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
+import FAQSchema from '../components/seo/FAQSchema';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -123,6 +124,7 @@ export default function RootLayout({
         </noscript>
         
         <LocalBusinessSchema />
+        <FAQSchema />
       </head>
       <body className={`${inter.className || 'font-sans'} antialiased`}>
         <ServiceWorkerUnregister />

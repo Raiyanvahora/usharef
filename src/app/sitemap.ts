@@ -54,8 +54,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.8,
   }));
 
+  // Location-specific pages (High priority for local SEO)
+  const locations = ['anand', 'vadodara', 'ahmedabad', 'surat', 'rajkot', 'bhavnagar', 'nadiad'];
+  const locationPages = locations.map((location) => ({
+    url: `${BASE_URL}/locations/${location}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.9,
+  }));
+
   // Brand filter pages
-  const brands = ['western', 'icemake', 'frigoglass', 'bluestar'];
+  const brands = ['western', 'icemake', 'frigoglass', 'bluestar', 'voltas', 'haier'];
   const brandPages = brands.map((brand) => ({
     url: `${BASE_URL}/products?brand=${brand}`,
     lastModified: currentDate,
@@ -77,5 +86,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  return [...mainPages, ...categoryPages, ...brandPages, ...productPages];
+  return [...mainPages, ...locationPages, ...categoryPages, ...brandPages, ...productPages];
 }
