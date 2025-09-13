@@ -1,6 +1,9 @@
 import { MetadataRoute } from 'next';
 import { categories } from '../../data/products';
 
+export const dynamic = 'force-static';
+export const revalidate = false;
+
 const BASE_URL = 'https://usharefrigerationandservice.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
