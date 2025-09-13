@@ -24,14 +24,12 @@ const nextConfig = {
   // Optimize worker processes for development
   experimental: {
     workerThreads: false,
-    optimizeCss: true,
   },
   generateBuildId: async () => {
     // Generate a unique build ID based on timestamp
     return `build-${Date.now()}`
   },
   // SEO and performance optimizations
-  swcMinify: true,
   productionBrowserSourceMaps: false,
   // Headers are not compatible with static export, only include for non-static builds
   ...(process.env.NETLIFY ? {} : {

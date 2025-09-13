@@ -1,6 +1,5 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { Phone, MapPin, Clock, CheckCircle } from 'lucide-react';
+import { Phone } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Deep Freezer Dealer Vadodara | Visi Cooler Vadodara | Best Prices',
@@ -20,7 +19,7 @@ export default function VadodaraPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">
-              Vadodara's Trusted Deep Freezer & Visi Cooler Dealer
+              Vadodara&apos;s Trusted Deep Freezer & Visi Cooler Dealer
             </h1>
             <p className="text-xl mb-8">
               વડોદરામાં નંબર 1 કોમર્શિયલ રેફ્રિજરેશન સપ્લાયર | Same Day Delivery
@@ -183,17 +182,17 @@ export default function VadodaraPage() {
               <h2 className="text-2xl font-bold mb-6">Vadodara Customer Reviews</h2>
               <div className="space-y-4">
                 <div className="bg-white p-4 rounded">
-                  <p className="text-gray-700 mb-2">"Excellent service! Got 3 deep freezers for my supermarket in Gotri. Best prices in Vadodara."</p>
+                  <p className="text-gray-700 mb-2">&ldquo;Excellent service! Got 3 deep freezers for my supermarket in Gotri. Best prices in Vadodara.&rdquo;</p>
                   <p className="text-sm font-semibold">- Mehul Desai, Gotri Supermarket</p>
                   <div className="text-yellow-500">★★★★★</div>
                 </div>
                 <div className="bg-white p-4 rounded">
-                  <p className="text-gray-700 mb-2">"Quick delivery to Waghodia. Western freezer working perfectly for 2 years now."</p>
+                  <p className="text-gray-700 mb-2">&ldquo;Quick delivery to Waghodia. Western freezer working perfectly for 2 years now.&rdquo;</p>
                   <p className="text-sm font-semibold">- Restaurant Owner, Waghodia Road</p>
                   <div className="text-yellow-500">★★★★★</div>
                 </div>
                 <div className="bg-white p-4 rounded">
-                  <p className="text-gray-700 mb-2">"વડોદરામાં બેસ્ટ ડીલર. ખૂબ જ સારી સર્વિસ અને સસ્તા ભાવ."</p>
+                  <p className="text-gray-700 mb-2">&ldquo;વડોદરામાં બેસ્ટ ડીલર. ખૂબ જ સારી સર્વિસ અને સસ્તા ભાવ.&rdquo;</p>
                   <p className="text-sm font-semibold">- Ice Cream Parlor, Alkapuri</p>
                   <div className="text-yellow-500">★★★★★</div>
                 </div>

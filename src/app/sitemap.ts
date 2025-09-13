@@ -1,5 +1,5 @@
 import { MetadataRoute } from 'next';
-import { categories } from '../data/products';
+import { categories } from '../../data/products';
 
 const BASE_URL = 'https://usharefrigerationandservice.com';
 

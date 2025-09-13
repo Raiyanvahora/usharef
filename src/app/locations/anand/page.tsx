@@ -154,22 +154,22 @@ export default function AnandPage() {
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="bg-white p-6 rounded-lg shadow-md">
                   <p className="text-gray-600 mb-4">
-                    "Bought Western 500L deep freezer for my ice cream parlor in V V Nagar. 
-                    Excellent service and best price in Anand!"
+                    &ldquo;Bought Western 500L deep freezer for my ice cream parlor in V V Nagar. 
+                    Excellent service and best price in Anand!&rdquo;
                   </p>
                   <p className="font-semibold">- Rajesh Patel, V V Nagar</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-md">
                   <p className="text-gray-600 mb-4">
-                    "Usha Refrigeration provided 3 visi coolers for my supermarket in Karamsad. 
-                    Quick delivery and installation. Highly recommended!"
+                    &ldquo;Usha Refrigeration provided 3 visi coolers for my supermarket in Karamsad. 
+                    Quick delivery and installation. Highly recommended!&rdquo;
                   </p>
                   <p className="font-semibold">- Amit Shah, Karamsad</p>
                 </div>
                 <div className="bg-white p-6 rounded-lg shadow-md">
                   <p className="text-gray-600 mb-4">
-                    "Best dealer in Anand for commercial refrigeration. Genuine products and 
-                    24/7 service support. Very satisfied!"
+                    &ldquo;Best dealer in Anand for commercial refrigeration. Genuine products and 
+                    24/7 service support. Very satisfied!&rdquo;
                   </p>
                   <p className="font-semibold">- Dairy Farm Owner, Bakrol</p>
                 </div>
