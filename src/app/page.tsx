@@ -10,6 +10,7 @@ import {
 import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { categories } from '../../data/products';
+import SEOKeywords from '@/components/seo/SEOKeywords';
 
 // Lazy load heavy components
 const HappyCustomers = dynamic(() => import('./HappyCustomers'), {
@@ -82,6 +83,9 @@ export default function Home() {
 
   return (
     <div className="min-h-[70svh] md:min-h-[85vh] bg-white">
+      {/* SEO Keywords for better ranking */}
+      <SEOKeywords />
+      
       {/* Hero Section */}
       <section className="hero-section-dark relative">
         <div className="mx-auto max-w-7xl px-4 sm:px-6">
