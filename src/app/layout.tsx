@@ -10,6 +10,7 @@ import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton';
 import EmailOptins from '../components/EmailOptins';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 import FAQSchema from '../components/seo/FAQSchema';
+import GoogleAnalytics from '../components/GoogleAnalytics';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -85,19 +86,6 @@ export default function RootLayout({
         {/* Google Search Console verification */}
         {/* Uncomment and add your verification code below */}
         {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
-        
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-35N57R9H67"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              window.dataLayer = window.dataLayer || [];
-              function gtag(){dataLayer.push(arguments);}
-              gtag('js', new Date());
-              gtag('config', 'G-35N57R9H67');
-            `,
-          }}
-        />
 
         {/* Meta Pixel Code */}
         <script
@@ -127,6 +115,9 @@ export default function RootLayout({
         <FAQSchema />
       </head>
       <body className={`${inter.className || 'font-sans'} antialiased`}>
+        {/* Google Analytics Component */}
+        <GoogleAnalytics />
+        
         <ServiceWorkerUnregister />
         <VersionCheck />
         <Header />
