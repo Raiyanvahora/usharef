@@ -12,7 +12,6 @@ import Image from 'next/image';
 import { categories } from '../../data/products';
 import SEOKeywords from '@/components/seo/SEOKeywords';
 import CompetitorKeywords from '@/components/seo/CompetitorKeywords';
-import GoogleAnalyticsVerify from './GoogleAnalyticsVerify';
 
 // Lazy load heavy components
 const HappyCustomers = dynamic(() => import('./HappyCustomers'), {
@@ -85,9 +84,6 @@ export default function Home() {
 
   return (
     <div className="min-h-[70svh] md:min-h-[85vh] bg-white">
-      {/* Google Analytics Verification */}
-      <GoogleAnalyticsVerify />
-      
       {/* SEO Keywords for better ranking */}
       <SEOKeywords />
       <CompetitorKeywords />

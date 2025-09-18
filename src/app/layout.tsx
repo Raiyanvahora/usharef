@@ -10,7 +10,7 @@ import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton';
 import EmailOptins from '../components/EmailOptins';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 import FAQSchema from '../components/seo/FAQSchema';
-import GoogleAnalytics from '../components/GoogleAnalytics';
+import GoogleAnalyticsScripts from './google-analytics';
 
 const inter = Inter({ 
   subsets: ['latin'],
@@ -115,9 +115,7 @@ export default function RootLayout({
         <FAQSchema />
       </head>
       <body className={`${inter.className || 'font-sans'} antialiased`}>
-        {/* Google Analytics Component */}
-        <GoogleAnalytics />
-        
+        <GoogleAnalyticsScripts />
         <ServiceWorkerUnregister />
         <VersionCheck />
         <Header />
