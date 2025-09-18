@@ -4,7 +4,7 @@ import Script from 'next/script';
 import { usePathname } from 'next/navigation';
 import { useEffect, Suspense } from 'react';
 
-const GA_MEASUREMENT_ID = 'G-35N57R9H67';
+const GA_MEASUREMENT_ID = 'G-6NMPXMLS3D';
 
 function GoogleAnalyticsScript() {
   const pathname = usePathname();

@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 
-const GA_ID = 'G-35N57R9H67';
+const GA_ID = 'G-6NMPXMLS3D';
 
 export default function GoogleAnalyticsVerify() {
   useEffect(() => {
