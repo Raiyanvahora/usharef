@@ -2,14 +2,21 @@
 
 import Script from 'next/script';
 import { usePathname } from 'next/navigation';
-import { useEffect, Suspense } from 'react';
+import { useEffect, useState } from 'react';
 
 const GA_MEASUREMENT_ID = 'G-6NMPXMLS3D';
 
-function GoogleAnalyticsScript() {
+export default function GoogleAnalytics() {
   const pathname = usePathname();
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     if (pathname && typeof window !== 'undefined' && (window as any).gtag) {
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -18,7 +25,12 @@ function GoogleAnalyticsScript() {
         debug_mode: process.env.NODE_ENV === 'development',
       });
     }
-  }, [pathname]);
+  }, [pathname, mounted]);
+
+  // Don't render anything on server
+  if (!mounted) {
+    return null;
+  }
 
   return (
     <>
@@ -42,13 +54,5 @@ function GoogleAnalyticsScript() {
         }}
       />
     </>
-  );
-}
-
-export default function GoogleAnalytics() {
-  return (
-    <Suspense fallback={null}>
-      <GoogleAnalyticsScript />
-    </Suspense>
   );
 }

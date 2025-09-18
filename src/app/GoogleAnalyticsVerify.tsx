@@ -1,11 +1,18 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 const GA_ID = 'G-6NMPXMLS3D';
 
 export default function GoogleAnalyticsVerify() {
+  const [mounted, setMounted] = useState(false);
+
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
     // Method 1: Load gtag.js
     const script1 = document.createElement('script');
     script1.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
@@ -24,7 +31,7 @@ export default function GoogleAnalyticsVerify() {
 
     // Log to verify it's loaded
     console.log('Google Analytics loaded with ID:', GA_ID);
-  }, []);
+  }, [mounted]);
 
   return null;
 }
