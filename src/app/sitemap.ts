@@ -66,6 +66,20 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  // High-value product landing pages
+  const featuredProducts = [
+    'western-500l-deep-freezer',
+    'icemake-650l-visi-cooler',
+    'blue-star-chest-freezer',
+    'frigoglass-display-cooler'
+  ];
+  const featuredProductPages = featuredProducts.map((product) => ({
+    url: `${BASE_URL}/products/${product}`,
+    lastModified: currentDate,
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
   // Brand filter pages
   const brands = ['western', 'icemake', 'frigoglass', 'bluestar', 'voltas', 'haier'];
   const brandPages = brands.map((brand) => ({
@@ -89,5 +103,5 @@ export default function sitemap(): MetadataRoute.Sitemap {
     });
   });
 
-  return [...mainPages, ...locationPages, ...categoryPages, ...brandPages, ...productPages];
+  return [...mainPages, ...locationPages, ...featuredProductPages, ...categoryPages, ...brandPages, ...productPages];
 }

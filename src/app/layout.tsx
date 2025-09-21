@@ -10,6 +10,7 @@ import WhatsAppFloatingButton from '../components/WhatsAppFloatingButton';
 import EmailOptins from '../components/EmailOptins';
 import LocalBusinessSchema from '../components/seo/LocalBusinessSchema';
 import FAQSchema from '../components/seo/FAQSchema';
+import BreadcrumbSchema from '../components/seo/BreadcrumbSchema';
 import GoogleAnalyticsScripts from './google-analytics';
 
 const inter = Inter({ 
@@ -26,6 +27,10 @@ export const metadata: Metadata = {
   authors: [{ name: 'Usha Refrigeration & Service' }],
   creator: 'Usha Refrigeration & Service',
   publisher: 'Usha Refrigeration & Service',
+  applicationName: 'Usha Refrigeration',
+  referrer: 'origin-when-cross-origin',
+  category: 'Commercial Equipment',
+  classification: 'Business/Industrial Equipment',
   openGraph: {
     title: 'Gujarat No.1 Commercial Refrigeration Dealer - Usha Refrigeration Anand',
     description: 'Best prices on Western Deep Freezer, Icemake Visi Cooler, Ice Machines in Gujarat! 24/7 Service across Anand, Vadodara, Ahmedabad, Surat. Call 9898649362 for instant quote.',
@@ -113,6 +118,7 @@ export default function RootLayout({
         
         <LocalBusinessSchema />
         <FAQSchema />
+        <BreadcrumbSchema />
       </head>
       <body className={`${inter.className || 'font-sans'} antialiased`}>
         <GoogleAnalyticsScripts />
