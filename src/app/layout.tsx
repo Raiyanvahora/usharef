@@ -85,11 +85,12 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <head>
+        {/* Google Search Console verification - MUST BE FIRST */}
+        <meta name="google-site-verification" content="772cucv8UMh-aF2hlC6i1kxiAlm8JmL8jO8Jk5KzBcE" />
+        
         <meta httpEquiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
-        {/* Google Search Console verification */}
-        <meta name="google-site-verification" content="772cucv8UMh-aF2hlC6i1kxiAlm8JmL8jO8Jk5KzBcE" />
 
         {/* Meta Pixel Code */}
         <script
