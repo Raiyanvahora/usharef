@@ -89,8 +89,7 @@ export default function RootLayout({
         <meta httpEquiv="Pragma" content="no-cache" />
         <meta httpEquiv="Expires" content="0" />
         {/* Google Search Console verification */}
-        {/* Uncomment and add your verification code below */}
-        {/* <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> */}
+        <meta name="google-site-verification" content="772cucv8UMh-aF2hlC6i1kxiAlm8JmL8jO8Jk5KzBcE" />
 
         {/* Meta Pixel Code */}
         <script
